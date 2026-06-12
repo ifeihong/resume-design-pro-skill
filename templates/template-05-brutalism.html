@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{NAME}} - {{TITLE}} | Brutalism Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       CSS VARIABLES
+       ============================================ */
+    :root {
+      --bg-primary: #000000;
+      --bg-secondary: #111111;
+      --bg-card: #000000;
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --text-muted: #666666;
+      --accent: #ff0000;
+      --border-color: #ffffff;
+      --border-accent: #ff0000;
+      --font-display: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', system-ui, -apple-system, sans-serif;
+      --font-body: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+      --section-gap: 3rem;
+      --card-padding: 1.5rem;
+      --border-width: 4px;
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: auto;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      word-break: keep-all;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      padding: 0.5rem 0;
+      border-top: var(--border-width) solid var(--border-color);
+      border-bottom: var(--border-width) solid var(--border-color);
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--accent);
+      transition: none;
+    }
+
+    a:hover {
+      background: var(--accent);
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    .resume-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* ============================================
+       HEADER / PROFILE
+       ============================================ */
+    .profile-header {
+      margin-bottom: var(--section-gap);
+      padding: var(--card-padding);
+      background: var(--bg-card);
+      border: var(--border-width) solid var(--border-color);
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .avatar-wrapper {
+      flex-shrink: 0;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 0;
+      border: var(--border-width) solid var(--border-color);
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.2);
+      display: block;
+    }
+
+    /* Abstract avatar placeholder for brutalism style */
+    .avatar-abstract {
+      width: 140px;
+      height: 140px;
+      border-radius: 0;
+      border: var(--border-width) solid var(--border-color);
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--text-primary);
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .profile-title {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .profile-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .profile-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .profile-links a {
+      padding: 0.4rem 1rem;
+      border: 3px solid var(--border-color);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .profile-links a:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* No avatar layout adjustment */
+    .profile-header.no-avatar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .profile-header.no-avatar .profile-info {
+      text-align: left;
+    }
+
+    /* ============================================
+       SECTIONS
+       ============================================ */
+    section {
+      margin-bottom: var(--section-gap);
+      padding: var(--card-padding);
+      background: var(--bg-card);
+      border: var(--border-width) solid var(--border-color);
+    }
+
+    /* ============================================
+       SUMMARY
+       ============================================ */
+    #professional-summary p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    /* ============================================
+       SKILLS
+       ============================================ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-primary);
+      border: 3px solid var(--border-color);
+      color: var(--text-primary);
+      font-weight: 700;
+      border-radius: 0;
+    }
+
+    .skill-tag:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ============================================
+       EXPERIENCE
+       ============================================ */
+    .experience-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 4px solid var(--border-color);
+    }
+
+    .experience-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .company-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      font-weight: 900;
+    }
+
+    .experience-date {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border: 3px solid var(--accent);
+    }
+
+    .job-title {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .experience-desc {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .exp-highlights {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .exp-highlights li {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+      padding: 0.4rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      border-left: 4px solid var(--border-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-highlights li::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .exp-highlights .metric {
+      color: var(--accent);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       PROJECTS
+       ============================================ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      padding: 1.5rem;
+      background: var(--bg-primary);
+      border: 4px solid var(--border-color);
+      transition: none;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translate(-4px, -4px);
+      box-shadow: 8px 8px 0 var(--accent);
+    }
+
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 0.8rem;
+      font-weight: 900;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .project-tech span {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      color: var(--text-secondary);
+      font-weight: 700;
+    }
+
+    /* ============================================
+       EDUCATION
+       ============================================ */
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--bg-primary);
+      border: 4px solid var(--border-color);
+    }
+
+    .school-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      font-weight: 900;
+    }
+
+    .education-date {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border: 3px solid var(--accent);
+    }
+
+    .degree-info {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      font-family: var(--font-mono);
+    }
+
+    /* ============================================
+       LANGUAGES
+       ============================================ */
+    .languages-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .language-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      padding: 1rem 1.5rem;
+      background: var(--bg-primary);
+      border: 4px solid var(--border-color);
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .lang-name {
+      color: var(--text-primary);
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+
+    .lang-level {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .lang-bar {
+      flex: 1;
+      height: 12px;
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+      min-width: 80px;
+    }
+
+    .lang-bar-fill {
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .lang-bar-fill.full { width: 100%; }
+    .lang-bar-fill.high { width: 85%; }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+       ============================================ */
+    @media (max-width: 768px) {
+      .resume-container {
+        padding: 1.5rem 1rem;
+      }
+
+      .profile-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+      }
+
+      .avatar,
+      .avatar-abstract {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        max-width: 140px;
+      }
+
+      .profile-meta,
+      .profile-links {
+        justify-content: flex-start;
+      }
+
+      .experience-header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 1.2rem;
+      }
+
+      .languages-list {
+        flex-direction: column;
+      }
+
+      .language-item {
+        min-width: auto;
+      }
+    }
+
+    /* ========== PDF PRINT STYLES ========== */
+    @page {
+      size: A4;
+      margin: 15mm;
+    }
+
+    /* ============================================
+       PRINT STYLES
+       ============================================ */
+    @media print {
+      /* Force A4 dimensions */
+      html {
+        width: 210mm;
+        height: 297mm;
+      }
+
+      body {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #000 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .container,
+      .resume-container {
+        max-width: 180mm !important;
+        margin: 0 auto !important;
+        padding: 10mm 0 !important;
+        box-shadow: none !important;
+      }
+
+      /* Prevent awkward page breaks */
+      .section, .exp-item, .edu-item, .project-item, .skill-category, .lang-item {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      /* Keep headings with their content */
+      .section-title, .exp-role, .project-name, .edu-school, .job-title {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+      }
+
+      /* Disable all animations and transitions */
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      /* Remove decorative background elements */
+      .bg-blobs, .aurora-bg, .mesh-gradient, .shape-1, .shape-2, .shape-3,
+      .blob, .blob-1, .blob-2, .blob-3, .grid-bg, .scanlines {
+        display: none !important;
+      }
+
+      /* Ensure text is black for print */
+      body, .container, .section, p, li, span, div {
+        color: #000 !important;
+      }
+
+      /* Remove shadows for cleaner print */
+      * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      /* Ensure links show URL or are visible */
+      a {
+        color: #000 !important;
+        text-decoration: underline;
+        background: none !important;
+      }
+
+      /* Avatar grayscale for print */
+      .avatar, .avatar-wrapper, .avatar-abstract {
+        filter: grayscale(100%) !important;
+      }
+
+      /* Brutalism-specific print rules */
+      section,
+      .profile-header,
+      .project-card,
+      .education-item,
+      .language-item {
+        background: #fff !important;
+        border: 3px solid #000 !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+      }
+
+      h1, h2, h3, .company-name, .school-name, .project-name, .lang-name {
+        color: #000 !important;
+      }
+
+      h2 {
+        border-color: #000 !important;
+      }
+
+      .skill-tag {
+        background: #fff !important;
+        border: 2px solid #000 !important;
+        color: #000 !important;
+      }
+
+      .project-tech span {
+        background: #fff !important;
+        border: 1px solid #000 !important;
+        color: #000 !important;
+      }
+
+      .experience-date,
+      .education-date {
+        border-color: #000 !important;
+        color: #000 !important;
+      }
+
+      .lang-bar-fill {
+        background: #000 !important;
+      }
+
+      .avatar {
+        border: 3px solid #000 !important;
+        filter: grayscale(100%) !important;
+      }
+
+      .avatar-abstract {
+        border: 3px solid #000 !important;
+        background: #000 !important;
+        color: #fff !important;
+      }
+    }
+
+    /* ============================================
+       REDUCED MOTION
+       ============================================ */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <!-- Profile Header -->
+    <header class="profile-header" id="personal-info">
+      <div class="avatar-wrapper">
+        <!-- Avatar: {{AVATAR_TYPE}} -->
+        <!-- For image avatar: <img src="{{AVATAR_SRC}}" alt="{{NAME}}" class="avatar"> -->
+        <!-- For abstract avatar: <div class="avatar avatar-abstract">{{AVATAR_SRC}}</div> -->
+        <!-- For no avatar: remove this element and add 'no-avatar' class to .resume-header -->
+        <img src="{{AVATAR_SRC}}" alt="{{NAME}}" class="avatar" id="avatar-img">
+      </div>
+      <div class="profile-info">
+        <h1 class="profile-name">{{NAME}}</h1>
+        <div class="profile-title">{{TITLE}}</div>
+        <div class="profile-meta">
+          <span>{{PHONE}}</span>
+          <span>{{EMAIL}}</span>
+          <span>{{CITY}}</span>
+        </div>
+        <div class="profile-links">
+          <a href="https://{{GITHUB}}" target="_blank">{{GITHUB}}</a>
+          <a href="https://{{WEBSITE}}" target="_blank">{{WEBSITE}}</a>
+          <a href="https://{{LINKEDIN}}" target="_blank">{{LINKEDIN}}</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section id="professional-summary">
+      <h2>个人简介</h2>
+      <p>{{SUMMARY}}</p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>技能专长</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>前端核心</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Vue.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">Vite</span>
+            <span class="skill-tag">Webpack</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>样式与UI</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">Styled Components</span>
+            <span class="skill-tag">Sass</span>
+            <span class="skill-tag">Ant Design</span>
+            <span class="skill-tag">Material UI</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>进阶技术</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">WebGL</span>
+            <span class="skill-tag">Three.js</span>
+            <span class="skill-tag">WebAssembly</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">GraphQL</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="work-experience">
+      <h2>工作经历</h2>
+      <div class="experience-list">
+        <div class="experience-item">
+          <div class="experience-header">
+            <span class="company-name">字节跳动</span>
+            <span class="experience-date">2021 - 至今</span>
+          </div>
+          <div class="job-title">高级前端工程师</div>
+          <ul class="exp-highlights">
+            <li>负责创意工具平台前端架构，<span class="metric">日活用户 500 万+</span></li>
+            <li>设计并实现组件库，<span class="metric">被 8 个业务线复用</span></li>
+            <li>优化首屏加载速度，<span class="metric">LCP 从 3.2s 降至 1.1s</span></li>
+          </ul>
+        </div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <span class="company-name">蚂蚁集团</span>
+            <span class="experience-date">2019 - 2021</span>
+          </div>
+          <div class="job-title">前端工程师</div>
+          <ul class="exp-highlights">
+            <li>参与支付宝商家服务平台开发，<span class="metric">服务 200 万+商家</span></li>
+            <li>推动前端工程化建设，<span class="metric">自动化测试覆盖率达 85%</span></li>
+            <li>搭建 CI/CD 流水线，<span class="metric">部署效率提升 60%</span></li>
+          </ul>
+        </div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <span class="company-name">京东</span>
+            <span class="experience-date">2017 - 2019</span>
+          </div>
+          <div class="job-title">初级前端工程师</div>
+          <ul class="exp-highlights">
+            <li>参与京东商城活动页面开发，<span class="metric">累计 PV 超 1 亿</span></li>
+            <li>负责 H5 营销页面构建与动画效果实现，<span class="metric">转化率提升 25%</span></li>
+            <li>熟悉高并发场景下的性能优化策略，<span class="metric">页面加载提速 40%</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>项目作品</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-name">React Motion Kit</div>
+          <div class="project-desc">基于 React 的高性能动画组件库，提供丰富的预设动画效果和灵活的自定义 API，支持 SSR 和 Tree-shaking。</div>
+          <div class="project-tech">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>Framer Motion</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-name">CSS Glass Generator</div>
+          <div class="project-desc">可视化 Glassmorphism 效果生成工具，支持实时预览和 CSS 代码导出，帮助开发者快速创建毛玻璃效果。</div>
+          <div class="project-tech">
+            <span>Vue.js</span>
+            <span>Canvas</span>
+            <span>Vite</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>教育背景</h2>
+      <div class="education-item">
+        <div>
+          <div class="school-name">华中科技大学</div>
+          <div class="degree-info">软件工程 本科</div>
+        </div>
+        <span class="education-date">2013 - 2017</span>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+      <h2>证书资质</h2>
+      <div class="certifications-list">
+        <div class="certification-item">
+          <span class="cert-name">AWS Certified Solutions Architect</span>
+          <span class="cert-issuer">Amazon Web Services</span>
+          <span class="cert-date">2023</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section id="languages">
+      <h2>语言能力</h2>
+      <div class="languages-list">
+        <div class="language-item">
+          <span class="lang-name">中文</span>
+          <span class="lang-level">母语</span>
+          <div class="lang-bar"><div class="lang-bar-fill full"></div></div>
+        </div>
+        <div class="language-item">
+          <span class="lang-name">English</span>
+          <span class="lang-level">流利 / CET-6</span>
+          <div class="lang-bar"><div class="lang-bar-fill high"></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="resume-footer">
+    <div class="footer-text">Resume Design Pro — Brutalism</div>
+  </footer>
+
+  <script>
+    // Avatar fallback handling
+    (function() {
+      const avatarImg = document.getElementById('avatar-img');
+      const profileHeader = document.getElementById('profile-header');
+
+      avatarImg.addEventListener('error', function() {
+        this.style.display = 'none';
+        const fallback = document.createElement('div');
+        fallback.className = 'avatar-abstract';
+        fallback.textContent = '{{NAME_ABBR}}';
+        fallback.id = 'avatar-fallback';
+        this.parentNode.appendChild(fallback);
+      });
+
+      // No avatar layout adjustment
+      if (!avatarImg.src || avatarImg.src === window.location.href) {
+        profileHeader.classList.add('no-avatar');
+      }
+    })();
+  </script>
+</body>
+</html>

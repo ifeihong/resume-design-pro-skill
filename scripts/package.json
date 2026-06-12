@@ -1,0 +1,17 @@
+{
+  "name": "resume-design-pro-pdf-export",
+  "version": "1.0.0",
+  "description": "PDF export script for Resume Design Pro",
+  "main": "export-pdf.js",
+  "scripts": {
+    "export": "node export-pdf.js",
+    "batch": "node export-pdf-batch.js",
+    "postinstall": "npx playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "^1.50.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

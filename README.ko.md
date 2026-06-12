@@ -1,0 +1,183 @@
+# Resume Design Pro — AI 이력서 생성기
+
+<div align="center">
+
+[English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | **한국어**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platform: Claude Code](https://img.shields.io/badge/Platform-Claude%20Code-blue)](https://claude.ai/code)
+[![Platform: Trae](https://img.shields.io/badge/Platform-Trae-green)](https://www.trae.ai/)
+[![Platform: Codex](https://img.shields.io/badge/Platform-Codex-purple)](https://openai.com/index/introducing-codex/)
+
+</div>
+
+> **11가지 프리미엄 디자인 스타일** + **AI 콘텐츠 심층 최적화** = **500달러 이상의 전문 디자인 수준** 이력서.  
+> 놀라운 시각적 미학, 완전한 ATS 호환성, 다국어 지원을 갖춘 프로덕션급 HTML 이력서를 생성합니다.
+
+## 핵심 차별화 포인트
+
+### 1. 11가지 프리미엄 디자인 스타일 — 단순한 템플릿이 아닙니다
+
+각 스타일은**완전한 비주얼 시스템**입니다. 고유한 색상 팔레트, 타이포그래피, 애니메이션, 레이아웃 철학을 가지고 있습니다. 기업 미니멀리즘부터 사이버펑크 네온까지, 모든 산업과 개성에 맞춰 제작되었습니다.
+
+**스타일 미리보기:**
+
+| # | 스타일 | 비주얼 특징 | 적합한 직종 |
+|---|--------|------------|------------|
+| 01 | **미니멀리즘 & 스위스** | 깔끔한 그리드, 충분한 여백, 타이포그래피 우선 | 금융, 컨설팅, 임원 |
+| 02 | **뉴모피즘** | 부드러운 UI, 엠보스 깊이, 미묘한 그림자 | UI/UX 디자이너, 제품 관리자 |
+| 03 | **글래스모피즘** | 프로스트 글라스, 선명한 배경, 블러 효과 | 프론트엔드 개발자, 크리에이티브 테크놀로지스트 |
+| 04 | **사이버펑크** | 네온 글로우, CRT 스캔라인, 그리드 배경, 고정폭 글꼴 | 게임 개발, 보안 엔지니어, 블록체인 |
+| 05 | **브루탈리즘** | 굵은 타이포그래피, 높은 대비, 원시적인 테두리 | 아트 디렉터, 독립 크리에이터 |
+| 06 | **클레이모피즘** | 부드러운 3D, 파스텔 색상, 둥근 유기적 형태 | 일러스트레이터, 교육자, 게임 디자이너 |
+| 07 | **오로라 / 메시 그라데이션** | 흐르는 애니메이션 그라데이션, 선명한 색상 | 브랜드 디자이너, 크리에이티브 디렉터 |
+| 08 | **3D 하이퍼리얼리즘** | 원근 깊이, 사실적인 그림자, 레이어드 카드 | 건축가, 산업 디자이너 |
+| 09 | **비브란트 블록 / 맥시멀리스트** | 대담한 색상 블록, 높은 채도, 기하학적 형태 | 마케팅 매니저, 광고 크리에이티브 |
+| 10 | **다크 OLED 럭셔리** | 순수한 검정, 미묘한 회색, 프리미엄 미니멀리즘 | CTO/VP, 크리에이티브 디렉터 |
+| 11 | **오가닉 / 바이오모픽** | 어스톤, 유기적 곡선, 자연에서 영감을 받은 | 지속가능성, 자연 브랜드 |
+
+### 2. AI 콘텐츠 심층 최적화 엔진
+
+당신의 콘텐츠는**전문적으로 다시 작성**됩니다 — 단순한 서식 지정이 아닙니다:
+
+| 최적화 전 | 최적화 후 |
+|----------|----------|
+| "웹사이트 개발 담당" | "회사 웹사이트 풀스택 개발을 주도하여 전환율 35% 향상" |
+| "팀워크에 능숙" | "8명 이상의 교차 기능 팀과 협력하여 3개의 주요 릴리스 성공적 배달" |
+| "React를 빠르게 학습" | "2주 만에 React 생태계 마스터, 3번째 스프린트에 프로덕션 기능 출시" |
+
+**6단계 최적화 프로세스:**
+1. **추출** — 원시 정보 파싱
+2. **필터링** — 높은 영향력 콘텐츠만 유지
+3. **정량화** — 지표와 숫자 추가
+4. **재작성** — 액션 동사와 STAR 방법론 사용
+5. **재구성** — 전문 이력서 형식
+6. **확인** — 전후 비교 표시, 사용자 승인
+
+**원본 콘텐츠를 유지하고 싶으신가요?** `/raw` 입력 — 제로 수정, 순수 디자인 변환.
+
+### 3. 완전한 출력 패키지
+
+한 번의 호출로,**5가지 산출물**:
+
+| 파일 | 용도 |
+|------|------|
+| `resume-{이름}-{스타일}.html` | 멋진 비주얼 이력서 — 브라우저에서 열어 PDF로 인쇄 |
+| `resume-{이름}-ats.html` | 일반 텍스트 ATS 버전 — 지원자 추적 시스템에 안전 |
+| `resume-{이름}.md` | Markdown 백업 — 언제든지 편집 및 재사용 |
+| `cover-letter-{이름}.html` | 매칭되는 자기소개서 — 동일한 비주얼 스타일 |
+| `linkedin-export.md` | LinkedIn 최적화 콘텐츠 — 복사하여 바로 사용 |
+
+## 언어 지원
+
+| 언어 | 코드 | 폰트 | 상태 |
+|------|------|------|------|
+| 한국어 | `ko` | Noto Sans KR | 안정 |
+| English | `en` | Noto Sans | 안정 |
+| 中文(간체) | `zh-CN` | Noto Sans SC | 안정 |
+| 日本語 | `ja` | Noto Sans JP | 안정 |
+
+**로드맵**: 스페인어, 프랑스어, 아랍어(RTL) 등 14개 추가 언어 — 자세한 내용은 [MULTI-LANGUAGE-EXTENSION-PLAN.md](docs/MULTI-LANGUAGE-EXTENSION-PLAN.md) 참조
+
+## 빠른 시작
+
+### 사용자용
+
+```bash
+# Claude Code / Trae / Codex에서
+use resume-design-pro
+```
+
+프롬프트에 따라:
+1. 이력서 정보 제공 (업로드, 붙여넣기 또는 대화)
+2. 콘텐츠 최적화 모드(기본값) 또는 RAW 모드 선택
+3. 11가지 디자인 스타일 중 선택
+4. 완전한 이력서 패키지 받기
+
+### 개발자용
+
+```bash
+# 클론 및 설치
+git clone <repo-url>
+cd resume-design-pro/scripts
+npm install
+
+# HTML에서 PDF 내보내기
+node export-pdf.js ../templates/template-01-minimalism.html
+```
+
+## 프로젝트 구조
+
+```
+resume-design-pro/
+├── skills/resume-design-pro/SKILL.md    # 핵심 Skill 정의
+├── templates/                           # 11가지 스타일 템플릿 + 추가 템플릿
+│   ├── template-01-minimalism.html
+│   ├── template-02-neumorphism.html
+│   ├── template-03-glassmorphism.html
+│   ├── template-04-cyberpunk.html
+│   ├── template-05-brutalism.html
+│   ├── template-06-claymorphism.html
+│   ├── template-07-aurora.html
+│   ├── template-08-3d-hyperrealism.html
+│   ├── template-09-vibrant-block.html
+│   ├── template-10-dark-oled.html
+│   ├── template-11-organic.html
+│   ├── ats-template.html                # ATS 최적화 버전
+│   ├── cover-letter-template.html       # 자기소개서 템플릿
+│   ├── linkedin-export.md               # LinkedIn 최적화 가이드
+│   └── _shared/
+│       └── demo-content-zh.md           # 표준화된 데모 콘텐츠
+├── demos/                               # 샘플 이력서
+├── scripts/                             # PDF 내보내기 도구
+│   ├── export-pdf.js                    # 단일 파일 내보내기
+│   ├── export-pdf-batch.js              # 일괄 내보내기
+│   ├── package.json
+│   └── README.md
+├── docs/                                # 문서
+│   ├── USER-GUIDE.md                    # 사용자 가이드
+│   └── MULTI-LANGUAGE-EXTENSION-PLAN.md # 14개 언어 확장 로드맵
+├── LICENSE                              # MIT 라이선스
+├── README.md                            # 영문판
+└── THIRD_PARTY_NOTICES.md               # 서드파티 고지
+```
+
+## PDF 내보내기
+
+### 방법 1: 브라우저 인쇄 (가장 쉬움)
+1. 브라우저에서 HTML 파일 열기
+2. Ctrl+P → "PDF로 저장" 선택
+3. 용지 크기: A4, 여백: 기본값
+4. 색상을 유지하려면 "배경 그래픽" 확인
+
+### 방법 2: Node.js 스크립트
+```bash
+cd scripts
+npm install
+node export-pdf.js ../templates/template-01-minimalism.html
+```
+
+## 플랫폼 지원
+
+| 플랫폼 | 상태 | 설명 |
+|--------|------|------|
+| Claude Code | 지원됨 | 주요 개발 플랫폼 |
+| Trae | 지원됨 | 테스트 및 검증 완료 |
+| Codex | 지원됨 | 호환 가능 |
+| Cursor | 호환 가능 | 사소한 조정이 필요할 수 있음 |
+
+## 대상 사용자
+
+- **구직자**: 기술, 디자인, 금융, 컨설팅 분야
+- **국제 구직자**: 글로벌 기업에 지원하는 경우
+- **경력 전환자**: 전문적인 이력서를 빠르게 만들어야 하는 경우
+- **학생**: 인턴십 또는 첫 직장에 지원하는 경우
+- **프리랜서**: 독특한 비주얼 아이덴티티로 두각을 나타내고 싶은 경우
+
+## 라이선스
+
+MIT 라이선스 — 자세한 내용은 [LICENSE](LICENSE) 참조.
+
+디자인 미학 시스템은 [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) by ClaudeKit (MIT License)를 기반으로 합니다.
+
+모든 폰트는 Google Fonts (OFL License)에서 제공됩니다.

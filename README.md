@@ -1,0 +1,183 @@
+# Resume Design Pro — AI Resume Generator
+
+<div align="center">
+
+**English** | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platform: Claude Code](https://img.shields.io/badge/Platform-Claude%20Code-blue)](https://claude.ai/code)
+[![Platform: Trae](https://img.shields.io/badge/Platform-Trae-green)](https://www.trae.ai/)
+[![Platform: Codex](https://img.shields.io/badge/Platform-Codex-purple)](https://openai.com/index/introducing-codex/)
+
+</div>
+
+> **11 premium design styles** + **AI content optimization** = a resume that looks like a **$500+ professional design project**.  
+> Generate production-ready HTML resumes with stunning visual aesthetics, full ATS compatibility, and multi-language support.
+
+## What Makes This Different
+
+### 1. 11 Premium Design Styles — Not Just Templates
+
+Each style is a **complete visual system** with unique color palettes, typography, animations, and layout philosophy. From corporate minimalism to cyberpunk neon, there's a style for every industry and personality.
+
+**Preview the styles:**
+
+| # | Style | Vibe | Best For |
+|---|-------|------|----------|
+| 01 | **Minimalism & Swiss** | Clean grids, massive whitespace, typography-first | Finance, Consulting, Executive |
+| 02 | **Neumorphism** | Soft UI, embossed depth, subtle shadows | UI/UX Designer, Product Manager |
+| 03 | **Glassmorphism** | Frosted glass, vibrant backgrounds, blur effects | Frontend Developer, Creative Technologist |
+| 04 | **Cyberpunk** | Neon glow, CRT scanlines, grid backgrounds, monospace | Game Dev, Security Engineer, Blockchain |
+| 05 | **Brutalism** | Bold typography, high contrast, raw borders | Art Director, Independent Creator |
+| 06 | **Claymorphism** | Soft 3D, pastel colors, rounded organic shapes | Illustrator, Educator, Game Designer |
+| 07 | **Aurora / Mesh Gradient** | Flowing animated gradients, vibrant colors | Brand Designer, Creative Director |
+| 08 | **3D Hyperrealism** | Perspective depth, realistic shadows, layered cards | Architect, Industrial Designer |
+| 09 | **Vibrant Block / Maximalist** | Bold color blocks, high saturation, geometric shapes | Marketing Manager, Ad Creative |
+| 10 | **Dark OLED Luxury** | Pure black, subtle grays, premium minimalism | CTO/VP, Creative Director |
+| 11 | **Organic / Biomorphic** | Earth tones, organic curves, nature-inspired | Sustainability, Natural Brands |
+
+### 2. AI Content Optimization Engine
+
+Your content gets **professionally rewritten** — not just formatted:
+
+| Before | After |
+|--------|-------|
+| "Responsible for website development" | "Led full-stack development of company website, increasing conversion by 35%" |
+| "Good at teamwork" | "Collaborated with cross-functional teams of 8+ members to deliver 3 major releases" |
+| "Learned React quickly" | "Mastered React ecosystem in 2 weeks, shipped production feature in sprint 3" |
+
+**The 6-step optimization process:**
+1. **Extract** — Parse your raw information
+2. **Filter** — Keep only high-impact content
+3. **Quantify** — Add metrics and numbers
+4. **Reword** — Use action verbs and STAR methodology
+5. **Restructure** — Professional resume format
+6. **Confirm** — Show before/after, you approve
+
+**Prefer to keep your original content?** Just say `/raw` — zero modifications, pure design transformation.
+
+### 3. Complete Output Package
+
+One invocation, **5 deliverables**:
+
+| File | Purpose |
+|------|---------|
+| `resume-{name}-{style}.html` | Stunning visual resume — open in browser, print to PDF |
+| `resume-{name}-ats.html` | Plain-text ATS version — safe for applicant tracking systems |
+| `resume-{name}.md` | Markdown backup — easy to edit and reuse |
+| `cover-letter-{name}.html` | Matching cover letter — same visual style |
+| `linkedin-export.md` | LinkedIn-optimized content — copy-paste ready |
+
+## Language Support
+
+| Language | Code | Font | Status |
+|----------|------|------|--------|
+| English | `en` | Noto Sans | Stable |
+| 简体中文 | `zh-CN` | Noto Sans SC | Stable |
+| 日本語 | `ja` | Noto Sans JP | Stable |
+| 한국어 | `ko` | Noto Sans KR | Stable |
+
+**Roadmap**: 14 additional languages including Spanish, French, Arabic (RTL) — see [MULTI-LANGUAGE-EXTENSION-PLAN.md](docs/MULTI-LANGUAGE-EXTENSION-PLAN.md)
+
+## Quick Start
+
+### For Users
+
+```bash
+# In Claude Code / Trae / Codex
+use resume-design-pro
+```
+
+Follow the prompts to:
+1. Provide your resume information (upload, paste, or conversation)
+2. Choose content optimization mode (default) or RAW mode
+3. Select from 11 design styles
+4. Get your complete resume package
+
+### For Developers
+
+```bash
+# Clone and install
+git clone <repo-url>
+cd resume-design-pro/scripts
+npm install
+
+# Export PDF from HTML
+node export-pdf.js ../templates/template-01-minimalism.html
+```
+
+## Project Structure
+
+```
+resume-design-pro/
+├── skills/resume-design-pro/SKILL.md    # Core skill definition
+├── templates/                           # 11 style templates + extras
+│   ├── template-01-minimalism.html
+│   ├── template-02-neumorphism.html
+│   ├── template-03-glassmorphism.html
+│   ├── template-04-cyberpunk.html
+│   ├── template-05-brutalism.html
+│   ├── template-06-claymorphism.html
+│   ├── template-07-aurora.html
+│   ├── template-08-3d-hyperrealism.html
+│   ├── template-09-vibrant-block.html
+│   ├── template-10-dark-oled.html
+│   ├── template-11-organic.html
+│   ├── ats-template.html                # ATS-optimized version
+│   ├── cover-letter-template.html       # Cover letter template
+│   ├── linkedin-export.md               # LinkedIn optimization guide
+│   └── _shared/
+│       └── demo-content-zh.md           # Standardized demo content
+├── demos/                               # Example resumes
+├── scripts/                             # PDF export tools
+│   ├── export-pdf.js                    # Single file export
+│   ├── export-pdf-batch.js              # Batch export
+│   ├── package.json
+│   └── README.md
+├── docs/                                # Documentation
+│   ├── USER-GUIDE.md                    # User guide
+│   └── MULTI-LANGUAGE-EXTENSION-PLAN.md # 14-language roadmap
+├── LICENSE                              # MIT License
+├── README.md                            # This file
+└── THIRD_PARTY_NOTICES.md               # Attribution
+```
+
+## PDF Export
+
+### Method 1: Browser Print (Easiest)
+1. Open HTML file in browser
+2. Press Ctrl+P → Select "Save as PDF"
+3. Paper size: A4, Margins: Default
+4. Check "Background graphics" to preserve colors
+
+### Method 2: Node.js Script
+```bash
+cd scripts
+npm install
+node export-pdf.js ../templates/template-01-minimalism.html
+```
+
+## Platform Support
+
+| Platform | Status | Notes |
+|----------|--------|-------|
+| Claude Code | Supported | Primary development platform |
+| Trae | Supported | Tested and verified |
+| Codex | Supported | Compatible |
+| Cursor | Compatible | Should work with minor adjustments |
+
+## Who Is This For?
+
+- **Job seekers** in tech, design, finance, consulting
+- **International applicants** applying to global companies
+- **Career changers** who need a professional resume fast
+- **Students** applying for internships or first jobs
+- **Freelancers** who want to stand out with unique visual identity
+
+## License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+Design aesthetic system based on [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) by ClaudeKit (MIT License).
+
+All fonts from Google Fonts (OFL License).

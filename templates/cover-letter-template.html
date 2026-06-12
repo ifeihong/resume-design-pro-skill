@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{NAME}} - Cover Letter for {{COMPANY}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #1a1a1a;
+      --color-text-muted: #666666;
+      --color-accent: #1a1a1a;
+      --color-border: #e5e5e5;
+      --font-body: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 15px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* A4 Page Setup */
+    @page {
+      size: A4;
+      margin: 25mm 20mm;
+    }
+
+    .page {
+      max-width: 170mm;
+      margin: 0 auto;
+      padding: 0;
+      min-height: 247mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .letter-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .sender-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .sender-info {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .sender-info a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+
+    /* Date */
+    .letter-date {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Recipient */
+    .letter-recipient {
+      margin-bottom: 2rem;
+    }
+
+    .recipient-line {
+      font-size: 0.95rem;
+      color: var(--color-text);
+      line-height: 1.7;
+    }
+
+    /* Subject */
+    .letter-subject {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 2rem;
+      padding: 0.8rem 0;
+      border-top: 2px solid var(--color-text);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Body */
+    .letter-body {
+      flex: 1;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--color-text);
+    }
+
+    .letter-body p {
+      margin-bottom: 1.2rem;
+      text-align: justify;
+    }
+
+    .letter-body p:first-child {
+      margin-top: 0;
+    }
+
+    /* Signature */
+    .letter-signature {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+    }
+
+    .signature-closing {
+      font-size: 0.95rem;
+      color: var(--color-text);
+      margin-bottom: 2rem;
+    }
+
+    .signature-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    /* Footer */
+    .letter-footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+
+    /* Print Styles */
+    @media print {
+      html {
+        width: 210mm;
+        height: 297mm;
+      }
+
+      body {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+      }
+
+      .page {
+        max-width: 170mm;
+        margin: 0 auto;
+        padding: 0;
+        box-shadow: none !important;
+      }
+
+      .letter-body p {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Sender Info -->
+    <header class="letter-header">
+      <div class="sender-name">{{NAME}}</div>
+      <div class="sender-info">
+        {{PHONE}} | <a href="mailto:{{EMAIL}}">{{EMAIL}}</a><br>
+        {{CITY}}<br>
+        <a href="https://{{LINKEDIN}}">{{LINKEDIN}}</a> | <a href="https://{{WEBSITE}}">{{WEBSITE}}</a>
+      </div>
+    </header>
+
+    <!-- Date -->
+    <div class="letter-date">{{DATE}}</div>
+
+    <!-- Recipient -->
+    <div class="letter-recipient">
+      <div class="recipient-line">{{RECRUITER_NAME}}</div>
+      <div class="recipient-line">{{COMPANY}}</div>
+      <div class="recipient-line">{{COMPANY_ADDRESS}}</div>
+    </div>
+
+    <!-- Subject -->
+    <div class="letter-subject">
+      Re: Application for {{JOB_TITLE}}
+    </div>
+
+    <!-- Body -->
+    <div class="letter-body">
+      <p>Dear {{RECRUITER_NAME}},</p>
+
+      <p>{{OPENING_PARAGRAPH}}</p>
+
+      <p>{{BODY_PARAGRAPH_1}}</p>
+
+      <p>{{BODY_PARAGRAPH_2}}</p>
+
+      <p>{{BODY_PARAGRAPH_3}}</p>
+
+      <p>{{CLOSING_PARAGRAPH}}</p>
+    </div>
+
+    <!-- Signature -->
+    <div class="letter-signature">
+      <div class="signature-closing">Sincerely,</div>
+      <div class="signature-name">{{NAME}}</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="letter-footer">
+      Resume Design Pro - Cover Letter
+    </footer>
+  </div>
+</body>
+</html>

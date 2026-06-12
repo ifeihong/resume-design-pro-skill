@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{NAME}} - ATS Resume</title>
+  <style>
+    /* ========== ATS OPTIMIZED STYLES ==========
+       Purpose: Maximum compatibility with Applicant Tracking Systems
+       Rules:
+       - All content must be real text (no images for critical info)
+       - Use standard semantic HTML tags
+       - Avoid tables, columns, and complex layouts
+       - Minimal CSS that doesn't interfere with parsing
+    */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #000;
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ========== HEADER ========== */
+    .ats-header {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #000;
+    }
+
+    .ats-name {
+      font-size: 20pt;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 6px;
+    }
+
+    .ats-title {
+      font-size: 12pt;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .ats-contact {
+      font-size: 10pt;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .ats-contact span {
+      margin-right: 12px;
+    }
+
+    .ats-contact a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    /* ========== SECTIONS ========== */
+    .ats-section {
+      margin-bottom: 16px;
+    }
+
+    .ats-section-title {
+      font-size: 12pt;
+      font-weight: bold;
+      color: #000;
+      text-transform: uppercase;
+      border-bottom: 1px solid #000;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ========== SUMMARY ========== */
+    .ats-summary {
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: #000;
+      margin-bottom: 8px;
+    }
+
+    /* ========== EXPERIENCE ========== */
+    .ats-job {
+      margin-bottom: 14px;
+    }
+
+    .ats-job-header {
+      margin-bottom: 4px;
+    }
+
+    .ats-job-title {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #000;
+      display: inline;
+    }
+
+    .ats-job-company {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #000;
+      display: inline;
+    }
+
+    .ats-job-meta {
+      font-size: 10pt;
+      color: #333;
+      font-style: italic;
+      margin-bottom: 4px;
+    }
+
+    .ats-job-location {
+      font-size: 10pt;
+      color: #333;
+    }
+
+    .ats-highlights {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 4px;
+    }
+
+    .ats-highlights li {
+      font-size: 10.5pt;
+      line-height: 1.5;
+      color: #000;
+      margin-bottom: 2px;
+    }
+
+    /* ========== SKILLS ========== */
+    .ats-skills {
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: #000;
+    }
+
+    .ats-skill-category {
+      margin-bottom: 6px;
+    }
+
+    .ats-skill-category-name {
+      font-weight: bold;
+      display: inline;
+    }
+
+    .ats-skill-list {
+      display: inline;
+    }
+
+    /* ========== EDUCATION ========== */
+    .ats-edu {
+      margin-bottom: 10px;
+    }
+
+    .ats-edu-school {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #000;
+      display: inline;
+    }
+
+    .ats-edu-degree {
+      font-size: 10.5pt;
+      color: #000;
+      display: inline;
+    }
+
+    .ats-edu-meta {
+      font-size: 10pt;
+      color: #333;
+      font-style: italic;
+    }
+
+    /* ========== PROJECTS ========== */
+    .ats-project {
+      margin-bottom: 10px;
+    }
+
+    .ats-project-name {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #000;
+      display: inline;
+    }
+
+    .ats-project-link {
+      font-size: 10pt;
+      color: #333;
+    }
+
+    .ats-project-desc {
+      font-size: 10.5pt;
+      line-height: 1.5;
+      color: #000;
+      margin-top: 2px;
+    }
+
+    .ats-project-tech {
+      font-size: 10pt;
+      color: #333;
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    /* ========== LANGUAGES ========== */
+    .ats-lang {
+      font-size: 10.5pt;
+      line-height: 1.6;
+    }
+
+    .ats-lang-name {
+      font-weight: bold;
+    }
+
+    /* ========== CERTIFICATIONS ========== */
+    .ats-cert {
+      margin-bottom: 6px;
+    }
+
+    .ats-cert-name {
+      font-weight: bold;
+      display: inline;
+    }
+
+    .ats-cert-issuer {
+      display: inline;
+    }
+
+    .ats-cert-date {
+      font-style: italic;
+      color: #333;
+    }
+
+    /* ========== KEYWORDS SECTION (Hidden from human view, visible to ATS) ========== */
+    .ats-keywords {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    /* ========== PRINT ========== */
+    @page {
+      size: A4;
+      margin: 15mm;
+    }
+
+    @media print {
+      body {
+        font-size: 10.5pt;
+        padding: 0;
+        max-width: 100%;
+      }
+
+      .ats-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .ats-job {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hidden keywords for ATS parsing -->
+  <div class="ats-keywords">
+    {{KEYWORDS_HIDDEN}}
+  </div>
+
+  <!-- Header -->
+  <header class="ats-header">
+    <div class="ats-name">{{NAME}}</div>
+    <div class="ats-title">{{TITLE}}</div>
+    <div class="ats-contact">
+      <span>{{PHONE}}</span>
+      <span>{{EMAIL}}</span>
+      <span>{{CITY}}</span>
+      <span><a href="https://{{LINKEDIN}}">LinkedIn</a></span>
+      <span><a href="https://{{GITHUB}}">GitHub</a></span>
+      <span><a href="https://{{WEBSITE}}">Portfolio</a></span>
+    </div>
+  </header>
+
+  <!-- Professional Summary -->
+  <section class="ats-section">
+    <h2 class="ats-section-title">Professional Summary</h2>
+    <p class="ats-summary">{{SUMMARY}}</p>
+  </section>
+
+  <!-- Skills -->
+  <section class="ats-section">
+    <h2 class="ats-section-title">Skills</h2>
+    <div class="ats-skills">
+      <div class="ats-skill-category">
+        <span class="ats-skill-category-name">Core Technologies:</span>
+        <span class="ats-skill-list">{{SKILLS_CORE}}</span>
+      </div>
+      <div class="ats-skill-category">
+        <span class="ats-skill-category-name">Tools & Frameworks:</span>
+        <span class="ats-skill-list">{{SKILLS_TOOLS}}</span>
+      </div>
+      <div class="ats-skill-category">
+        <span class="ats-skill-category-name">Advanced:</span>
+        <span class="ats-skill-list">{{SKILLS_ADVANCED}}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience -->
+  <section class="ats-section">
+    <h2 class="ats-section-title">Work Experience</h2>
+    {{EXPERIENCE}}
+  </section>
+
+  <!-- Projects -->
+  <section class="ats-section">
+    <h2 class="ats-section-title">Projects</h2>
+    {{PROJECTS}}
+  </section>
+
+  <!-- Education -->
+  <section class="ats-section">
+    <h2 class="ats-section-title">Education</h2>
+    {{EDUCATION}}
+  </section>
+
+  <!-- Languages -->
+  <section class="ats-section">
+    <h2 class="ats-section-title">Languages</h2>
+    {{LANGUAGES}}
+  </section>
+
+  <!-- Certifications (Optional) -->
+  <section class="ats-section">
+    <h2 class="ats-section-title">Certifications</h2>
+    {{CERTIFICATIONS}}
+  </section>
+</body>
+</html>
