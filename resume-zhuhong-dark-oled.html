@@ -384,7 +384,7 @@
     /* ========== PDF PRINT STYLES ========== */
     @page {
       size: A4;
-      margin: 0;
+      margin: 15mm 20mm;
     }
 
     @media print {
@@ -398,16 +398,12 @@
       .container {
         max-width: 900px !important;
         margin: 0 auto !important;
-        padding: 20mm 20mm 15mm !important;
+        padding: 0 !important;
         box-shadow: none !important;
       }
       .section {
-        margin-top: 15mm !important;
         break-inside: auto !important;
         page-break-inside: auto !important;
-      }
-      .section:first-of-type {
-        margin-top: 0 !important;
       }
       .exp-item, .edu-item, .skill-category {
         break-inside: avoid !important;
