@@ -1,7 +1,7 @@
 ---
 name: resume-design-pro
 description: >
-  AI-powered resume builder and CV generator with 11 premium design styles.
+  AI-powered resume builder and CV generator with 29 premium design styles.
   Creates production-ready HTML resumes with stunning visual aesthetics — each style is a complete visual system with unique color palettes, typography, animations, and layout philosophy.
   AI content optimization engine: quantifies achievements, applies STAR methodology, rewrites with professional action verbs. 6-step process: Extract → Filter → Quantify → Reword → Restructure → Confirm. RAW mode available for zero-modification output.
   Generates ATS-compatible resumes with semantic HTML5, hidden keywords section, and standard section hierarchy — safe for applicant tracking systems.
@@ -12,12 +12,12 @@ description: >
   Avatar system: real photo upload, AI-generated professional portrait, or abstract geometric initials — with platform-specific detection (Claude Code, Trae, Codex, Cursor).
   Multiple input methods: upload existing resume (PDF/Word/image), guided 9-module conversation, direct text paste, quick mode (6 questions), or raw mode.
   One invocation, 5 deliverables: visual HTML resume, ATS HTML resume, Markdown backup, cover letter, LinkedIn export.
-  11 design aesthetics: Minimalism, Neumorphism, Glassmorphism, Cyberpunk, Brutalism, Claymorphism, Aurora, 3D Hyperrealism, Vibrant Block, Dark OLED, Organic.
+  29 design aesthetics: Minimalism, Neumorphism, Glassmorphism, Cyberpunk, Brutalism, Claymorphism, Aurora, 3D Hyperrealism, Vibrant Block, Dark OLED, Organic, Blue Professional, Monochrome, Soft Editorial, Emerald Editorial, Editorial Forest, Editorial Tri-Tone, Block Frame, Cobalt Grid, Signal, Studio, Vellum, Mat, Long Table, Cartesian, Stencil Tablet, People's Platform, Grove, Broadside.
   Keywords: resume builder, CV generator, resume maker, curriculum vitae, job application, career tool, portfolio, PDF export, ATS compatible, applicant tracking system, cover letter generator, LinkedIn optimization, multi-language resume, bilingual CV, multilingual support, design template, professional resume, HTML resume, visual resume, creative resume, modern resume template, AI resume writer, resume optimizer, resume formatter, resume design, CV design, job search, career change, internship resume, executive resume, tech resume, designer resume
 license: MIT
-version: 1.1.0
+version: 1.2.0
 author: Feihong
-based_on: claudekit/frontend-design-pro-demo (MIT License)
+based_on: claudekit/frontend-design-pro-demo (MIT License), zarazhangrui/beautiful-html-templates (MIT License)
 ---
 
 # Resume Design Pro
@@ -724,10 +724,10 @@ Based on your profile (Target: {role} in {industry}), I recommend these styles:
 [Secondary] {Style Name} - {One-line reason}
 [Alternative]{Style Name} - {One-line reason}
 
-Which style would you prefer? (You can also request to see all 11 styles)
+Which style would you prefer? (You can also request to see all 29 styles)
 ```
 
-### Full Style Catalog (v0.5 - 11 Styles):
+### Full Style Catalog (v1.2 - 29 Styles):
 
 | # | Style | Best For | Keywords |
 |---|-------|----------|----------|
@@ -742,6 +742,26 @@ Which style would you prefer? (You can also request to see all 11 styles)
 | 09 | **Vibrant Block / Maximalist** | Marketing Manager, Ad Creative, Social Media | bold color blocks, high saturation, geometric shapes |
 | 10 | **Dark OLED Luxury** | CTO/VP, Creative Director, Luxury Industry | pure black, subtle grays, premium minimal, executive |
 | 11 | **Organic / Biomorphic** | Sustainability, Natural Brands, Education | earth tones, organic curves, nature-inspired, soft |
+| 12 | **Blue Professional** | Corporate, Business Analyst, Accountant | blue-white, rounded cards, clean corporate, trustworthy |
+| 13 | **Monochrome** | Editor, Writer, Academic, Researcher | ultra-light weight, black ink only, high contrast, literary |
+| 14 | **Soft Editorial** | Magazine Editor, Content Strategist, PR | warm tones, large border-radius, dashed dividers, editorial |
+| 15 | **Emerald Editorial** | Legal, Government, Diplomat | double-line rules, emerald accent, serif elegance, formal |
+| 16 | **Editorial Forest** | Environmental, NGO, Conservation | green border, pink accent, serif + mono, nature-focused |
+| 17 | **Editorial Tri-Tone** | Fashion, Luxury Retail, Art Curator | burgundy + butter dual-tone, slab serif, sophisticated |
+| 18 | **Block Frame** | Graphic Designer, Streetwear Brand, Creative | neobrutalism, 4px black border, 8px shadow, bold |
+| 19 | **Cobalt Grid** | Data Scientist, Engineer, Architect | grid paper, cobalt ink, ruled lines, technical, precise |
+| 20 | **Signal** | Product Manager, Strategist, Consultant | warm cream, antique gold accent, serif + sans, refined |
+| 21 | **Studio** ⬛ | Creative Director, DJ, Music Producer | dark mode, acid yellow text, uppercase, industrial |
+| 22 | **Vellum** ⬛ | Fine Artist, Photographer, Curator | dark purple-blue, warm yellow text, manuscript, moody |
+| 23 | **Mat** ⬛ | Filmmaker, Game Developer, 3D Artist | dark forest green, warm orange accent, bold display |
+| 24 | **Long Table** | Historian, Archivist, Academic Researcher | terracotta ink, pill tags, long-form, scholarly |
+| 25 | **Cartesian** | Mathematician, Physicist, Engineer | geometric ring ornaments, serif + sans, scientific |
+| 26 | **Stencil Tablet** | Industrial Designer, Architect, Urban Planner | stencil typography, multi-color accent, structural, bold |
+| 27 | **People's Platform** | Community Organizer, Nonprofit, Activist | thick border, stamp effect, slab serif, grassroots |
+| 28 | **Grove** | Botanist, Landscape Architect, Wellness | forest green, coral accent, nature-inspired, organic |
+| 29 | **Broadside** ⬛ | Print Designer, Typographer, Publisher | near-black, orange accent, bold uppercase, poster-style |
+
+> ⬛ = Dark theme (preserves dark background when printing to PDF)
 
 ## 5. Design System Rules
 
@@ -1375,9 +1395,11 @@ AI: [解析完成] 内容已提取。
 - v0.5.0 (2026-06-12): Full 11 styles completed, unified demo content, avatar system, multi-language font support (EN/ZH/JA/KR)
 - v1.0.0 (2026-06-12): Cover Letter generation, ATS-optimized template, LinkedIn export guide, Node.js PDF export (single + batch), avatar platform detection, full print optimization
 - v1.1.0 (2026-06-15): Truthful quantification engine (no fake data), company attribution lock, experience tiering (preserve all experiences), content density selection, avatar auto-detection from PDF, resume health report, ATS compatibility preview, progress visualization, **automatic PDF export (6th deliverable)**
+- v1.2.0 (2026-06-15): **18 new design styles** (29 total) ported from beautiful-html-templates, expanded style catalog with dark theme support (4 dark themes), updated font system with per-style typography
 
 ---
 
 **Credits:**
 - Design aesthetic system based on [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) by ClaudeKit (MIT License)
+- 18 additional design styles (Template 12-29) ported from [beautiful-html-templates](https://github.com/zarazhangrui/beautiful-html-templates) by Zara Zhang (MIT License, Copyright 2026)
 - Fonts provided by Google Fonts (OFL License)

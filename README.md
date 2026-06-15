@@ -10,16 +10,16 @@
 
 </div>
 
-> **11 premium design styles** + **AI content optimization** = a resume that looks like a **$500+ professional design project**.  
+> **29 premium design styles** + **AI content optimization** = a resume that looks like a **$500+ professional design project**.  
 > Generate production-ready HTML resumes with stunning visual aesthetics, full ATS compatibility, and multi-language support.
 
 ## What Makes This Different
 
-### 1. 11 Premium Design Styles — Not Just Templates
+### 1. 29 Premium Design Styles — Not Just Templates
 
 Each style is a **complete visual system** with unique color palettes, typography, animations, and layout philosophy. From corporate minimalism to cyberpunk neon, there's a style for every industry and personality.
 
-**Preview the styles:**
+**Original 11 Styles (from frontend-design-pro-demo):**
 
 | # | Style | Vibe | Best For |
 |---|-------|------|----------|
@@ -34,6 +34,31 @@ Each style is a **complete visual system** with unique color palettes, typograph
 | 09 | **Vibrant Block / Maximalist** | Bold color blocks, high saturation, geometric shapes | Marketing Manager, Ad Creative |
 | 10 | **Dark OLED Luxury** | Pure black, subtle grays, premium minimalism | CTO/VP, Creative Director |
 | 11 | **Organic / Biomorphic** | Earth tones, organic curves, nature-inspired | Sustainability, Natural Brands |
+
+**18 New Styles (from beautiful-html-templates):**
+
+| # | Style | Vibe | Best For |
+|---|-------|------|----------|
+| 12 | **Blue Professional** | Blue-white corporate, rounded cards | Business Analyst, Accountant |
+| 13 | **Monochrome** | Ultra-light weight, pure black ink | Editor, Writer, Academic |
+| 14 | **Soft Editorial** | Warm tones, large border-radius, dashed dividers | Magazine Editor, PR |
+| 15 | **Emerald Editorial** | Double-line rules, emerald accent, serif | Legal, Government, Diplomat |
+| 16 | **Editorial Forest** | Green border, pink accent, serif + mono | Environmental, NGO |
+| 17 | **Editorial Tri-Tone** | Burgundy + butter dual-tone, slab serif | Fashion, Luxury Retail |
+| 18 | **Block Frame** | Neobrutalism, 4px border, 8px shadow | Graphic Designer, Streetwear |
+| 19 | **Cobalt Grid** | Grid paper, cobalt ink, ruled lines | Data Scientist, Engineer |
+| 20 | **Signal** | Warm cream, antique gold accent | Product Manager, Strategist |
+| 21 | **Studio** ⬛ | Dark mode, acid yellow text, uppercase | Creative Director, DJ |
+| 22 | **Vellum** ⬛ | Dark purple-blue, warm yellow, manuscript | Fine Artist, Photographer |
+| 23 | **Mat** ⬛ | Dark forest green, warm orange accent | Filmmaker, Game Developer |
+| 24 | **Long Table** | Terracotta ink, pill tags, scholarly | Historian, Archivist |
+| 25 | **Cartesian** | Geometric ring ornaments, serif + sans | Mathematician, Physicist |
+| 26 | **Stencil Tablet** | Stencil typography, multi-color accent | Industrial Designer, Architect |
+| 27 | **People's Platform** | Thick border, stamp effect, slab serif | Community Organizer, Nonprofit |
+| 28 | **Grove** | Forest green, coral accent, organic | Botanist, Wellness |
+| 29 | **Broadside** ⬛ | Near-black, orange accent, poster-style | Print Designer, Typographer |
+
+> ⬛ = Dark theme (preserves dark background when printing to PDF)
 
 ### 2. AI Content Optimization Engine — Truth-First
 
@@ -102,7 +127,7 @@ use resume-design-pro
 Follow the prompts to:
 1. Provide your resume information (upload, paste, or conversation)
 2. Choose content optimization mode (default) or RAW mode
-3. Select from 11 design styles
+3. Select from 29 design styles
 4. Get your complete resume package
 
 ### For Developers
@@ -122,7 +147,7 @@ node export-pdf.js ../templates/template-01-minimalism.html
 ```
 resume-design-pro/
 ├── skills/resume-design-pro/SKILL.md    # Core skill definition
-├── templates/                           # 11 style templates + extras
+├── templates/                           # 29 style templates + extras
 │   ├── template-01-minimalism.html
 │   ├── template-02-neumorphism.html
 │   ├── template-03-glassmorphism.html
@@ -134,6 +159,24 @@ resume-design-pro/
 │   ├── template-09-vibrant-block.html
 │   ├── template-10-dark-oled.html
 │   ├── template-11-organic.html
+│   ├── template-12-blue-professional.html
+│   ├── template-13-monochrome.html
+│   ├── template-14-soft-editorial.html
+│   ├── template-15-emerald-editorial.html
+│   ├── template-16-editorial-forest.html
+│   ├── template-17-editorial-tri-tone.html
+│   ├── template-18-block-frame.html
+│   ├── template-19-cobalt-grid.html
+│   ├── template-20-signal.html
+│   ├── template-21-studio.html
+│   ├── template-22-vellum.html
+│   ├── template-23-mat.html
+│   ├── template-24-long-table.html
+│   ├── template-25-cartesian.html
+│   ├── template-26-stencil-tablet.html
+│   ├── template-27-peoples-platform.html
+│   ├── template-28-grove.html
+│   ├── template-29-broadside.html
 │   ├── ats-template.html                # ATS-optimized version
 │   ├── cover-letter-template.html       # Cover letter template
 │   ├── linkedin-export.md               # LinkedIn optimization guide
@@ -197,6 +240,14 @@ No special plugins, APIs, or integrations required.
 
 MIT License - See [LICENSE](LICENSE) for details.
 
-Design aesthetic system based on [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) by ClaudeKit (MIT License).
+### Third-Party Attributions
+
+This project incorporates open-source design resources under their respective licenses:
+
+| Resource | Author | License | Usage |
+|----------|--------|---------|-------|
+| [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) | ClaudeKit | MIT License | Original 11 design style templates (Template 01-11) |
+| [beautiful-html-templates](https://github.com/zarazhangrui/beautiful-html-templates) | Zara Zhang | MIT License (Copyright 2026) | 18 additional design styles ported to resume format (Template 12-29) |
+| Google Fonts | Google | OFL License | All typography used across templates |
 
 All fonts from Google Fonts (OFL License).

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{NAME}} - {{TITLE}} | Emerald Editorial Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;700;800;900&family=Playfair+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+
+      --color-bg: #F1E9D6;
+      --color-surface: #ffffff;
+      --color-text: #0F1A5C;
+      --color-text-muted: #1B2774;
+      --color-text-subtle: #3A4593;
+      --color-accent: #3CD896;
+      --color-accent-2: #2DC684;
+      --color-border: rgba(15,26,92,0.22);
+      --color-border-light: rgba(15,26,92,0.12);
+      --font-serif: 'Bodoni Moda', serif;
+      --font-body: 'Manrope', sans-serif;
+      --font-mono: 'Manrope', monospace;
+    }
+
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 15px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+      background: var(--color-surface);
+      min-height: 100vh;
+    }
+
+    /* ========== HEADER ========== */
+    .resume-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: start;
+      padding-bottom: 3rem;
+      border-bottom: 2px solid var(--color-text);
+      margin-bottom: 3rem;
+    }
+
+    .header-main {
+      padding-top: 0.5rem;
+    }
+
+    .name {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+
+    .title {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .contact-item::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: var(--color-text);
+      border-radius: 50%;
+    }
+
+    .contact-item a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .contact-item a:hover {
+      border-bottom-color: var(--color-text);
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 0;
+      filter: grayscale(0.3);
+    }
+
+    /* Abstract Avatar */
+    .avatar-abstract {
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-text);
+      background: var(--color-bg);
+      border: 2px solid var(--color-text);
+      letter-spacing: 0.05em;
+    }
+
+    /* No Avatar Layout Adjustment */
+    .resume-header.no-avatar {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+
+    .resume-header.no-avatar .name {
+      font-size: clamp(3rem, 5vw, 4rem);
+    }
+
+    /* ========== SECTIONS ========== */
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .section-line {
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    /* ========== SUMMARY ========== */
+    .summary-text {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+      line-height: 1.9;
+      max-width: 90%;
+    }
+
+    /* ========== EXPERIENCE ========== */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+    }
+
+    .exp-meta {
+      text-align: right;
+    }
+
+    .exp-period {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--color-text-subtle);
+      letter-spacing: 0.05em;
+    }
+
+    .exp-company {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-top: 0.3rem;
+    }
+
+    .exp-role {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .exp-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .exp-highlights li {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .exp-highlights li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 5px;
+      height: 1px;
+      background: var(--color-text);
+    }
+
+    .exp-highlights .metric {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    /* ========== SKILLS ========== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .skill-category {
+      padding: 0;
+    }
+
+    .skill-cat-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-tag {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      padding: 0.2rem 0;
+      position: relative;
+    }
+
+    .skill-tag::after {
+      content: ',';
+      margin-right: 0.3rem;
+    }
+
+    .skill-tag:last-child::after {
+      content: none;
+    }
+
+    /* ========== EDUCATION ========== */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .edu-school {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .edu-degree {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    .edu-period {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--color-text-subtle);
+    }
+
+    /* ========== PROJECTS ========== */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .project-item {
+      padding: 0;
+      border-left: 2px solid var(--color-text);
+      padding-left: 1.5rem;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-name {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .project-link {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-subtle);
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      color: var(--color-text);
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.4rem;
+      line-height: 1.7;
+    }
+
+    .project-tech {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-subtle);
+    }
+
+    /* ========== LANGUAGES ========== */
+    .lang-list {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .lang-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .lang-name {
+      font-size: 0.95rem;
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .lang-level {
+      font-size: 0.85rem;
+      color: var(--color-text-subtle);
+    }
+
+    /* ========== FOOTER ========== */
+    .resume-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-subtle);
+      letter-spacing: 0.1em;
+    }
+
+    /* ========== CUSTOM STYLE OVERRIDES ========== */
+
+    .resume-header {
+      border-bottom: 4px double var(--color-text);
+      padding-bottom: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .name {
+      font-family: 'Playfair Display', var(--font-serif);
+      font-size: clamp(2.8rem, 4.5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+    .title {
+      font-weight: 500;
+      letter-spacing: 0.12em;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--color-text);
+    }
+    .section-line {
+      display: none;
+    }
+    .section-header {
+      display: block;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 4px double var(--color-text);
+    }
+    .exp-role {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    .project-item {
+      border-left: 4px solid var(--color-accent);
+    }
+    .exp-highlights li::before {
+      background: var(--color-accent);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      top: 0.55em;
+    }
+    .avatar {
+      border-radius: 0;
+      border: 4px solid var(--color-text);
+    }
+    .avatar-abstract {
+      border: 4px solid var(--color-text);
+      background: var(--color-accent);
+      color: var(--color-text);
+      font-weight: 900;
+    }
+    .skill-cat-title {
+      font-weight: 700;
+      border-bottom: 2px solid var(--color-text);
+    }
+    .resume-footer {
+      border-top: 4px double var(--color-text);
+    }
+
+    /* ========== ANIMATIONS ========== */
+
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes drawLine {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes revealLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .section {
+      opacity: 0;
+      animation: fadeSlideIn 0.6s ease-out forwards;
+    }
+
+    .section:nth-child(1) { animation-delay: 0s; }
+    .section:nth-child(2) { animation-delay: 0.15s; }
+    .section:nth-child(3) { animation-delay: 0.3s; }
+    .section:nth-child(4) { animation-delay: 0.45s; }
+    .section:nth-child(5) { animation-delay: 0.6s; }
+    .section:nth-child(6) { animation-delay: 0.75s; }
+    .section:nth-child(7) { animation-delay: 0.9s; }
+
+    .section-line {
+      transform-origin: left;
+      animation: drawLine 0.8s ease-out forwards;
+    }
+
+    .name {
+      opacity: 0;
+      animation: revealLeft 0.6s ease-out 0.1s forwards;
+    }
+
+    .title {
+      opacity: 0;
+      animation: revealLeft 0.6s ease-out 0.25s forwards;
+    }
+
+    .contact-item {
+      opacity: 0;
+      animation: fadeSlideIn 0.5s ease-out forwards;
+    }
+
+    .contact-item:nth-child(1) { animation-delay: 0.35s; }
+    .contact-item:nth-child(2) { animation-delay: 0.45s; }
+    .contact-item:nth-child(3) { animation-delay: 0.55s; }
+    .contact-item:nth-child(4) { animation-delay: 0.65s; }
+    .contact-item:nth-child(5) { animation-delay: 0.75s; }
+    .contact-item:nth-child(6) { animation-delay: 0.85s; }
+
+    /* ========== PDF PRINT STYLES ========== */
+    @page {
+      size: A4;
+      margin: 18mm 22mm;
+    }
+
+
+    @media print {
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .section, .exp-item, .edu-item, .project-item, .skill-category, .lang-item {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      .section-title, .exp-role, .project-name, .edu-school {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+      }
+
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .bg-blobs, .aurora-bg, .mesh-gradient, .shape-1, .shape-2, .shape-3,
+      .blob, .blob-1, .blob-2, .blob-3, .grid-bg, .scanlines {
+        display: none !important;
+      }
+
+      body, .container, .section, p, li, span, div {
+        color: #000 !important;
+      }
+
+      * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      a {
+        color: #000 !important;
+        text-decoration: none !important;
+      }
+
+      .avatar, .avatar-wrapper, .avatar-abstract {
+        filter: grayscale(100%) !important;
+      }
+    }
+
+    /* ========== REDUCED MOTION ========== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ========== RESPONSIVE ========== */
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2.5rem 1.5rem;
+      }
+      .resume-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+      .avatar {
+        margin: 0 auto;
+        width: 120px;
+        height: 120px;
+      }
+      .contact-row {
+        justify-content: center;
+      }
+      .exp-item,
+      .edu-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      .exp-meta {
+        text-align: left;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-header {
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .lang-list {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="resume-header" id="personal-info">
+      <div class="header-main">
+        <h1 class="name">{{NAME}}</h1>
+        <div class="title">{{TITLE}}</div>
+        <div class="contact-row">
+          <div class="contact-item">{{PHONE}}</div>
+          <div class="contact-item"><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></div>
+          <div class="contact-item">{{CITY}}</div>
+          <div class="contact-item"><a href="https://{{GITHUB}}">GitHub</a></div>
+          <div class="contact-item"><a href="https://{{WEBSITE}}">Website</a></div>
+          <div class="contact-item"><a href="https://{{LINKEDIN}}">LinkedIn</a></div>
+        </div>
+      </div>
+      <!-- Avatar: {{AVATAR_TYPE}} -->
+      <!-- For image avatar: <img src="{{AVATAR_SRC}}" alt="{{NAME}}" class="avatar"> -->
+      <!-- For abstract avatar: <div class="avatar avatar-abstract">{{NAME_ABBR}}</div> -->
+      <!-- For no avatar: remove this element and add 'no-avatar' class to .resume-header -->
+      <img src="{{AVATAR_SRC}}" alt="{{NAME}}" class="avatar" id="avatar-img">
+    </header>
+
+    <!-- Summary -->
+    <section class="section" id="professional-summary">
+      <div class="section-header">
+        <h2 class="section-title">个人简介</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="summary-text">
+        {{SUMMARY}}
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="work-experience">
+      <div class="section-header">
+        <h2 class="section-title">工作经历</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="experience-list">
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-period">2021 - 至今</div>
+            <div class="exp-company">字节跳动</div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-role">高级前端工程师</div>
+            <ul class="exp-highlights">
+              <li>负责创意工具平台前端架构，<span class="metric">日活用户 500 万+</span></li>
+              <li>设计并实现组件库，<span class="metric">被 8 个业务线复用</span></li>
+              <li>优化首屏加载速度，<span class="metric">LCP 从 3.2s 降至 1.1s</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-period">2019 - 2021</div>
+            <div class="exp-company">蚂蚁集团</div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-role">前端工程师</div>
+            <ul class="exp-highlights">
+              <li>开发小程序框架核心模块，<span class="metric">支撑 1000+ 商家</span></li>
+              <li>实现可视化搭建系统，<span class="metric">页面搭建效率提升 5 倍</span></li>
+              <li>主导前端性能优化专项，<span class="metric">整体性能提升 40%</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-period">2017 - 2019</div>
+            <div class="exp-company">京东</div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-role">初级前端工程师</div>
+            <ul class="exp-highlights">
+              <li>参与电商活动页面开发，<span class="metric">PV 过亿级</span></li>
+              <li>搭建前端监控体系，<span class="metric">错误发现时效提升 80%</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <div class="section-header">
+        <h2 class="section-title">技能专长</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-cat-title">前端核心</div>
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Vue.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">Vite</span>
+            <span class="skill-tag">Webpack</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">样式与UI</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">Styled Components</span>
+            <span class="skill-tag">Sass</span>
+            <span class="skill-tag">Ant Design</span>
+            <span class="skill-tag">Material UI</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">进阶技术</div>
+          <div class="skill-tags">
+            <span class="skill-tag">WebGL</span>
+            <span class="skill-tag">Three.js</span>
+            <span class="skill-tag">WebAssembly</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">GraphQL</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="section-header">
+        <h2 class="section-title">项目作品</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="project-list">
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">React Motion Kit</div>
+            <a href="#" class="project-link">GitHub →</a>
+          </div>
+          <p class="project-desc">React 动画组件库，提供 30+ 预设动画效果</p>
+          <div class="project-tech">React, TypeScript, Framer Motion</div>
+        </div>
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">CSS Glass Generator</div>
+            <a href="#" class="project-link">Demo →</a>
+          </div>
+          <p class="project-desc">在线 Glassmorphism 效果生成工具</p>
+          <div class="project-tech">Vue.js, Tailwind</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section" id="education">
+      <div class="section-header">
+        <h2 class="section-title">教育背景</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-school">华中科技大学</div>
+          <div class="edu-degree">软件工程 / 本科</div>
+          <div class="edu-period">2013 - 2017</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="section" id="certifications">
+      <div class="section-header">
+        <h2 class="section-title">证书资质</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="cert-list">
+        <div class="cert-item">
+          <span class="cert-name">AWS Certified Solutions Architect</span>
+          <span class="cert-issuer">Amazon Web Services</span>
+          <span class="cert-date">2023</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="section" id="languages">
+      <div class="section-header">
+        <h2 class="section-title">语言能力</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="lang-list">
+        <div class="lang-item">
+          <span class="lang-name">中文</span>
+          <span class="lang-level">母语</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">English</span>
+          <span class="lang-level">流利 / CET-6</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="resume-footer">
+      <div class="footer-text">Resume Design Pro — Emerald Editorial</div>
+    </footer>
+  </div>
+</body>
+</html>
