@@ -51,30 +51,13 @@
       flex-direction: column;
     }
 
-    /* Header */
-    .letter-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--color-border);
-    }
-
+    /* Sender Name Only */
     .sender-name {
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--color-text);
-      margin-bottom: 0.5rem;
+      margin-bottom: 2rem;
       letter-spacing: 0.02em;
-    }
-
-    .sender-info {
-      font-size: 0.9rem;
-      color: var(--color-text-muted);
-      line-height: 1.6;
-    }
-
-    .sender-info a {
-      color: var(--color-text-muted);
-      text-decoration: none;
     }
 
     /* Date */
@@ -141,7 +124,7 @@
       color: var(--color-text);
     }
 
-    /* Footer */
+    /* Footer - Optional contact hint */
     .letter-footer {
       margin-top: 2rem;
       padding-top: 1rem;
@@ -202,15 +185,8 @@
 </head>
 <body>
   <div class="page">
-    <!-- Sender Info -->
-    <header class="letter-header">
-      <div class="sender-name">{{NAME}}</div>
-      <div class="sender-info">
-        {{PHONE}} | <a href="mailto:{{EMAIL}}">{{EMAIL}}</a><br>
-        {{CITY}}<br>
-        <a href="https://{{LINKEDIN}}">{{LINKEDIN}}</a> | <a href="https://{{WEBSITE}}">{{WEBSITE}}</a>
-      </div>
-    </header>
+    <!-- Sender Name Only -->
+    <div class="sender-name">{{NAME}}</div>
 
     <!-- Date -->
     <div class="letter-date">{{DATE}}</div>
@@ -248,9 +224,9 @@
       <div class="signature-name">{{NAME}}</div>
     </div>
 
-    <!-- Footer -->
+    <!-- Optional: Contact info footer (can be removed if not needed) -->
     <footer class="letter-footer">
-      Resume Design Pro - Cover Letter
+      {{PHONE}} | {{EMAIL}}
     </footer>
   </div>
 </body>

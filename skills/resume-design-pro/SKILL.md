@@ -851,8 +851,11 @@ Generate these files for the user:
    - Structured text backup
    - Easy to edit and reuse
 
-5. **Cover Letter HTML** (`cover-letter-{name}-{company}.html`) [v1.0]
-   - Matching style with resume
+5. **Cover Letter HTML** (`cover-letter-{name}-{company}.html`) [v1.1]
+   - Clean, professional letter format
+   - Name → Date → Recipient → Subject → Body → Signature
+   - No avatar or full contact header (kept minimal, contact info is in resume)
+   - Optional footer with phone/email only
    - Customized per job application
    - Print to PDF for submission
 
