@@ -519,7 +519,15 @@
         padding: 20mm 20mm 15mm !important;
         box-shadow: none !important;
       }
-      .section, .exp-item, .edu-item, .skill-category {
+      .section {
+        margin-top: 15mm !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+      }
+      .section:first-of-type {
+        margin-top: 0 !important;
+      }
+      .exp-item, .edu-item, .skill-category {
         break-inside: avoid !important;
         page-break-inside: avoid !important;
       }
