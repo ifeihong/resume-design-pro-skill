@@ -57,7 +57,7 @@ async function exportPDF(inputFile, outputFile) {
       margin: {
         top: '0',
         right: '0',
-        bottom: '15mm',
+        bottom: '0',
         left: '0'
       },
       displayHeaderFooter: true,
