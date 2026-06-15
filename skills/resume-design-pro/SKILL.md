@@ -159,38 +159,36 @@ personal:
   avatar: string (optional) - see Avatar Selection Flow below
 ```
 
-### Avatar Selection Flow (头像选择流程 - v2.1)
+### Avatar Selection Flow (头像选择流程 - v3.0)
 
-**IMPORTANT: Avatar selection happens AFTER content parsing, NOT during initial information collection.**
+**IMPORTANT: Avatar selection happens DURING information collection, BEFORE content optimization.**
 
 **Timing Rules:**
 ```
-IF user uploads PDF/Word/Image resume:
-   → Step 1: Parse resume content
-   → Step 2: Ask user about avatar preference (mention uploaded file may contain photo)
-   
-IF user uses guided conversation or direct paste:
-   → Step 1: Collect all text content
-   → Step 2: Ask user about avatar preference at the end
+Step 1: Collect all resume content (text)
+Step 2: Ask user about avatar preference  ← 头像确认在这里
+Step 3: Collect target role, density, style preferences
+Step 4: Start content optimization and generation
 ```
+
+**Why before optimization?**
+- Avatar is part of the final output design
+- User needs time to prepare/provide avatar image
+- Should not delay after all content is ready
 
 **Avatar Handling for Uploaded Files (上传文件头像处理):**
 
 When user uploads a PDF, Word, or Image file:
 
-1. **Check for existing avatar in parsed content:**
+1. **After parsing text content, immediately ask about avatar:**
    ```
-   IF parsed_content_contains_avatar_url OR user_provides_avatar_link:
-      → Use the provided avatar URL/link
-      → Show to user: "已使用您提供的头像照片"
-      
-   ELSE IF user_uploaded_image_file_directly:
-      → The uploaded image itself IS the avatar
-      → Ask user: "您上传的图片将作为头像使用，是否确认？"
-      
-   ELSE (PDF/Word without explicit avatar):
-      → Proceed to standard avatar selection menu
-      → Mention: "如果您上传的简历中有头像照片，请单独提供图片链接或文件"
+   "简历内容已提取完成。关于头像：
+   
+   [1] 我上传的简历中有头像 → 请单独提供头像图片（AI 无法从 PDF 提取图片）
+   [2] 上传新的头像照片
+   [3] 使用 AI 生成头像
+   [4] 使用抽象图形（姓名首字母）
+   [5] 不使用头像"
    ```
 
 2. **Image quality check:**
@@ -631,6 +629,35 @@ After optimization, ALWAYS present to user with full transparency:
 💡 小贴士：随时输入 "/raw" 可切换至原封不动模式
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
+
+**Step 10: Avatar Confirmation (头像确认 - 如尚未确认)**
+
+IF avatar preference was NOT collected in Step 1:
+
+```
+📸 关于头像
+
+在生成简历前，请确认你的头像偏好：
+
+[1] 📷 上传真实照片（推荐）
+    → 提供专业形象照，效果最佳
+    
+[2] 🎨 使用抽象图形（姓名首字母）
+    → 根据简历风格自动生成几何图形
+    
+[3] ❌ 不使用头像
+    → 纯文字排版，简洁专业
+
+💡 你上传的简历中有头像照片，但 AI 无法从 PDF 提取图片。
+   如需使用原头像，请单独提供图片文件或链接。
+```
+
+IF user selects option 1:
+→ Wait for user to upload/provide avatar image
+→ Then proceed to style selection
+
+IF user selects option 2 or 3:
+→ Proceed to style selection immediately
 
 ### 3.3 RAW Mode (Original Content)
 
