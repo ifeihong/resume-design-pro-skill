@@ -67,15 +67,18 @@ Your content gets **professionally rewritten** — based on your real informatio
 
 ### 3. Complete Output Package
 
-One invocation, **5 deliverables**:
+One invocation, **6 deliverables**:
 
 | File | Purpose |
 |------|---------|
-| `resume-{name}-{style}.html` | Stunning visual resume — open in browser, print to PDF |
+| `resume-{name}-{style}.html` | Stunning visual resume — open in browser |
+| `resume-{name}-{style}.pdf` | **Auto-exported PDF** — pixel-perfect, print-ready, no manual action needed |
 | `resume-{name}-ats.html` | Plain-text ATS version — safe for applicant tracking systems |
 | `resume-{name}.md` | Markdown backup — easy to edit and reuse |
 | `cover-letter-{name}.html` | Matching cover letter — same visual style |
 | `linkedin-export.md` | LinkedIn-optimized content — copy-paste ready |
+
+**The PDF is generated automatically** using Playwright headless Chromium — colors, fonts, gradients, and layout are preserved exactly as seen in the browser. No need to open Chrome and press Ctrl+P.
 
 ## Language Support
 

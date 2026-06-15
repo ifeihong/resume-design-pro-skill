@@ -782,30 +782,96 @@ Each style has a defined color palette. Use CSS custom properties:
 
 ## 6. Output Generation
 
-### 6.1 Output Formats
+### 6.1 Output Formats — One Invocation, 6 Deliverables
 
 Generate these files for the user:
 
-1. **HTML File** (`resume-{name}-{style}.html`)
+1. **Visual Resume HTML** (`resume-{name}-{style}.html`)
    - Full design with all animations and effects
    - Open in browser to view
-   - Print to PDF for sharing
+   - Source file for PDF generation
 
-2. **ATS-Optimized HTML** (`resume-{name}-ats.html`)
+2. **Visual Resume PDF** (`resume-{name}-{style}.pdf`) ⭐ NEW in v1.1
+   - **Automatically exported from HTML using Playwright**
+   - Pixel-perfect reproduction of the visual design
+   - A4 format, print-ready, with page numbers
+   - **No manual action required** — generated automatically
+   - Preserves colors, fonts, gradients, and layout exactly as seen in browser
+
+3. **ATS-Optimized HTML** (`resume-{name}-ats.html`)
    - Clean, minimal formatting
    - Maximum ATS readability
    - No decorative elements
 
-3. **Markdown Backup** (`resume-{name}.md`)
+4. **Markdown Backup** (`resume-{name}.md`)
    - Structured text backup
    - Easy to edit and reuse
 
-4. **Cover Letter HTML** (`cover-letter-{name}-{company}.html`) [v1.0]
+5. **Cover Letter HTML** (`cover-letter-{name}-{company}.html`) [v1.0]
    - Matching style with resume
    - Customized per job application
    - Print to PDF for submission
 
-### 6.2 PDF Export Guide
+6. **LinkedIn Export** (`linkedin-export.md`) [v1.0]
+   - Optimized content for LinkedIn profile sections
+   - Copy-paste ready for Headline, About, Experience, etc.
+
+### 6.2 Automatic PDF Export (自动 PDF 导出)
+
+**How it works:**
+
+After generating the visual resume HTML, the AI **automatically** exports it to PDF:
+
+```
+HTML Generation Complete
+    ↓
+Playwright launches headless Chromium
+    ↓
+Renders HTML at A4 size with exact styling
+    ↓
+Waits for all Google Fonts to load
+    ↓
+Exports to PDF with print-optimized settings
+    ↓
+PDF delivered alongside HTML
+```
+
+**PDF Export Settings:**
+
+| Setting | Value | Purpose |
+|---------|-------|---------|
+| Format | A4 (210mm × 297mm) | Standard resume paper size |
+| Margins | 15mm all sides | Clean, professional whitespace |
+| Print Background | Enabled | Preserves colors, gradients, decorations |
+| Fonts | Wait for `document.fonts.ready` | Ensures no missing glyphs |
+| Page Numbers | Footer "1 / 3" style | Professional multi-page handling |
+| Header | Empty (clean look) | No distractions |
+
+**PDF Quality Guarantees:**
+- ✅ Colors match browser exactly (no desaturation)
+- ✅ Google Fonts rendered correctly (Noto Sans, Space Grotesk, etc.)
+- ✅ CSS animations disabled for static output
+- ✅ Gradients and shadows preserved
+- ✅ Single-page or multi-page handled automatically
+- ✅ File size optimized (typically 200-800 KB)
+
+**What Users Get:**
+
+```
+📦 Your Resume Package is Ready!
+
+✅ resume-zhangsan-glassmorphism.html  (Visual — open in browser)
+✅ resume-zhangsan-glassmorphism.pdf   (PDF — ready to send/print) ⭐
+✅ resume-zhangsan-ats.html            (ATS — for job portals)
+✅ resume-zhangsan.md                  (Backup — edit anytime)
+✅ cover-letter-zhangsan-tencent.html  (Cover Letter — matching style)
+✅ linkedin-export.md                  (LinkedIn — copy-paste ready)
+
+💡 The PDF is generated automatically — no need to open browser or press Ctrl+P!
+💡 Need adjustments? Just tell me and I'll regenerate.
+```
+
+### 6.3 Manual PDF Export Guide (Optional)
 
 All templates include built-in PDF print optimization:
 
@@ -1220,12 +1286,19 @@ AI: ✅ 好的，将使用【优化后的内容】生成简历
 
 User: 1
 
-AI: [Generates resume]
+AI: [Generates resume + Auto-export PDF]
      
-     Your resume is ready!
-     1. resume-zhangsan-glassmorphism.html
-     2. resume-zhangsan-ats.html
-     3. resume-zhangsan.md
+     📦 Your Resume Package is Ready!
+     
+     ✅ resume-zhangsan-glassmorphism.html  (Visual — open in browser)
+     ✅ resume-zhangsan-glassmorphism.pdf   (PDF — ready to send/print) ⭐
+     ✅ resume-zhangsan-ats.html            (ATS — for job portals)
+     ✅ resume-zhangsan.md                  (Backup — edit anytime)
+     ✅ cover-letter-zhangsan-tencent.html  (Cover Letter — matching style)
+     ✅ linkedin-export.md                  (LinkedIn — copy-paste ready)
+     
+     💡 The PDF is generated automatically — no need to open browser or press Ctrl+P!
+     💡 Need adjustments? Just tell me and I'll regenerate.
 ```
 
 ### Example 2: RAW Mode (Original Content)
@@ -1277,7 +1350,7 @@ AI: [解析完成] 内容已提取。
 - v0.1.0 (2026-06-12): MVP with 3 styles (Minimalism, Neumorphism, Glassmorphism), EN/ZH support, Content Optimization Engine, RAW mode
 - v0.5.0 (2026-06-12): Full 11 styles completed, unified demo content, avatar system, multi-language font support (EN/ZH/JA/KR)
 - v1.0.0 (2026-06-12): Cover Letter generation, ATS-optimized template, LinkedIn export guide, Node.js PDF export (single + batch), avatar platform detection, full print optimization
-- v1.1.0 (2026-06-15): Truthful quantification engine (no fake data), company attribution lock, experience tiering (preserve all experiences), content density selection, avatar auto-detection from PDF, resume health report, ATS compatibility preview, progress visualization
+- v1.1.0 (2026-06-15): Truthful quantification engine (no fake data), company attribution lock, experience tiering (preserve all experiences), content density selection, avatar auto-detection from PDF, resume health report, ATS compatibility preview, progress visualization, **automatic PDF export (6th deliverable)**
 
 ---
 

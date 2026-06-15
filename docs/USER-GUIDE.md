@@ -247,43 +247,71 @@ AI 会在生成前展示优化对比，明确标注数据来源：
 
 ## 输出文件说明
 
-生成后你会得到以下文件：
+生成后你会得到以下 **6 份文件**：
 
 | 文件 | 用途 | 怎么用 |
 |------|------|--------|
-| `resume-姓名-风格.html` | 设计版 | 浏览器打开，Print → Save as PDF |
+| `resume-姓名-风格.html` | 设计版 HTML | 浏览器打开预览，可进一步调整 |
+| `resume-姓名-风格.pdf` | 设计版 PDF ⭐ | **自动生成**，直接打印或邮件投递 |
 | `resume-姓名-ats.html` | ATS 版 | 投递招聘系统时使用 |
 | `resume-姓名.md` | 备份 | 纯文本，随时编辑复用 |
 | `cover-letter-姓名-公司.html` | 求职信 | 针对特定公司定制（可选） |
 | `linkedin-export.md` | LinkedIn 优化 | 复制粘贴到 LinkedIn 各模块（可选） |
 
-### 如何导出 PDF
+### PDF 自动生成说明
 
-**方法 1：浏览器打印（推荐 - 最简单）**
+**从 v1.1 开始，PDF 已自动生成，无需手动操作！**
+
+AI 在生成 HTML 简历后，会自动使用 Playwright 无头浏览器导出 PDF：
+
+- ✅ **像素级还原**：颜色、字体、渐变、布局与网页版完全一致
+- ✅ **A4 标准尺寸**：15mm 边距，专业排版
+- ✅ **自动分页**：单页/多页智能处理，带页码
+- ✅ **字体完整**：等待所有 Google Fonts 加载完成后再导出
+- ✅ **文件大小优化**：通常 200-800 KB
+
+**PDF 生成流程：**
+```
+HTML 生成完成
+    ↓
+Playwright 启动无头 Chromium
+    ↓
+按 A4 尺寸渲染 HTML（保留全部样式）
+    ↓
+等待 Google Fonts 加载完成
+    ↓
+导出为 PDF（含页码）
+    ↓
+PDF 与 HTML 一起交付
+```
+
+### 手动导出 PDF（可选）
+
+如果你需要调整后再导出，或想批量导出多个风格：
+
+**方法 1：浏览器打印**
 
 1. 用浏览器打开 `resume-姓名-风格.html`
 2. 按 `Ctrl + P`（或 `Cmd + P`）
 3. 目标打印机选择 "另存为 PDF"
-4. 纸张大小选择 A4
-5. 边距选择 "默认"
-6. 勾选 "背景图形"
-7. 保存
+4. 纸张大小选择 A4，勾选 "背景图形"
+5. 保存
 
 **方法 2：Node.js 脚本（批量导出）**
 
 ```bash
 # 安装依赖（首次）
+cd scripts
 npm install
-npx playwright install chromium
 
 # 导出单个简历
-node scripts/export-pdf.js resume-zhangsan-cyberpunk.html
+node export-pdf.js resume-zhangsan-cyberpunk.html
 
 # 批量导出所有简历
-node scripts/export-pdf-batch.js *.html
+node export-pdf-batch.js *.html
 
 # 导出到指定文件夹
-node scripts/export-pdf-batch.js *.html --output-dir ./pdf-output
+node export-pdf-batch.js *.html --output-dir ./pdf-output
 ```
 
 ---
