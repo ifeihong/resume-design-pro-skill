@@ -46,16 +46,19 @@ async function exportPDF(inputFile, outputFile) {
     // Wait for fonts to load using a more reliable method
     await page.waitForFunction(() => document.fonts.ready);
 
-    // Generate PDF
+    // Set viewport to match A4 width for accurate layout rendering
+    await page.setViewportSize({ width: 794, height: 1123 }); // A4 at 96dpi
+
+    // Generate PDF — margins controlled by CSS @page rule, not here
     await page.pdf({
       path: outputPath,
       format: 'A4',
       printBackground: true,
       margin: {
-        top: '15mm',
-        right: '15mm',
-        bottom: '15mm',
-        left: '15mm'
+        top: '0',
+        right: '0',
+        bottom: '0',
+        left: '0'
       },
       displayHeaderFooter: true,
       headerTemplate: '<div></div>',
