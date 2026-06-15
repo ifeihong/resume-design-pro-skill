@@ -15,7 +15,7 @@ description: >
   11 design aesthetics: Minimalism, Neumorphism, Glassmorphism, Cyberpunk, Brutalism, Claymorphism, Aurora, 3D Hyperrealism, Vibrant Block, Dark OLED, Organic.
   Keywords: resume builder, CV generator, resume maker, curriculum vitae, job application, career tool, portfolio, PDF export, ATS compatible, applicant tracking system, cover letter generator, LinkedIn optimization, multi-language resume, bilingual CV, multilingual support, design template, professional resume, HTML resume, visual resume, creative resume, modern resume template, AI resume writer, resume optimizer, resume formatter, resume design, CV design, job search, career change, internship resume, executive resume, tech resume, designer resume
 license: MIT
-version: 1.0.0
+version: 1.1.0
 author: Feihong
 based_on: claudekit/frontend-design-pro-demo (MIT License)
 ---
@@ -159,19 +159,59 @@ personal:
   avatar: string (optional) - see Avatar Selection Flow below
 ```
 
-### Avatar Selection Flow (头像选择流程)
+### Avatar Selection Flow (头像选择流程 - v2.0)
 
-When collecting personal information, ALWAYS ask about avatar preference.
+**IMPORTANT: Avatar selection happens AFTER content parsing, NOT during initial information collection.**
 
-**IMPORTANT - Platform Capability Check:**
+**Timing Rules:**
+```
+IF user uploads PDF/Word/Image resume:
+   → Step 1: Parse resume content
+   → Step 2: Extract avatar from uploaded file (if present)
+   → Step 3: Ask user about avatar preference
+   
+IF user uses guided conversation or direct paste:
+   → Step 1: Collect all text content
+   → Step 2: Ask user about avatar preference at the end
+```
+
+**Avatar Auto-Detection from Uploaded Files (上传文件头像自动检测):**
+
+When user uploads a PDF, Word, or Image file:
+
+1. **Scan for existing avatar:**
+   ```
+   IF file_contains_image:
+      → Extract image from file
+      → Show to user: "检测到您的简历中有一张头像照片，是否使用？"
+      
+      User options:
+      [1] ✅ 使用这张头像
+      [2] 🔄 上传新照片
+      [3] 🤖 AI 生成头像
+      [4] 🎨 使用抽象图形
+      [5] ❌ 不使用头像
+      
+   ELSE:
+      → Proceed to standard avatar selection menu
+   ```
+
+2. **Image quality check:**
+   ```
+   IF extracted_avatar_resolution < 150x150:
+      → Warn user: "检测到的头像分辨率较低（{resolution}），可能影响打印效果"
+      → Recommend uploading a higher resolution photo
+   ```
+
+**Platform Capability Check:**
 
 Before presenting options, check if the current AI platform supports image generation:
 
 ```
 IF platform_has_image_generation:
-   Show all 4 options (including AI generation)
+   Show all options (including AI generation)
 ELSE:
-   Show only 3 options (skip AI generation)
+   Show options without AI generation
 ```
 
 **Platforms with Native Image Generation (无需配置):**
@@ -188,17 +228,17 @@ ELSE:
 **Decision Logic:**
 ```
 IF platform IN [Codex, Cursor, Trae Work]:
-   → Show AI avatar option [2] (fully supported)
+   → Show AI avatar option (fully supported)
    
 ELSE IF platform == Trae Code:
-   → Show AI avatar option [2] with note "需配置 MCP 图像工具"
+   → Show AI avatar option with note "需配置 MCP 图像工具"
    
 ELSE IF platform == Claude Code:
-   → Show AI avatar option [2] with note "需配置 MCP/Skill 才可使用"
+   → Show AI avatar option with note "需配置 MCP/Skill 才可使用"
    → Or skip if no image MCP configured
    
 ELSE:
-   → Skip AI avatar option (only show [1][3][4])
+   → Skip AI avatar option
 ```
 
 **Avatar Options Menu:**
@@ -211,6 +251,7 @@ ELSE:
 [1] 📷 上传真实照片
     → 提供专业形象照，效果最佳
     → 支持格式：JPG、PNG、WebP
+    → 💡 推荐：金融/咨询/高管类岗位
 
 [2] 🤖 AI 生成头像 (如当前平台支持)
     → 根据你的描述生成专业形象照
@@ -220,6 +261,7 @@ ELSE:
 [3] 🎨 使用抽象图形
     → 根据简历风格自动生成几何图形头像
     → 适合创意类岗位，设计感强
+    → 💡 推荐：设计/创意类岗位
 
 [4] ❌ 不使用头像
     → 纯文字排版，简洁专业
@@ -365,63 +407,127 @@ NEVER copy-paste raw content directly into the resume without optimization.
 ### 3.1 Optimization Workflow
 
 ```
-Raw Input → Extract → Filter → Quantify → Reword → Restructure → Confirm → Generate
+Raw Input → Extract → Preserve → Quantify(Truthful) → Reword → Restructure → Verify → Confirm → Generate
 ```
+
+**Key Principle: 真实性优先 (Truth-First Principle)**
+- 所有优化必须基于用户提供的真实信息
+- 禁止编造、臆测、夸大任何数据
+- 不确定的信息必须标注并告知用户
 
 ### 3.2 Step-by-Step Rules
 
-**Step 1: Information Extraction**
+**Step 1: Information Extraction (信息提取)**
 - Identify all standard fields (personal info, experience, education, skills, projects)
 - Handle incomplete or messy data gracefully
-- Flag ambiguous information for user confirmation
+- **Flag ambiguous information for user confirmation**
+- **Record source attribution: 每条信息标注来源（哪段工作经历、哪个项目）**
 
-**Step 2: Content Filtering & Prioritization**
+**Step 2: Content Preservation & Prioritization (内容保留与分级)**
+
+**NEVER discard user's work experience. All experiences are preserved.**
+
+**分级展示策略 (Experience Tiering):**
+
+| 层级 | 工作经历范围 | 展示详细程度 | 亮点数量 |
+|------|-------------|-------------|---------|
+| **核心层** | 最近 2 段 或 与目标岗位最相关的 2 段 | 详细展开 | 3-5 个亮点 |
+| **支撑层** | 其余相关经历 | 标准展示 | 2-3 个亮点 |
+| **基础层** | 早期/转岗前经历 | 精简呈现 | 1-2 个亮点 |
 
 Keep:
-- Recent experience (last 5-10 years, or most relevant)
-- Experience relevant to target role
-- Quantifiable achievements
+- **ALL work experiences** (绝不删除任何一段工作经历)
+- Experience relevant to target role (prioritized in display order)
+- Quantifiable achievements that user actually provided
 - Well-known company/project names
 - Unique differentiators
 
-Merge:
+Merge (only with user consent):
 - Similar responsibilities across roles into summary statements
 - Multiple small projects into categories
 - Repetitive skills into skill groups
 
-Remove:
+Remove (only these categories):
 - Outdated skills (e.g., Flash, old frameworks no longer relevant)
 - Irrelevant personal information (marital status, ID numbers, etc.)
 - Overly detailed daily tasks ("attended weekly meetings")
-- Redundant descriptions across multiple roles
+- Redundant descriptions **within the same role** (not across roles)
 
-**Step 3: Quantification (CRITICAL)**
+**Step 3: Truthful Quantification (真实量化 - CRITICAL)**
 
-ALWAYS convert vague descriptions to specific metrics:
+**核心原则: 用户没有提供的数据，AI 绝不编造**
 
-| Weak Description | Strong Description |
-|-----------------|-------------------|
-| "负责很多项目" | "主导 15+ 项目，覆盖 3 个业务线" |
-| "提升了效率" | "效率提升 40%，节省 200+ 工时/月" |
-| "团队很大" | "管理 12 人跨职能团队" |
-| "用户很多" | "日活用户 200万+" |
-| "做了很多视频" | "制作 70+ 宣传视频、90+ 短视频" |
+**三档量化策略:**
 
-If no exact numbers available:
-- Use ranges: "数十个" → "30+"
-- Use percentages: "显著提升" → "提升约 50%"
-- Use comparisons: "行业领先" → "Top 3 市场份额"
-- Use timeframes: "快速完成" → "2 周内交付"
+| 档位 | 用户数据情况 | AI 处理方式 | 示例 |
+|------|-------------|------------|------|
+| **A档：精确数据** | 用户提供了具体数字 | 保留并优化表达 | "做了3个项目" → "主导 3 个核心项目" |
+| **B档：模糊数据** | 用户提供了范围/大概 | 保留原意，标注估算 | "做了几十个项目" → "完成约 20+ 个项目（估算）" |
+| **C档：无数据** | 用户未提及任何数字 | 绝不编造，改用定性描述 | "提升了效率" → "显著优化工作流程，获得团队认可" |
 
-**Step 4: Wording Optimization (STAR Method)**
+**禁止行为 (STRICTLY FORBIDDEN):**
+- ❌ 将 "做了很多" 改成 "主导 15+ 项目"（用户没说 15 个）
+- ❌ 将 "提升了效率" 改成 "效率提升 40%"（用户没说 40%）
+- ❌ 将 "团队很大" 改成 "管理 12 人团队"（用户没说 12 人）
+- ❌ 将 "用户很多" 改成 "日活用户 200万+"（用户没说 200 万）
+
+**允许行为 (ALLOWED):**
+- ✅ 将 "做了很多项目" → "负责多个核心项目，涵盖产品从 0 到 1 的全流程"
+- ✅ 将 "提升了效率" → "通过流程优化，显著提升团队工作效率"
+- ✅ 将 "团队很大" → "管理跨职能团队，协调多方资源推进项目"
+- ✅ 将 "用户很多" → "负责的产品服务大量用户，获得良好反馈"
+
+**如果用户确实提供了数字，则强化表达:**
+
+| 用户原始描述 | 优化后表达 |
+|-------------|-----------|
+| "负责公司很多项目，大概十几个" | "主导 10+ 核心项目，覆盖 3 个业务线" |
+| "效率提升了大概一半" | "效率提升约 50%，节省大量工时" |
+| "团队有七八个人" | "管理 8 人跨职能团队" |
+
+**Step 4: Company Attribution Lock (公司归属锁定 - CRITICAL)**
+
+**防止工作经历张冠李戴的核心机制:**
+
+1. **提取阶段**: 每条工作描述必须标注所属公司
+   ```
+   [公司A] "负责微信公众号运营"
+   [公司B] "管理电商团队"
+   ```
+
+2. **优化阶段**: 每条描述只能在其所属公司内优化，**禁止跨公司移动**
+   ```
+   ❌ 错误：将 [公司A] 的描述优化后放到 [公司B]
+   ✅ 正确：[公司A] 的描述只在 [公司A] 内优化措辞
+   ```
+
+3. **校验阶段**: 优化完成后，逐条核对
+   ```
+   Verification Checklist:
+   □ 公司A 的所有描述是否仍属于 公司A
+   □ 公司B 的所有描述是否仍属于 公司B
+   □ 是否有描述被错误移动到其他公司
+   □ 时间线是否保持正确顺序
+   ```
+
+4. **呈现阶段**: 向用户展示时，明确标注每段经历的来源
+   ```
+   【工作经历 - 字节跳动】（原始来源：用户上传的简历第 2 页）
+   【工作经历 - 阿里巴巴】（原始来源：用户上传的简历第 3 页）
+   ```
+
+**Step 5: Wording Optimization (STAR Method)**
 
 Transform every bullet point to follow this structure:
 ```
-[Action Verb] + [Specific Task] + [Measurable Result]
+[Action Verb] + [Specific Task] + [Result/Impact]
 ```
 
+**注意: Result 可以是定性的，不必须是数字**
+
 Before: "负责公司微信公众号运营"
-After: "独立运营公司微信公众号，通过内容策划与互动活动，3个月内粉丝增长 150%"
+After (用户未提供数据): "独立运营公司微信公众号，策划内容并设计互动活动，显著提升用户 engagement"
+After (用户提供了数据): "独立运营公司微信公众号，通过内容策划与互动活动，3个月内粉丝增长 150%"
 
 Action Verbs Library (中文):
 - 管理类：主导、统筹、管理、协调、推进、负责
@@ -429,35 +535,89 @@ Action Verbs Library (中文):
 - 成果类：优化、提升、降低、增长、实现、达成、突破
 - 创新类：创立、开创、引入、建立、打造
 
-**Step 5: Keyword Optimization**
+**Step 6: Content Density Selection (内容密度选择)**
+
+根据用户工作年限和目标，提供三种密度级别：
+
+```
+📊 请选择简历内容密度：
+
+[1] 精简版 (Concise)
+    → 适合：5 年以下工作经验，或目标岗位偏好 1 页简历
+    → 特点：每段经历 2-3 个核心亮点，高度聚焦
+    → 页数：1 页
+
+[2] 标准版 (Standard) ⭐ 推荐
+    → 适合：5-10 年工作经验，大多数用户
+    → 特点：每段经历 3-4 个亮点，平衡详略
+    → 页数：1-2 页
+
+[3] 详细版 (Detailed)
+    → 适合：10 年以上经验，高管，或内容丰富的技术专家
+    → 特点：完整展示所有亮点，保留关键细节
+    → 页数：2-3 页
+
+💡 默认使用【标准版】，如需调整请告诉我
+```
+
+**密度规则:**
+
+| 密度 | 核心经历亮点数 | 支撑经历亮点数 | 早期经历亮点数 | 技能展示 |
+|------|--------------|--------------|--------------|---------|
+| 精简版 | 2-3 | 1-2 | 1 | 仅 Top 8-10 |
+| 标准版 | 3-4 | 2-3 | 1-2 | 分类展示 |
+| 详细版 | 4-5 | 3-4 | 2-3 | 完整展示 |
+
+**Step 7: Keyword Optimization**
 
 - Extract keywords from target job description (if provided)
 - Match user's experience to industry-relevant keywords
 - Naturally embed keywords in resume content
 - Ensure keyword density in skills section (5-15 relevant keywords)
 
-**Step 6: User Confirmation**
+**Step 8: HR Review Standards Check (HR 评审标准校验)**
 
-After optimization, ALWAYS present to user:
+优化完成后，自检是否符合以下 HR 评审标准：
+
+| 检查项 | 标准 | 自检问题 |
+|--------|------|---------|
+| **真实性** | 所有数据有据可查 | 是否有任何数字是编造的？ |
+| **相关性** | 内容与目标岗位匹配 | 每段经历是否与目标岗位相关？ |
+| **可读性** | 30 秒内抓住重点 | HR 能否快速看到核心成就？ |
+| **专业性** | 用词准确、无口语化 | 是否有 "做了"、"搞了" 等口语？ |
+| **一致性** | 格式、时态、标点统一 | 是否混用中英文标点？ |
+| **完整性** | 时间线连续、无大段空白 | 是否有无法解释的空白期？ |
+
+**Step 9: User Confirmation with Transparency (透明化确认)**
+
+After optimization, ALWAYS present to user with full transparency:
 
 ```
 ✅ 内容优化完成
 
 我已对你的简历内容进行专业优化，主要调整：
 
-[1] 信息筛选：从原始内容提炼核心信息，去除冗余
-[2] 成果量化：提取 X 个关键数字增强说服力
+[1] 信息筛选：保留全部 X 段工作经历，按相关性重新排序
+[2] 成果表达：
+    • 基于你提供的精确数据：X 处
+    • 基于你提供的模糊数据（已标注）：X 处
+    • 无法量化，改用定性描述：X 处
 [3] 措辞优化：用动词开头 + 成果句式重写经历
 [4] 结构重组：按专业简历标准重新排列
+[5] 归属校验：已确认所有描述归属正确公司
 
-以下是优化前后的对比示例：
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 优化详情（按公司展示）：
 
-【工作经历 - XX公司】
+【工作经历 - XX公司】（原始来源：你提供的简历第 X 页）
 优化前：
 [原始描述]
 
 优化后：
 [优化后描述]
+
+⚠️ 注意：以下数据为你提供的范围估算，如需精确数字请补充：
+• "约 20+ 个项目" → 请确认具体数量
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💡 请选择下一步操作：
@@ -469,6 +629,7 @@ After optimization, ALWAYS present to user:
          （适合内容已完善，只想换设计风格的用户）
 
 【可选】✏️ 回复 "修改" → 告诉我需要调整的地方
+         例如："第三段经历的数字不对，实际是 5 个不是 8 个"
 
 💡 小贴士：随时输入 "/raw" 可切换至原封不动模式
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -856,12 +1017,143 @@ When user selects "No Avatar":
 | Date Format | MM/YYYY | YYYY.MM | YYYY年MM月 | YYYY.MM |
 | Phone Format | +1 (xxx) xxx-xxxx | 138-xxxx-xxxx | 090-xxxx-xxxx | 010-xxxx-xxxx |
 
-## 8. Non-Negotiable Rules
+## 8. User Experience & Workflow Optimization (用户体验与流程优化)
+
+### 8.1 Onboarding Flow Redesign (入职流程重新设计)
+
+**Goal: 让用户在 30 秒内理解核心价值，并快速开始**
+
+**New Welcome Screen:**
+```
+🎯 Resume Design Pro — AI 简历设计专家
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【核心价值】
+✨ 11 套高端设计风格的视觉简历
+🤖 AI 智能优化（绝不编造数据）
+📄 同时生成 ATS 兼容版本
+🌍 支持中/英/日/韩多语言
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【5 种输入方式，总有一种适合你】
+
+[1] 📄 上传现有简历（PDF/Word/图片）
+    → AI 自动提取内容，你只需确认和选择风格
+    → 适合：已有简历，想美化升级
+
+[2] 💬 对话式问答（推荐首次使用）
+    → 按模块引导填写，像聊天一样轻松
+    → 适合：没有简历，或想重新整理
+
+[3] 📝 直接粘贴文本
+    → 从 LinkedIn、Notion 等地方复制粘贴
+    → 适合：有现成文本，快速转换
+
+[4] ⚡ 快速模式（5 分钟搞定）
+    → 只回答 6 个核心问题
+    → 适合：紧急需要，或想先预览效果
+
+[5] 📝 原封不动模式
+    → 保留你的原始内容，仅做排版设计
+    → 适合：内容已完善，只想换设计风格
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡 【内容处理模式说明】
+
+默认模式 ✅：AI 会基于你的真实信息进行专业优化
+   → 措辞升级、结构重组、真实数据强化
+   → 绝不编造数据，不确定的信息会标注并询问你
+   → 推荐：大多数用户
+
+原封不动模式 📝：AI 不做任何内容修改
+   → 仅做排版和格式转换
+   → 适合：内容已完善，只想换设计风格
+
+🎯 随时切换：输入 "/raw" 进入原封不动模式
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+请回复数字 (1-5) 或描述你的需求：
+```
+
+### 8.2 Progress Visualization (进度可视化)
+
+在整个流程中，始终显示当前进度：
+
+```
+📍 当前进度：Step 3/6 — 工作经历优化
+
+已完成：
+✅ Step 1: 信息收集
+✅ Step 2: 内容解析
+
+进行中：
+🔄 Step 3: 内容优化（预计 1-2 分钟）
+
+待完成：
+⏳ Step 4: 优化确认
+⏳ Step 5: 风格选择
+⏳ Step 6: 生成简历
+```
+
+### 8.3 Resume Health Report (简历健康度报告)
+
+在生成最终简历前，提供一份诊断报告：
+
+```
+📊 简历健康度报告
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【内容质量】
+✅ 工作经历完整性：5/5 段经历均已收录
+⚠️  量化数据：3/8 段经历有数据支撑，建议补充更多成果数字
+✅ 时间线连续性：无空白期
+
+【匹配度分析】
+🎯 目标岗位：高级前端工程师
+✅ 技能匹配度：85%（React/Vue/Node.js 均覆盖）
+⚠️  缺失关键词：TypeScript、微前端架构（建议补充）
+
+【优化建议】
+1. 第 2 段经历的亮点可以更量化
+2. 技能部分建议增加 "性能优化" 相关关键词
+3. 项目经验描述可以增加技术栈细节
+
+💡 是否根据以上建议调整后再生成？
+   [1] 是的，帮我调整
+   [2] 直接生成当前版本
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### 8.4 ATS Compatibility Preview (ATS 兼容性预览)
+
+生成后展示 ATS 版本的解析效果：
+
+```
+📋 ATS 兼容性检测
+
+✅ 语义化 HTML 结构：通过
+✅ 标准 Section 层级：通过
+✅ 纯文本内容：通过
+✅ 关键词密度：良好（12 个相关关键词）
+
+⚠️  建议优化：
+• 技能部分可以增加 "敏捷开发"、"CI/CD" 等关键词
+• 工作经历中的项目成果建议用更标准的格式描述
+
+💡 你的简历在大多数 ATS 系统中应该能正确解析
+```
+
+## 9. Non-Negotiable Rules
 
 - NEVER use Inter, Roboto, Arial, or system-ui as primary fonts
 - ALWAYS use open-source OFL-licensed fonts
 - ALWAYS provide both Design Version and ATS Version
 - NEVER invent fake information - only use what user provides
+- NEVER fabricate numbers, metrics, or statistics
+- ALWAYS distinguish between user-provided data and AI estimates
+- ALWAYS preserve company attribution for all work descriptions
+- NEVER move work descriptions between companies
+- ALWAYS preserve all user work experiences (never discard any)
 - ALWAYS ask for confirmation before generating final output
 - ALWAYS include `prefers-reduced-motion` support
 - ALWAYS ensure WCAG AA contrast ratios
@@ -985,6 +1277,7 @@ AI: [解析完成] 内容已提取。
 - v0.1.0 (2026-06-12): MVP with 3 styles (Minimalism, Neumorphism, Glassmorphism), EN/ZH support, Content Optimization Engine, RAW mode
 - v0.5.0 (2026-06-12): Full 11 styles completed, unified demo content, avatar system, multi-language font support (EN/ZH/JA/KR)
 - v1.0.0 (2026-06-12): Cover Letter generation, ATS-optimized template, LinkedIn export guide, Node.js PDF export (single + batch), avatar platform detection, full print optimization
+- v1.1.0 (2026-06-15): Truthful quantification engine (no fake data), company attribution lock, experience tiering (preserve all experiences), content density selection, avatar auto-detection from PDF, resume health report, ATS compatibility preview, progress visualization
 
 ---
 

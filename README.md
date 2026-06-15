@@ -36,23 +36,32 @@ Each style is a **complete visual system** with unique color palettes, typograph
 | 10 | **Dark OLED Luxury** | Pure black, subtle grays, premium minimalism | CTO/VP, Creative Director |
 | 11 | **Organic / Biomorphic** | Earth tones, organic curves, nature-inspired | Sustainability, Natural Brands |
 
-### 2. AI Content Optimization Engine
+### 2. AI Content Optimization Engine — Truth-First
 
-Your content gets **professionally rewritten** — not just formatted:
+Your content gets **professionally rewritten** — based on your real information, never fabricated:
 
-| Before | After |
-|--------|-------|
-| "Responsible for website development" | "Led full-stack development of company website, increasing conversion by 35%" |
-| "Good at teamwork" | "Collaborated with cross-functional teams of 8+ members to deliver 3 major releases" |
-| "Learned React quickly" | "Mastered React ecosystem in 2 weeks, shipped production feature in sprint 3" |
+| Before | After (with your data) | After (no data provided) |
+|--------|------------------------|--------------------------|
+| "Responsible for website development" | "Led full-stack development of company website, increasing conversion by 35%" | "Led full-stack development of company website, delivering significant business impact" |
+| "Good at teamwork" | "Collaborated with cross-functional teams of 8+ members to deliver 3 major releases" | "Collaborated with cross-functional teams to deliver multiple major releases" |
+| "Learned React quickly" | "Mastered React ecosystem in 2 weeks, shipped production feature in sprint 3" | "Rapidly mastered React ecosystem and shipped production features ahead of schedule" |
 
-**The 6-step optimization process:**
-1. **Extract** — Parse your raw information
-2. **Filter** — Keep only high-impact content
-3. **Quantify** — Add metrics and numbers
-4. **Reword** — Use action verbs and STAR methodology
-5. **Restructure** — Professional resume format
-6. **Confirm** — Show before/after, you approve
+**The 9-step optimization process:**
+1. **Extract** — Parse your raw information with source attribution
+2. **Preserve** — Keep ALL your work experiences (never discard any)
+3. **Tier** — Prioritize by relevance: core (3-5 highlights) / support (2-3) / early (1-2)
+4. **Quantify (Truthful)** — Three-tier strategy: exact data / estimated (labeled) / qualitative (no fabrication)
+5. **Lock Attribution** — Ensure every description stays with its correct company
+6. **Reword** — Use action verbs and STAR methodology
+7. **Restructure** — Professional resume format
+8. **HR Check** — Validate against real hiring manager standards
+9. **Confirm** — Show before/after with transparency, you approve
+
+**Key principles:**
+- **Never fabricate data** — if you didn't provide a number, we won't invent one
+- **Preserve all experiences** — every job you've had stays on your resume
+- **Company attribution lock** — descriptions never get mixed between companies
+- **Content density choice** — Concise (1 page) / Standard (1-2 pages) / Detailed (2-3 pages)
 
 **Prefer to keep your original content?** Just say `/raw` — zero modifications, pure design transformation.
 
