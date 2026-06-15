@@ -63,7 +63,7 @@ async function exportPDF(inputFile, outputFile) {
       displayHeaderFooter: true,
       headerTemplate: '<div></div>',
       footerTemplate: `
-        <div style="font-size: 9px; width: 100%; text-align: center; color: #999; font-family: sans-serif;">
+        <div style="font-size: 9px; width: 100%; text-align: center; color: #999; font-family: sans-serif; padding-bottom: 10mm;">
           <span class="pageNumber"></span> / <span class="totalPages"></span>
         </div>
       `
