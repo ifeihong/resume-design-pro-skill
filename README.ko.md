@@ -10,16 +10,16 @@
 
 </div>
 
-> **11가지 프리미엄 디자인 스타일** + **AI 콘텐츠 심층 최적화** = **500달러 이상의 전문 디자인 수준** 이력서.  
+> **29가지 프리미엄 디자인 스타일** + **AI 콘텐츠 심층 최적화** = **500달러 이상의 전문 디자인 수준** 이력서.  
 > 놀라운 시각적 미학, 완전한 ATS 호환성, 다국어 지원을 갖춘 프로덕션급 HTML 이력서를 생성합니다.
 
 ## 핵심 차별화 포인트
 
-### 1. 11가지 프리미엄 디자인 스타일 — 단순한 템플릿이 아닙니다
+### 1. 29가지 프리미엄 디자인 스타일 — 단순한 템플릿이 아닙니다
 
 각 스타일은**완전한 비주얼 시스템**입니다. 고유한 색상 팔레트, 타이포그래피, 애니메이션, 레이아웃 철학을 가지고 있습니다. 기업 미니멀리즘부터 사이버펑크 네온까지, 모든 산업과 개성에 맞춰 제작되었습니다.
 
-**스타일 미리보기:**
+**오리지널 11 스타일（frontend-design-pro-demo 출처）：**
 
 | # | 스타일 | 비주얼 특징 | 적합한 직종 |
 |---|--------|------------|------------|
@@ -34,6 +34,31 @@
 | 09 | **비브란트 블록 / 맥시멀리스트** | 대담한 색상 블록, 높은 채도, 기하학적 형태 | 마케팅 매니저, 광고 크리에이티브 |
 | 10 | **다크 OLED 럭셔리** | 순수한 검정, 미묘한 회색, 프리미엄 미니멀리즘 | CTO/VP, 크리에이티브 디렉터 |
 | 11 | **오가닉 / 바이오모픽** | 어스톤, 유기적 곡선, 자연에서 영감을 받은 | 지속가능성, 자연 브랜드 |
+
+**신규 18 스타일（beautiful-html-templates 출처）：**
+
+| # | 스타일 | 비주얼 특징 | 적합한 직종 |
+|---|--------|------------|------------|
+| 12 | **블루 프로페셔널** | 블루 화이트 기업 스타일, 둥근 카드 | 비즈니스 분석가, 회계사 |
+| 13 | **모노크롬** | 초가는 자중, 순수한 검정 잉크 | 편집자, 작가, 연구원 |
+| 14 | **소프트 에디토리얼** | 따뜻한 톤, 큰 border-radius, 점선 구분 | 잡지 편집자, PR |
+| 15 | **에메랄드 에디토리얼** | 이중선 장식, 에메랄드 액센트, 세리프 | 법률, 정부, 외교관 |
+| 16 | **포레스트 에디토리얼** | 녹색 테두리, 핑크 액센트, 세리프+고정폭 | 환경 보호, NGO |
+| 17 | **트라이톤 에디토리얼** | 버건디+버터 투톤, 슬랩 세리프 | 패션, 명품 리테일 |
+| 18 | **블록 프레임** | 네오 브루탈리즘, 4px 테두리, 8px 그림자 | 그래픽 디자이너, 스트리트 브랜드 |
+| 19 | **코발트 그리드** | 모눈종이, 코발트 잉크, 눈금선 | 데이터 사이언티스트, 엔지니어 |
+| 20 | **시그널** | 웜 크림, 앤티크 골드 액센트 | 프로덕트 매니저, 전략가 |
+| 21 | **스튜디오** ⬛ | 다크 모드, 애시드 옐로우 텍스트, 대문자 | 크리에이티브 디렉터, DJ |
+| 22 | **벨럼** ⬛ | 다크 퍼플 블루, 웜 옐로우 텍스트, 사본풍 | 미술가, 사진가 |
+| 23 | **매트** ⬛ | 다크 포레스트 그린, 웜 오렌지 액센트 | 영화 감독, 게임 개발자 |
+| 24 | **롱 테이블** | 테라코타 잉크, 필 태그, 학술풍 | 역사학자, 기록 보관원 |
+| 25 | **카르테시안** | 기하학적 링 장식, 세리프+산세리프 | 수학자, 물리학자 |
+| 26 | **스텐실 타블렛** | 스텐실 타이포그래피, 멀티컬러 액센트 | 인더스트리얼 디자이너, 건축가 |
+| 27 | **피플즈 플랫폼** | 두꺼운 테두리, 스탬프 효과, 슬랩 세리프 | 커뮤니티 오거나이저, 비영리 |
+| 28 | **그로브** | 포레스트 그린, 코랄 액센트, 오가닉 | 식물학자, 웰니스 |
+| 29 | **브로드사이드** ⬛ | 니어 블랙, 오렌지 액센트, 포스터풍 | 인쇄 디자이너, 타이포그래퍼 |
+
+> ⬛ = 다크 테마（PDF 인쇄 시 다크 배경 유지）
 
 ### 2. AI 콘텐츠 심층 최적화 엔진 — 진실성 우선
 
@@ -102,7 +127,7 @@ use resume-design-pro
 프롬프트에 따라:
 1. 이력서 정보 제공 (업로드, 붙여넣기 또는 대화)
 2. 콘텐츠 최적화 모드(기본값) 또는 RAW 모드 선택
-3. 11가지 디자인 스타일 중 선택
+3. 29가지 디자인 스타일 중 선택
 4. 완전한 이력서 패키지 받기
 
 ### 개발자용
@@ -122,7 +147,7 @@ node export-pdf.js ../templates/template-01-minimalism.html
 ```
 resume-design-pro/
 ├── skills/resume-design-pro/SKILL.md    # 핵심 Skill 정의
-├── templates/                           # 11가지 스타일 템플릿 + 추가 템플릿
+├── templates/                           # 29가지 스타일 템플릿 + 추가 템플릿
 │   ├── template-01-minimalism.html
 │   ├── template-02-neumorphism.html
 │   ├── template-03-glassmorphism.html
@@ -134,6 +159,24 @@ resume-design-pro/
 │   ├── template-09-vibrant-block.html
 │   ├── template-10-dark-oled.html
 │   ├── template-11-organic.html
+│   ├── template-12-blue-professional.html
+│   ├── template-13-monochrome.html
+│   ├── template-14-soft-editorial.html
+│   ├── template-15-emerald-editorial.html
+│   ├── template-16-editorial-forest.html
+│   ├── template-17-editorial-tri-tone.html
+│   ├── template-18-block-frame.html
+│   ├── template-19-cobalt-grid.html
+│   ├── template-20-signal.html
+│   ├── template-21-studio.html
+│   ├── template-22-vellum.html
+│   ├── template-23-mat.html
+│   ├── template-24-long-table.html
+│   ├── template-25-cartesian.html
+│   ├── template-26-stencil-tablet.html
+│   ├── template-27-peoples-platform.html
+│   ├── template-28-grove.html
+│   ├── template-29-broadside.html
 │   ├── ats-template.html                # ATS 최적화 버전
 │   ├── cover-letter-template.html       # 자기소개서 템플릿
 │   ├── linkedin-export.md               # LinkedIn 최적화 가이드
@@ -197,6 +240,14 @@ node export-pdf.js ../templates/template-01-minimalism.html
 
 MIT 라이선스 — 자세한 내용은 [LICENSE](LICENSE) 참조.
 
-디자인 미학 시스템은 [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) by ClaudeKit (MIT License)를 기반으로 합니다.
+### 서드파티 귀속
+
+본 프로젝트는 다음 오픈소스 디자인 리소스를 사용합니다：
+
+| 리소스 | 저자 | 라이선스 | 용도 |
+|--------|------|----------|------|
+| [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) | ClaudeKit | MIT License | 오리지널 11 디자인 스타일 템플릿（Template 01-11） |
+| [beautiful-html-templates](https://github.com/zarazhangrui/beautiful-html-templates) | Zara Zhang | MIT License (Copyright 2026) | 18 추가 디자인 스타일 이력서 형식으로 포팅（Template 12-29） |
+| Google Fonts | Google | OFL License | 모든 템플릿 폰트 |
 
 모든 폰트는 Google Fonts (OFL License)에서 제공됩니다.

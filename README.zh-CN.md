@@ -10,16 +10,16 @@
 
 </div>
 
-> **11 套高品质设计风格** + **AI 内容深度优化** = 价值 **500 美元以上的专业设计水准简历**。  
+> **29 套高品质设计风格** + **AI 内容深度优化** = 价值 **500 美元以上的专业设计水准简历**。  
 > 生成可直接用于求职的生产级 HTML 简历，兼具惊艳视觉效果、完整 ATS 兼容性和多语言支持。
 
 ## 核心差异化优势
 
-### 1. 11 套高品质设计风格 — 不只是模板
+### 1. 29 套高品质设计风格 — 不只是模板
 
 每套风格都是**完整的视觉系统**，拥有独立的配色方案、字体排印、动画效果和布局哲学。从企业极简到赛博朋克霓虹，为每个行业和个性量身定制。
 
-**风格一览：**
+**原版 11 套风格（来自 frontend-design-pro-demo）：**
 
 | # | 风格 | 视觉特点 | 适合人群 |
 |---|------|---------|---------|
@@ -34,6 +34,31 @@
 | 09 | **鲜艳块面** | 大胆色块、高饱和、几何形状 | 营销经理、广告创意 |
 | 10 | **暗黑 OLED** | 纯黑、微妙灰、高端极简 | CTO/VP、创意总监 |
 | 11 | **有机生物** | 大地色调、有机曲线、自然灵感 | 可持续发展、自然品牌 |
+
+**新增 18 套风格（来自 beautiful-html-templates）：**
+
+| # | 风格 | 视觉特点 | 适合人群 |
+|---|------|---------|---------|
+| 12 | **蓝白商务** | 蓝白企业风、圆角卡片 | 商业分析师、会计师 |
+| 13 | **极细黑白** | 超细字重、纯黑墨水 | 编辑、作家、学者 |
+| 14 | **柔和编辑** | 暖色调、大圆角、虚线分隔 | 杂志编辑、公关 |
+| 15 | **翡翠编辑** | 双线装饰、翡翠色强调、衬线 | 法律、政府、外交官 |
+| 16 | **森林编辑** | 绿色边框、粉色强调、衬线+等宽 | 环保、NGO |
+| 17 | **三色编辑** | 酒红+黄油双色、板状衬线 | 时尚、奢侈品零售 |
+| 18 | **方块框架** | 新粗野主义、4px边框、8px阴影 | 平面设计师、街头品牌 |
+| 19 | **钴蓝网格** | 方格纸、钴蓝墨水、标尺线 | 数据科学家、工程师 |
+| 20 | **信号** | 暖奶油色、古金色强调 | 产品经理、战略顾问 |
+| 21 | **工作室** ⬛ | 深色模式、酸性黄文字、全大写 | 创意总监、DJ |
+| 22 | **羊皮纸** ⬛ | 深紫蓝、暖黄文字、手稿风 | 艺术家、摄影师 |
+| 23 | **垫板** ⬛ | 深森林绿、暖橙色强调 | 电影制作人、游戏开发者 |
+| 24 | **长桌** | 赤陶红墨水、胶囊标签、学术风 | 历史学家、档案管理员 |
+| 25 | **笛卡尔** | 几何圆环装饰、衬线+无衬线 | 数学家、物理学家 |
+| 26 | **模板刻字** | 模板字体、多彩强调 | 工业设计师、建筑师 |
+| 27 | **人民平台** | 粗边框、印章效果、板状衬线 | 社区组织者、非营利 |
+| 28 | **树林** | 森林绿、珊瑚色强调、有机风 | 植物学家、健康行业 |
+| 29 | **宽幅** ⬛ | 近黑色、橙色强调、海报风 | 印刷设计师、字体设计师 |
+
+> ⬛ = 深色主题（打印 PDF 时保留深色背景）
 
 ### 2. AI 内容深度优化引擎 — 真实性优先
 
@@ -102,7 +127,7 @@ use resume-design-pro
 按提示操作：
 1. 提供简历信息（上传、粘贴或对话）
 2. 选择内容优化模式（默认）或原封不动模式
-3. 从 11 种设计风格中选择
+3. 从 29 种设计风格中选择
 4. 获取完整简历包
 
 ### 开发者使用
@@ -122,7 +147,7 @@ node export-pdf.js ../templates/template-01-minimalism.html
 ```
 resume-design-pro/
 ├── skills/resume-design-pro/SKILL.md    # 核心 Skill 定义
-├── templates/                           # 11 套风格模板 + 附加模板
+├── templates/                           # 29 套风格模板 + 附加模板
 │   ├── template-01-minimalism.html
 │   ├── template-02-neumorphism.html
 │   ├── template-03-glassmorphism.html
@@ -134,6 +159,24 @@ resume-design-pro/
 │   ├── template-09-vibrant-block.html
 │   ├── template-10-dark-oled.html
 │   ├── template-11-organic.html
+│   ├── template-12-blue-professional.html
+│   ├── template-13-monochrome.html
+│   ├── template-14-soft-editorial.html
+│   ├── template-15-emerald-editorial.html
+│   ├── template-16-editorial-forest.html
+│   ├── template-17-editorial-tri-tone.html
+│   ├── template-18-block-frame.html
+│   ├── template-19-cobalt-grid.html
+│   ├── template-20-signal.html
+│   ├── template-21-studio.html
+│   ├── template-22-vellum.html
+│   ├── template-23-mat.html
+│   ├── template-24-long-table.html
+│   ├── template-25-cartesian.html
+│   ├── template-26-stencil-tablet.html
+│   ├── template-27-peoples-platform.html
+│   ├── template-28-grove.html
+│   ├── template-29-broadside.html
 │   ├── ats-template.html                # ATS 优化版本
 │   ├── cover-letter-template.html       # 求职信模板
 │   ├── linkedin-export.md               # LinkedIn 优化指南
@@ -197,6 +240,14 @@ node export-pdf.js ../templates/template-01-minimalism.html
 
 MIT 许可证 — 详见 [LICENSE](LICENSE)。
 
-设计美学系统基于 [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) by ClaudeKit (MIT License)。
+### 第三方归属
+
+本项目使用了以下开源设计资源：
+
+| 资源 | 作者 | 许可证 | 用途 |
+|------|------|--------|------|
+| [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) | ClaudeKit | MIT License | 原版 11 套设计风格模板（Template 01-11） |
+| [beautiful-html-templates](https://github.com/zarazhangrui/beautiful-html-templates) | Zara Zhang | MIT License (Copyright 2026) | 18 套新增设计风格移植为简历格式（Template 12-29） |
+| Google Fonts | Google | OFL License | 所有模板字体 |
 
 所有字体来自 Google Fonts (OFL License)。

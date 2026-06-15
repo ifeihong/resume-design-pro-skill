@@ -10,16 +10,16 @@
 
 </div>
 
-> **11 種類のプレミアムデザインスタイル** + **AI コンテンツ最適化** = **500 ドル以上のプロフェッショナルデザイン品質**の履歴書。  
+> **29 種類のプレミアムデザインスタイル** + **AI コンテンツ最適化** = **500 ドル以上のプロフェッショナルデザイン品質**の履歴書。  
 > 驚きのビジュアル美学、完全な ATS 互換性、多言語サポートを備えた、即戦力の HTML 履歴書を生成します。
 
 ## 核心となる差別化ポイント
 
-### 1. 11 種類のプレミアムデザインスタイル — 単なるテンプレートではない
+### 1. 29 種類のプレミアムデザインスタイル — 単なるテンプレートではない
 
 各スタイルは**完全なビジュアルシステム**です。独自のカラーパレット、タイポグラフィ、アニメーション、レイアウト哲学を持っています。企業ミニマリズムからサイバーパンクネオンまで、あらゆる業界と個性に対応します。
 
-**スタイル一覧：**
+**オリジナル 11 スタイル（frontend-design-pro-demo より）：**
 
 | # | スタイル | ビジュアル特徴 | 適した職種 |
 |---|---------|--------------|-----------|
@@ -34,6 +34,31 @@
 | 09 | **ビブラントブロック / マキシマリスト** | 大胆なカラーブロック、高彩度、幾何学的形状 | マーケティングマネージャー、広告クリエイティブ |
 | 10 | **ダーク OLED ラグジュアリー** | ピュアブラック、微妙なグレー、プレミアムミニマリズム | CTO/VP、クリエイティブディレクター |
 | 11 | **オーガニック / バイオモーフィック** | アーストーン、有機的な曲線、自然インスピレーション | サステナビリティ、ナチュラルブランド |
+
+**新規 18 スタイル（beautiful-html-templates より）：**
+
+| # | スタイル | ビジュアル特徴 | 適した職種 |
+|---|---------|--------------|-----------|
+| 12 | **ブループロフェッショナル** | ブルーホワイト企業風、丸みを帯びたカード | ビジネスアナリスト、会計士 |
+| 13 | **モノクローム** | 超細字重、純粋な黒インク | 編集者、作家、研究者 |
+| 14 | **ソフトエディトリアル** | 暖色系、大きな border-radius、破線区切り | 雑誌編集者、PR |
+| 15 | **エメラルドエディトリアル** | 二重線装飾、エメラルドアクセント、セリフ | 法律、政府、外交官 |
+| 16 | **フォレストエディトリアル** | 緑の枠線、ピンクアクセント、セリフ+等幅 | 環境保護、NGO |
+| 17 | **トライトーンエディトリアル** | バーガンディ+バターツートン、スラブセリフ | ファッション、高級品小売 |
+| 18 | **ブロックフレーム** | ネオブルータリズム、4px枠線、8px影 | グラフィックデザイナー、ストリートブランド |
+| 19 | **コバルトグリッド** | 方眼紙、コバルトインク、罫線 | データサイエンティスト、エンジニア |
+| 20 | **シグナル** | ウォームクリーム、アンティークゴールドアクセント | プロダクトマネージャー、ストラテジスト |
+| 21 | **スタジオ** ⬛ | ダークモード、アシッドイエロー文字、大文字 | クリエイティブディレクター、DJ |
+| 22 | **ベラム** ⬛ | ダークパープルブルー、ウォームイエロー文字、写本風 | 美術家、写真家 |
+| 23 | **マット** ⬛ | ダークフォレストグリーン、ウォームオレンジアクセント | 映画監督、ゲーム開発者 |
+| 24 | **ロングテーブル** | テラコッタインク、ピルタグ、学術風 | 歴史家、アーキビスト |
+| 25 | **カルテシアン** | 幾何学的リング装飾、セリフ+サンセリフ | 数学者、物理学者 |
+| 26 | **ステンシルタブレット** | ステンシルタイポグラフィ、マルチカラーアクセント | インダストリアルデザイナー、建築家 |
+| 27 | **ピープルズプラットフォーム** | 太い枠線、スタンプ効果、スラブセリフ | コミュニティオーガナイザー、非営利 |
+| 28 | **グローブ** | フォレストグリーン、コーラルアクセント、オーガニック | 植物学者、ウェルネス |
+| 29 | **ブロードサイド** ⬛ | ニアブラック、オレンジアクセント、ポスター風 | 印刷デザイナー、タイポグラファー |
+
+> ⬛ = ダークテーマ（PDF 印刷時にダーク背景を保持）
 
 ### 2. AI コンテンツ最適化エンジン — 真実性優先
 
@@ -102,7 +127,7 @@ use resume-design-pro
 プロンプトに従って：
 1. 履歴書情報を提供（アップロード、貼り付け、または対話）
 2. コンテンツ最適化モード（デフォルト）または RAW モードを選択
-3. 11 種類のデザインスタイルから選択
+3. 29 種類のデザインスタイルから選択
 4. 完全な履歴書パッケージを取得
 
 ### 開発者向け
@@ -122,7 +147,7 @@ node export-pdf.js ../templates/template-01-minimalism.html
 ```
 resume-design-pro/
 ├── skills/resume-design-pro/SKILL.md    # コア Skill 定義
-├── templates/                           # 11 種類のスタイルテンプレート + 追加テンプレート
+├── templates/                           # 29 種類のスタイルテンプレート + 追加テンプレート
 │   ├── template-01-minimalism.html
 │   ├── template-02-neumorphism.html
 │   ├── template-03-glassmorphism.html
@@ -134,6 +159,24 @@ resume-design-pro/
 │   ├── template-09-vibrant-block.html
 │   ├── template-10-dark-oled.html
 │   ├── template-11-organic.html
+│   ├── template-12-blue-professional.html
+│   ├── template-13-monochrome.html
+│   ├── template-14-soft-editorial.html
+│   ├── template-15-emerald-editorial.html
+│   ├── template-16-editorial-forest.html
+│   ├── template-17-editorial-tri-tone.html
+│   ├── template-18-block-frame.html
+│   ├── template-19-cobalt-grid.html
+│   ├── template-20-signal.html
+│   ├── template-21-studio.html
+│   ├── template-22-vellum.html
+│   ├── template-23-mat.html
+│   ├── template-24-long-table.html
+│   ├── template-25-cartesian.html
+│   ├── template-26-stencil-tablet.html
+│   ├── template-27-peoples-platform.html
+│   ├── template-28-grove.html
+│   ├── template-29-broadside.html
 │   ├── ats-template.html                # ATS 最適化バージョン
 │   ├── cover-letter-template.html       # カバーレターテンプレート
 │   ├── linkedin-export.md               # LinkedIn 最適化ガイド
@@ -197,6 +240,14 @@ node export-pdf.js ../templates/template-01-minimalism.html
 
 MIT ライセンス — 詳細は [LICENSE](LICENSE) を参照。
 
-デザイン美学システムは [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) by ClaudeKit (MIT License) に基づいています。
+### サードパーティ帰属
+
+本プロジェクトは以下のオープンソースデザインリソースを使用しています：
+
+| リソース | 作者 | ライセンス | 用途 |
+|----------|------|----------|------|
+| [frontend-design-pro-demo](https://github.com/claudekit/frontend-design-pro-demo) | ClaudeKit | MIT License | オリジナル 11 デザインスタイルテンプレート（Template 01-11） |
+| [beautiful-html-templates](https://github.com/zarazhangrui/beautiful-html-templates) | Zara Zhang | MIT License (Copyright 2026) | 18 追加デザインスタイルを履歴書形式に移植（Template 12-29） |
+| Google Fonts | Google | OFL License | すべてのテンプレートフォント |
 
 すべてのフォントは Google Fonts (OFL License) から提供されています。
