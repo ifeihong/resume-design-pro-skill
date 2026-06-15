@@ -502,7 +502,7 @@
     /* ========== PDF PRINT STYLES ========== */
     @page {
       size: A4;
-      margin: 15mm 20mm;
+      margin: 0;
     }
 
     @media print {
@@ -516,12 +516,10 @@
       .container {
         max-width: 900px !important;
         margin: 0 auto !important;
-        padding: 0 !important;
+        padding: 15mm 20mm 5mm !important;
+        box-decoration-break: clone !important;
+        -webkit-box-decoration-break: clone !important;
         box-shadow: none !important;
-      }
-      .section {
-        break-inside: auto !important;
-        page-break-inside: auto !important;
       }
       .exp-item, .edu-item, .skill-category {
         break-inside: avoid !important;
