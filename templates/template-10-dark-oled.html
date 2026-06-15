@@ -502,14 +502,13 @@
     /* ========== PDF PRINT STYLES ========== */
     @page {
       size: A4;
-      margin: 15mm;
+      margin: 0;
     }
 
     @media print {
-      html { width: 210mm; height: 297mm; }
+      html { width: 210mm; }
       body {
         width: 210mm;
-        min-height: 297mm;
         margin: 0 !important;
         padding: 0 !important;
         background: var(--color-bg) !important;
@@ -517,9 +516,9 @@
         print-color-adjust: exact;
       }
       .container {
-        max-width: 180mm !important;
-        margin: 0 auto !important;
-        padding: 10mm 0 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 15mm 20mm !important;
         box-shadow: none !important;
       }
       .section, .exp-item, .edu-item, .skill-category {
