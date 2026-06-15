@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{NAME}} - {{TITLE}} | Dark OLED Resume</title>
+  <title>朱鸿 - 市场营销总监 | Dark OLED Resume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-bg: #000000;
       --color-surface: #0a0a0a;
       --color-surface-elevated: #111111;
-      --color-surface-hover: #161616;
       --color-text: #f0f0f0;
       --color-text-muted: #a0a0a0;
       --color-text-subtle: #666666;
@@ -21,20 +20,12 @@
       --color-accent-warm: #c9a87c;
       --color-border: #1a1a1a;
       --color-border-light: #222222;
-      --font-body: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
+      --font-body: 'Noto Sans SC', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      font-size: 15px;
-    }
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 15px; }
     body {
       font-family: var(--font-body);
       background: var(--color-bg);
@@ -45,7 +36,6 @@
       min-height: 100vh;
     }
 
-    /* Container */
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -63,11 +53,23 @@
       padding-bottom: 3rem;
       border-bottom: 1px solid var(--color-border-light);
       margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .header-main {
-      padding-top: 0.5rem;
+    .resume-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--color-accent-warm);
+      transform-origin: left;
+      animation: expandLine 1s ease-out both;
     }
+
+    .header-main { padding-top: 0.5rem; }
 
     .name {
       font-family: var(--font-body);
@@ -77,6 +79,7 @@
       letter-spacing: 0.06em;
       line-height: 1.15;
       margin-bottom: 0.6rem;
+      animation: subtleGlow 4s ease-in-out infinite;
     }
 
     .title {
@@ -123,16 +126,6 @@
       border-bottom-color: var(--color-text-dim);
     }
 
-    .avatar {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 4px;
-      filter: grayscale(0.6) brightness(0.9);
-      border: 1px solid var(--color-border-light);
-    }
-
-    /* Abstract Avatar - Dark OLED Style (Monogram on dark surface) */
     .avatar-abstract {
       width: 140px;
       height: 140px;
@@ -149,21 +142,18 @@
       letter-spacing: 0.08em;
     }
 
-    /* No Avatar Layout Adjustment */
-    .resume-header.no-avatar {
-      grid-template-columns: 1fr;
-      text-align: left;
-    }
-
-    .resume-header.no-avatar .name {
-      font-size: clamp(3rem, 5vw, 4rem);
-      font-weight: 200;
-    }
-
     /* ========== SECTIONS ========== */
     .section {
       margin-bottom: 3.5rem;
+      animation: subtleFadeIn 0.5s ease-out both;
     }
+
+    .section:nth-of-type(1) { animation-delay: 0s; }
+    .section:nth-of-type(2) { animation-delay: 0.1s; }
+    .section:nth-of-type(3) { animation-delay: 0.2s; }
+    .section:nth-of-type(4) { animation-delay: 0.3s; }
+    .section:nth-of-type(5) { animation-delay: 0.4s; }
+    .section:nth-of-type(6) { animation-delay: 0.5s; }
 
     .section-header {
       display: grid;
@@ -196,6 +186,11 @@
       font-weight: 300;
     }
 
+    .summary-highlight {
+      color: var(--color-accent-warm);
+      font-weight: 400;
+    }
+
     /* ========== EXPERIENCE ========== */
     .experience-list {
       display: flex;
@@ -209,9 +204,7 @@
       gap: 2.5rem;
     }
 
-    .exp-meta {
-      text-align: right;
-    }
+    .exp-meta { text-align: right; }
 
     .exp-period {
       font-family: var(--font-mono);
@@ -232,6 +225,7 @@
       color: var(--color-text);
       margin-bottom: 0.6rem;
       letter-spacing: 0.02em;
+      animation: subtleGlow 4s ease-in-out infinite;
     }
 
     .exp-highlights {
@@ -261,7 +255,7 @@
     }
 
     .exp-highlights .metric {
-      color: var(--color-text-muted);
+      color: var(--color-accent-warm);
       font-weight: 400;
     }
 
@@ -272,9 +266,7 @@
       gap: 2.5rem;
     }
 
-    .skill-category {
-      padding: 0;
-    }
+    .skill-category { padding: 0; }
 
     .skill-cat-title {
       font-family: var(--font-mono);
@@ -307,9 +299,7 @@
       color: var(--color-text-dim);
     }
 
-    .skill-tag:last-child::after {
-      content: none;
-    }
+    .skill-tag:last-child::after { content: none; }
 
     /* ========== EDUCATION ========== */
     .edu-list {
@@ -343,80 +333,21 @@
       color: var(--color-text-dim);
     }
 
-    /* ========== PROJECTS ========== */
-    .project-list {
+    /* ========== CERTIFICATIONS ========== */
+    .cert-list {
       display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
     }
 
-    .project-item {
-      padding: 0;
-      border-left: 1px solid var(--color-border-light);
-      padding-left: 1.8rem;
-    }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.4rem;
-    }
-
-    .project-name {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--color-text);
-    }
-
-    .project-link {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--color-text-dim);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .project-link:hover {
-      color: var(--color-text-subtle);
-    }
-
-    .project-desc {
-      font-size: 0.95rem;
+    .cert-item {
+      font-size: 0.9rem;
       color: var(--color-text-muted);
-      margin-bottom: 0.4rem;
-      line-height: 1.7;
-      font-weight: 300;
     }
 
-    .project-tech {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--color-text-dim);
-    }
-
-    /* ========== LANGUAGES ========== */
-    .lang-list {
-      display: flex;
-      gap: 3rem;
-    }
-
-    .lang-item {
-      display: flex;
-      align-items: baseline;
-      gap: 0.6rem;
-    }
-
-    .lang-name {
-      font-size: 0.95rem;
+    .cert-name {
       color: var(--color-text);
       font-weight: 400;
-    }
-
-    .lang-level {
-      font-size: 0.85rem;
-      color: var(--color-text-subtle);
-      font-weight: 300;
     }
 
     /* ========== FOOTER ========== */
@@ -436,67 +367,18 @@
 
     /* ========== ANIMATIONS ========== */
     @keyframes subtleFadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-
-    .section {
-      animation: subtleFadeIn 0.5s ease-out both;
-    }
-
-    .section:nth-of-type(1) { animation-delay: 0s; }
-    .section:nth-of-type(2) { animation-delay: 0.1s; }
-    .section:nth-of-type(3) { animation-delay: 0.2s; }
-    .section:nth-of-type(4) { animation-delay: 0.3s; }
-    .section:nth-of-type(5) { animation-delay: 0.4s; }
-    .section:nth-of-type(6) { animation-delay: 0.5s; }
 
     @keyframes subtleGlow {
-      0%, 100% {
-        text-shadow: 0 0 0 transparent;
-      }
-      50% {
-        text-shadow: 0 0 8px rgba(201, 168, 124, 0.15);
-      }
-    }
-
-    .name,
-    .exp-role,
-    .project-name,
-    .edu-school {
-      animation: subtleGlow 4s ease-in-out infinite;
+      0%, 100% { text-shadow: 0 0 0 transparent; }
+      50% { text-shadow: 0 0 8px rgba(201, 168, 124, 0.15); }
     }
 
     @keyframes expandLine {
-      0% {
-        transform: scaleX(0);
-      }
-      100% {
-        transform: scaleX(1);
-      }
-    }
-
-    .resume-header {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .resume-header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--color-accent-warm);
-      transform-origin: left;
-      animation: expandLine 1s ease-out both;
+      0% { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
     }
 
     /* ========== PDF PRINT STYLES ========== */
@@ -535,57 +417,25 @@
     }
 
     /* ========== REDUCED MOTION ========== */
-
-    /* ========== REDUCED MOTION ========== */
     @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
+      * { animation: none !important; transition: none !important; }
     }
 
     /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
-      .container {
-        padding: 2.5rem 1.5rem;
-      }
+      .container { padding: 2.5rem 1.5rem; }
       .resume-header {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 2rem;
         padding-bottom: 2rem;
       }
-      .avatar {
-        margin: 0 auto;
-        width: 120px;
-        height: 120px;
-      }
-      .contact-row {
-        justify-content: center;
-      }
-      .exp-item,
-      .edu-item {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-      }
-      .exp-meta {
-        text-align: left;
-      }
-      .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-      }
-      .project-header {
-        flex-direction: column;
-        gap: 0.3rem;
-      }
-      .lang-list {
-        flex-direction: column;
-        gap: 0.6rem;
-      }
-      .summary-text {
-        max-width: 100%;
-      }
+      .avatar-abstract { margin: 0 auto; width: 120px; height: 120px; }
+      .contact-row { justify-content: center; }
+      .exp-item, .edu-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .exp-meta { text-align: left; }
+      .skills-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+      .summary-text { max-width: 100%; }
     }
   </style>
 </head>
@@ -594,22 +444,16 @@
     <!-- Header -->
     <header class="resume-header" id="personal-info">
       <div class="header-main">
-        <h1 class="name">{{NAME}}</h1>
-        <div class="title">{{TITLE}}</div>
+        <h1 class="name">朱鸿</h1>
+        <div class="title">市场营销总监 / 产品运营专家</div>
         <div class="contact-row">
-          <div class="contact-item">{{PHONE}}</div>
-          <div class="contact-item"><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></div>
-          <div class="contact-item">{{CITY}}</div>
-          <div class="contact-item"><a href="https://{{GITHUB}}">GitHub</a></div>
-          <div class="contact-item"><a href="https://{{WEBSITE}}">Website</a></div>
-          <div class="contact-item"><a href="https://{{LINKEDIN}}">LinkedIn</a></div>
+          <div class="contact-item">135-0193-2196</div>
+          <div class="contact-item"><a href="mailto:223652@qq.com">223652@qq.com</a></div>
+          <div class="contact-item">上海</div>
+          <div class="contact-item">微信: ifeihong</div>
         </div>
       </div>
-      <!-- Avatar: {{AVATAR_TYPE}} -->
-      <!-- For image avatar: <img src="{{AVATAR_SRC}}" alt="{{NAME}}" class="avatar" id="avatar-img"> -->
-      <!-- For abstract avatar: <div class="avatar avatar-abstract">{{NAME_ABBR}}</div> -->
-      <!-- For no avatar: remove avatar element and add 'no-avatar' class to .resume-header -->
-      <img src="{{AVATAR_SRC}}" alt="{{NAME}}" class="avatar" id="avatar-img">
+      <div class="avatar-abstract">朱</div>
     </header>
 
     <!-- Summary -->
@@ -619,7 +463,7 @@
         <div class="section-line"></div>
       </div>
       <p class="summary-text">
-        {{SUMMARY}}
+        拥有 <span class="summary-highlight">26 年 IT 及互联网行业经验</span>的资深营销与运营专家，深度涉猎市场营销、内容创作、产品规划、团队管理等领域。精通各类 AI 工具（ChatGPT、Runway、Sora 等），在文生文、文生图、文生视频等多元场景积累了丰富的实操案例。曾服务可口可乐、百事可乐、eBay 中国、安永 EY、凯德置业、上汽集团等全球知名品牌，具备从 0 到 1 搭建官网、策划解决方案、运营自媒体矩阵、组织大型活动的全链路能力。<span class="summary-highlight">专业、好学、肯干、负责、忠诚。</span>
       </p>
     </section>
 
@@ -631,35 +475,68 @@
       </div>
       <div class="skills-grid">
         <div class="skill-category">
-          <div class="skill-cat-title">前端核心</div>
+          <div class="skill-cat-title">AI 工具</div>
           <div class="skill-tags">
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Vue.js</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">Next.js</span>
-            <span class="skill-tag">Vite</span>
-            <span class="skill-tag">Webpack</span>
+            <span class="skill-tag">ChatGPT</span>
+            <span class="skill-tag">文心一言</span>
+            <span class="skill-tag">豆包</span>
+            <span class="skill-tag">Runway</span>
+            <span class="skill-tag">Sora</span>
+            <span class="skill-tag">Suno</span>
+            <span class="skill-tag">Midjourney</span>
+            <span class="skill-tag">Stable Diffusion</span>
           </div>
         </div>
         <div class="skill-category">
-          <div class="skill-cat-title">样式与UI</div>
+          <div class="skill-cat-title">视频与内容</div>
           <div class="skill-tags">
-            <span class="skill-tag">Tailwind CSS</span>
-            <span class="skill-tag">Styled Components</span>
-            <span class="skill-tag">Sass</span>
-            <span class="skill-tag">Ant Design</span>
-            <span class="skill-tag">Material UI</span>
+            <span class="skill-tag">剪映</span>
+            <span class="skill-tag">Premiere</span>
+            <span class="skill-tag">Photoshop</span>
+            <span class="skill-tag">视频脚本策划</span>
+            <span class="skill-tag">短视频运营</span>
+            <span class="skill-tag">自媒体矩阵</span>
           </div>
         </div>
         <div class="skill-category">
-          <div class="skill-cat-title">进阶技术</div>
+          <div class="skill-cat-title">营销与运营</div>
           <div class="skill-tags">
-            <span class="skill-tag">WebGL</span>
-            <span class="skill-tag">Three.js</span>
-            <span class="skill-tag">WebAssembly</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">GraphQL</span>
-            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">品牌建设</span>
+            <span class="skill-tag">活动策划</span>
+            <span class="skill-tag">解决方案策划</span>
+            <span class="skill-tag">招投标管理</span>
+            <span class="skill-tag">团队管理</span>
+            <span class="skill-tag">Google Ads</span>
+            <span class="skill-tag">百度竞价</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">网站建设</div>
+          <div class="skill-tags">
+            <span class="skill-tag">WordPress</span>
+            <span class="skill-tag">Shopify</span>
+            <span class="skill-tag">WooCommerce</span>
+            <span class="skill-tag">OpenCart</span>
+            <span class="skill-tag">eBay</span>
+            <span class="skill-tag">服务器配置</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">办公与工具</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Office 全家桶</span>
+            <span class="skill-tag">PPT 策划设计</span>
+            <span class="skill-tag">思维导图</span>
+            <span class="skill-tag">数据分析</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">知识产权</div>
+          <div class="skill-tags">
+            <span class="skill-tag">商标注册</span>
+            <span class="skill-tag">软件著作权</span>
+            <span class="skill-tag">专利申请</span>
+            <span class="skill-tag">政策补助申请</span>
           </div>
         </div>
       </div>
@@ -674,70 +551,81 @@
       <div class="experience-list">
         <div class="exp-item">
           <div class="exp-meta">
-            <div class="exp-period">2021 - 至今</div>
-            <div class="exp-company">字节跳动</div>
+            <div class="exp-period">2023.03 - 2024.12</div>
+            <div class="exp-company">新网程</div>
           </div>
           <div class="exp-content">
-            <div class="exp-role">高级前端工程师</div>
+            <div class="exp-role">市场经理 / 总监</div>
             <ul class="exp-highlights">
-              <li>负责企业协作平台前端架构设计与核心模块开发</li>
-              <li>主导前端性能优化专项，首屏加载时间降低 <span class="metric">60%</span></li>
-              <li>设计并实现内部组件库，被 <span class="metric">10+</span> 业务线复用</li>
+              <li>主导公司官网从 0 到 1 搭建运营，独立完成策划、设计、搭建及服务器配置</li>
+              <li>独立撰写公司新闻稿 <span class="metric">40+</span> 篇，运维微信公众号、微博、抖音、视频号等自媒体矩阵</li>
+              <li>独立制作公司宣传视频 <span class="metric">70+</span> 部（横屏）、短视频 <span class="metric">90+</span> 部（竖屏）、情景短剧 <span class="metric">30+</span> 部</li>
+              <li>主导产品及解决方案策划，独立完成 <span class="metric">20+</span> 份行业解决方案 PPT（智慧校园、AI 质检、数字孪生等）</li>
+              <li>全面负责投标事务，完成 <span class="metric">40+</span> 项招投标、商标、软件著作权申报</li>
+              <li>负责公司 AI 视觉研发数据支持，搜寻并标注 <span class="metric">40+</span> 数据集</li>
+              <li>独立策划设计 <span class="metric">3</span> 本公司宣传册，组织 <span class="metric">2</span> 次大型市场活动</li>
             </ul>
           </div>
         </div>
-        <div class="exp-item">
-          <div class="exp-meta">
-            <div class="exp-period">2019 - 2021</div>
-            <div class="exp-company">蚂蚁集团</div>
-          </div>
-          <div class="exp-content">
-            <div class="exp-role">前端工程师</div>
-            <ul class="exp-highlights">
-              <li>参与支付宝小程序框架核心模块开发</li>
-              <li>搭建可视化搭建系统，页面搭建效率提升 <span class="metric">5 倍</span></li>
-              <li>主导前端监控体系建设，错误发现时效提升 <span class="metric">80%</span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-meta">
-            <div class="exp-period">2017 - 2019</div>
-            <div class="exp-company">京东</div>
-          </div>
-          <div class="exp-content">
-            <div class="exp-role">初级前端工程师</div>
-            <ul class="exp-highlights">
-              <li>参与电商大促活动页面开发，PV <span class="metric">过亿级</span></li>
-              <li>负责商品详情页前端重构，转化率提升 <span class="metric">15%</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Projects -->
-    <section class="section" id="projects">
-      <div class="section-header">
-        <h2 class="section-title">项目作品</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="project-list">
-        <div class="project-item">
-          <div class="project-header">
-            <div class="project-name">React Motion Kit</div>
-            <a href="#" class="project-link">GitHub &rarr;</a>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-period">2005.02 - 2023.02</div>
+            <div class="exp-company">微运作</div>
           </div>
-          <p class="project-desc">React 动画组件库，提供 30+ 预设动画效果，支持自定义缓动函数和手势交互</p>
-          <div class="project-tech">React / TypeScript / Framer Motion</div>
+          <div class="exp-content">
+            <div class="exp-role">总监</div>
+            <ul class="exp-highlights">
+              <li>深度参与运营、技术、销售、营销、管理及财务等全环节，积累 <span class="metric">18 年</span>综合管理经验</li>
+              <li>为众多知名外企、国企、民企制定互联网品牌建设规划并策划营销活动</li>
+              <li>与顶尖广告公司合作，服务全球知名品牌：可口可乐、百事可乐、eBay 中国、安永 EY、凯德置业、上汽集团等</li>
+              <li>独立策划并执行 <span class="metric">30+</span> 企业官网及微信公众号项目，涵盖安永校招、欧莱雅内部评选、上汽集团移动端营销等</li>
+              <li>拥有 <span class="metric">10 年以上</span>团队管理经验，管理过 <span class="metric">10 人以上</span>的策划、制作、运营和销售部门</li>
+            </ul>
+          </div>
         </div>
-        <div class="project-item">
-          <div class="project-header">
-            <div class="project-name">CSS Glass Generator</div>
-            <a href="#" class="project-link">Demo &rarr;</a>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-period">2001.01 - 2005.02</div>
+            <div class="exp-company">Lycos China 来科思中国</div>
           </div>
-          <p class="project-desc">在线 Glassmorphism 效果生成工具，实时预览并导出 CSS 代码</p>
-          <div class="project-tech">Vue.js / Tailwind CSS / Canvas</div>
+          <div class="exp-content">
+            <div class="exp-role">E-solution Manager</div>
+            <ul class="exp-highlights">
+              <li>管理网页设计、网站制作及网络运营策划团队，协调跨部门合作</li>
+              <li>主导公司全新门户网站（含各频道）及曼联中国官方门户网站建设</li>
+              <li>与可口可乐、花旗银行等国际品牌进行合作项目管理</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-period">2000.01 - 2001.01</div>
+            <div class="exp-company">多来米中文网</div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-role">网页产品经理</div>
+            <ul class="exp-highlights">
+              <li>设计门户网站及娱乐频道网站，参与频道策划及运营</li>
+              <li>与知名儿童节目主持人合作，共同创建并管理多来米娱乐频道</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-period">1999.06 - 1999.12</div>
+            <div class="exp-company">好多中文网</div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-role">网页设计师</div>
+            <ul class="exp-highlights">
+              <li>从事网页设计工作，设计门户网站及各频道网站</li>
+              <li>1997-1998 年间自学网页设计及建站知识，创建多个个人网站</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -750,9 +638,9 @@
       </div>
       <div class="edu-list">
         <div class="edu-item">
-          <div class="edu-school">华中科技大学</div>
-          <div class="edu-degree">软件工程 / 本科</div>
-          <div class="edu-period">2013 - 2017</div>
+          <div class="edu-school">华东师范大学</div>
+          <div class="edu-degree">电视摄像 / 大专</div>
+          <div class="edu-period">1999 - 2002</div>
         </div>
       </div>
     </section>
@@ -764,11 +652,9 @@
         <div class="section-line"></div>
       </div>
       <div class="cert-list">
-        <div class="cert-item">
-          <span class="cert-name">AWS Certified Solutions Architect</span>
-          <span class="cert-issuer">Amazon Web Services</span>
-          <span class="cert-date">2023</span>
-        </div>
+        <div class="cert-item"><span class="cert-name">驾驶证 C1</span></div>
+        <div class="cert-item"><span class="cert-name">计算机中级</span></div>
+        <div class="cert-item"><span class="cert-name">上海话</span></div>
       </div>
     </section>
 
@@ -778,21 +664,25 @@
         <h2 class="section-title">语言能力</h2>
         <div class="section-line"></div>
       </div>
-      <div class="lang-list">
-        <div class="lang-item">
-          <span class="lang-name">中文</span>
-          <span class="lang-level">母语</span>
+      <div class="lang-list" style="display: flex; gap: 3rem;">
+        <div class="lang-item" style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 0.95rem; color: var(--color-text); font-weight: 400;">中文</span>
+          <span style="font-size: 0.85rem; color: var(--color-text-subtle); font-weight: 300;">母语</span>
         </div>
-        <div class="lang-item">
-          <span class="lang-name">English</span>
-          <span class="lang-level">流利 / CET-6</span>
+        <div class="lang-item" style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 0.95rem; color: var(--color-text); font-weight: 400;">English</span>
+          <span style="font-size: 0.85rem; color: var(--color-text-subtle); font-weight: 300;">基础读写</span>
+        </div>
+        <div class="lang-item" style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 0.95rem; color: var(--color-text); font-weight: 400;">上海话</span>
+          <span style="font-size: 0.85rem; color: var(--color-text-subtle); font-weight: 300;">熟练</span>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="resume-footer">
-      <div class="footer-text">Resume Design Pro — Dark OLED Style</div>
+      <div class="footer-text">Resume Design Pro — Dark OLED Luxury Style</div>
     </footer>
   </div>
 </body>
