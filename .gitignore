@@ -6,6 +6,10 @@ cover-letter-*.html
 linkedin-export.md
 audit-report.md
 
+# Demo resumes (contain real user data, do not commit)
+demos/*.html
+demos/*.pdf
+
 # Node.js dependencies
 node_modules/
 package-lock.json
