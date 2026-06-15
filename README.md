@@ -5,9 +5,8 @@
 **English** | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Platform: Claude Code](https://img.shields.io/badge/Platform-Claude%20Code-blue)](https://claude.ai/code)
-[![Platform: Trae](https://img.shields.io/badge/Platform-Trae-green)](https://www.trae.ai/)
-[![Platform: Codex](https://img.shields.io/badge/Platform-Codex-purple)](https://openai.com/index/introducing-codex/)
+[![AI Native](https://img.shields.io/badge/AI%20Native-Universal-blue)](https://github.com/ifeihong/resume-design-pro-skill)
+[![Skill Format](https://img.shields.io/badge/Format-SKILL%20v1-green)]()
 
 </div>
 
@@ -96,7 +95,7 @@ One invocation, **6 deliverables**:
 ### For Users
 
 ```bash
-# In Claude Code / Trae / Codex
+# In any AI coding assistant
 use resume-design-pro
 ```
 
@@ -169,14 +168,22 @@ npm install
 node export-pdf.js ../templates/template-01-minimalism.html
 ```
 
-## Platform Support
+## Platform Compatibility
 
-| Platform | Status | Notes |
-|----------|--------|-------|
-| Claude Code | Supported | Primary development platform |
-| Trae | Supported | Tested and verified |
-| Codex | Supported | Compatible |
-| Cursor | Compatible | Should work with minor adjustments |
+**Resume Design Pro** is built on the open SKILL format — it works with any AI assistant that supports skill invocation.
+
+| Category | Examples |
+|----------|----------|
+| AI Coding Assistants | Claude Code, Trae, Codex, Cursor, GitHub Copilot Chat |
+| AI Agent Platforms | Coze (扣子), Dify, LangChain Agents, AutoGen |
+| Custom AI Tools | Any platform supporting Markdown-based skill files |
+
+**Requirements:** The platform only needs to:
+1. Read and follow Markdown instructions
+2. Generate text/HTML output
+3. Support basic user interaction (prompt → response)
+
+No special plugins, APIs, or integrations required.
 
 ## Who Is This For?
 

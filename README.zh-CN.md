@@ -5,9 +5,8 @@
 [English](README.md) | **简体中文** | [日本語](README.ja.md) | [한국어](README.ko.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Platform: Claude Code](https://img.shields.io/badge/Platform-Claude%20Code-blue)](https://claude.ai/code)
-[![Platform: Trae](https://img.shields.io/badge/Platform-Trae-green)](https://www.trae.ai/)
-[![Platform: Codex](https://img.shields.io/badge/Platform-Codex-purple)](https://openai.com/index/introducing-codex/)
+[![AI Native](https://img.shields.io/badge/AI%20Native-Universal-blue)](https://github.com/ifeihong/resume-design-pro-skill)
+[![Skill Format](https://img.shields.io/badge/Format-SKILL%20v1-green)]()
 
 </div>
 
@@ -96,7 +95,7 @@
 ### 用户使用
 
 ```bash
-# 在 Claude Code / Trae / Codex 中
+# 在任何 AI 编程助手中
 use resume-design-pro
 ```
 
@@ -169,16 +168,24 @@ npm install
 node export-pdf.js ../templates/template-01-minimalism.html
 ```
 
-## 平台支持
+## 平台兼容性
 
-| 平台 | 状态 | 说明 |
-|------|------|------|
-| Claude Code | 已支持 | 主要开发平台 |
-| Trae | 已支持 | 已测试验证 |
-| Codex | 已支持 | 兼容 |
-| Cursor | 兼容 | 可能需要微调 |
+**Resume Design Pro** 基于开放的 SKILL 格式构建 — 可在任何支持 Skill 调用的 AI 助手上运行。
 
-## 适合谁用
+| 类别 | 示例 |
+|------|------|
+| AI 编程助手 | Claude Code、Trae、Codex、Cursor、GitHub Copilot Chat |
+| AI Agent 平台 | 扣子 (Coze)、Dify、LangChain Agents、AutoGen |
+| 自定义 AI 工具 | 任何支持 Markdown 格式 Skill 文件的平台 |
+
+**平台要求：** 只需满足以下条件：
+1. 读取并遵循 Markdown 指令
+2. 生成文本/HTML 输出
+3. 支持基础用户交互（提示 → 回复）
+
+无需特殊插件、API 或集成。
+
+## 适合谁用？
 
 - **求职者**：技术、设计、金融、咨询领域
 - **国际求职者**：申请跨国公司职位

@@ -5,9 +5,8 @@
 [English](README.md) | [简体中文](README.zh-CN.md) | **日本語** | [한국어](README.ko.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Platform: Claude Code](https://img.shields.io/badge/Platform-Claude%20Code-blue)](https://claude.ai/code)
-[![Platform: Trae](https://img.shields.io/badge/Platform-Trae-green)](https://www.trae.ai/)
-[![Platform: Codex](https://img.shields.io/badge/Platform-Codex-purple)](https://openai.com/index/introducing-codex/)
+[![AI Native](https://img.shields.io/badge/AI%20Native-Universal-blue)](https://github.com/ifeihong/resume-design-pro-skill)
+[![Skill Format](https://img.shields.io/badge/Format-SKILL%20v1-green)]()
 
 </div>
 
@@ -96,7 +95,7 @@
 ### ユーザー向け
 
 ```bash
-# Claude Code / Trae / Codex で
+# 任意の AI コーディングアシスタントで
 use resume-design-pro
 ```
 
@@ -169,14 +168,22 @@ npm install
 node export-pdf.js ../templates/template-01-minimalism.html
 ```
 
-## プラットフォームサポート
+## プラットフォーム互換性
 
-| プラットフォーム | 状態 | 説明 |
-|----------------|------|------|
-| Claude Code | サポート済み | 主要開発プラットフォーム |
-| Trae | サポート済み | テスト済み・検証済み |
-| Codex | サポート済み | 互換性あり |
-| Cursor | 互換性あり | 軽微な調整が必要な場合あり |
+**Resume Design Pro** はオープンな SKILL 形式で構築されています — Skill 呼び出しをサポートする任意の AI アシスタントで動作します。
+
+| カテゴリ | 例 |
+|----------|-----|
+| AI コーディングアシスタント | Claude Code、Trae、Codex、Cursor、GitHub Copilot Chat |
+| AI Agent プラットフォーム | Coze (扣子)、Dify、LangChain Agents、AutoGen |
+| カスタム AI ツール | Markdown ベースの Skill ファイルをサポートする任意のプラットフォーム |
+
+**要件：** プラットフォームは以下のみが必要です：
+1. Markdown 指示の読み取りと実行
+2. テキスト/HTML 出力の生成
+3. 基本的なユーザーインタラクションのサポート（プロンプト → レスポンス）
+
+特殊なプラグイン、API、統合は不要です。
 
 ## 対象ユーザー
 
