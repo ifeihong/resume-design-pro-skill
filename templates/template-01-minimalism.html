@@ -500,15 +500,7 @@
     }
 
     @media print {
-      /* Force A4 dimensions */
-      html {
-        width: 210mm;
-        height: 297mm;
-      }
-
       body {
-        width: 210mm;
-        min-height: 297mm;
         margin: 0 !important;
         padding: 0 !important;
         background: #fff !important;
@@ -517,9 +509,11 @@
       }
 
       .container {
-        max-width: 180mm !important; /* 210 - 15*2 */
+        max-width: 900px !important;
         margin: 0 auto !important;
-        padding: 10mm 0 !important;
+        padding: 15mm 20mm 20mm !important;
+        box-decoration-break: clone !important;
+        -webkit-box-decoration-break: clone !important;
         box-shadow: none !important;
       }
 

@@ -159,7 +159,7 @@ personal:
   avatar: string (optional) - see Avatar Selection Flow below
 ```
 
-### Avatar Selection Flow (头像选择流程 - v2.0)
+### Avatar Selection Flow (头像选择流程 - v2.1)
 
 **IMPORTANT: Avatar selection happens AFTER content parsing, NOT during initial information collection.**
 
@@ -167,39 +167,36 @@ personal:
 ```
 IF user uploads PDF/Word/Image resume:
    → Step 1: Parse resume content
-   → Step 2: Extract avatar from uploaded file (if present)
-   → Step 3: Ask user about avatar preference
+   → Step 2: Ask user about avatar preference (mention uploaded file may contain photo)
    
 IF user uses guided conversation or direct paste:
    → Step 1: Collect all text content
    → Step 2: Ask user about avatar preference at the end
 ```
 
-**Avatar Auto-Detection from Uploaded Files (上传文件头像自动检测):**
+**Avatar Handling for Uploaded Files (上传文件头像处理):**
 
 When user uploads a PDF, Word, or Image file:
 
-1. **Scan for existing avatar:**
+1. **Check for existing avatar in parsed content:**
    ```
-   IF file_contains_image:
-      → Extract image from file
-      → Show to user: "检测到您的简历中有一张头像照片，是否使用？"
+   IF parsed_content_contains_avatar_url OR user_provides_avatar_link:
+      → Use the provided avatar URL/link
+      → Show to user: "已使用您提供的头像照片"
       
-      User options:
-      [1] ✅ 使用这张头像
-      [2] 🔄 上传新照片
-      [3] 🤖 AI 生成头像
-      [4] 🎨 使用抽象图形
-      [5] ❌ 不使用头像
+   ELSE IF user_uploaded_image_file_directly:
+      → The uploaded image itself IS the avatar
+      → Ask user: "您上传的图片将作为头像使用，是否确认？"
       
-   ELSE:
+   ELSE (PDF/Word without explicit avatar):
       → Proceed to standard avatar selection menu
+      → Mention: "如果您上传的简历中有头像照片，请单独提供图片链接或文件"
    ```
 
 2. **Image quality check:**
    ```
-   IF extracted_avatar_resolution < 150x150:
-      → Warn user: "检测到的头像分辨率较低（{resolution}），可能影响打印效果"
+   IF provided_avatar_resolution < 150x150:
+      → Warn user: "头像分辨率较低（{resolution}），可能影响打印效果"
       → Recommend uploading a higher resolution photo
    ```
 
