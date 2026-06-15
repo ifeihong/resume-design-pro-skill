@@ -26,13 +26,13 @@ Each style is a **complete visual system** with unique color palettes, typograph
 | 01 | **Minimalism & Swiss** | Clean grids, massive whitespace, typography-first | Finance, Consulting, Executive |
 | 02 | **Neumorphism** | Soft UI, embossed depth, subtle shadows | UI/UX Designer, Product Manager |
 | 03 | **Glassmorphism** | Frosted glass, vibrant backgrounds, blur effects | Frontend Developer, Creative Technologist |
-| 04 | **Cyberpunk** | Neon glow, CRT scanlines, grid backgrounds, monospace | Game Dev, Security Engineer, Blockchain |
+| 04 | **Cyberpunk** ⬛ | Neon glow, CRT scanlines, grid backgrounds, monospace | Game Dev, Security Engineer, Blockchain |
 | 05 | **Brutalism** | Bold typography, high contrast, raw borders | Art Director, Independent Creator |
 | 06 | **Claymorphism** | Soft 3D, pastel colors, rounded organic shapes | Illustrator, Educator, Game Designer |
 | 07 | **Aurora / Mesh Gradient** | Flowing animated gradients, vibrant colors | Brand Designer, Creative Director |
 | 08 | **3D Hyperrealism** | Perspective depth, realistic shadows, layered cards | Architect, Industrial Designer |
 | 09 | **Vibrant Block / Maximalist** | Bold color blocks, high saturation, geometric shapes | Marketing Manager, Ad Creative |
-| 10 | **Dark OLED Luxury** | Pure black, subtle grays, premium minimalism | CTO/VP, Creative Director |
+| 10 | **Dark OLED Luxury** ⬛ | Pure black, subtle grays, premium minimalism | CTO/VP, Creative Director |
 | 11 | **Organic / Biomorphic** | Earth tones, organic curves, nature-inspired | Sustainability, Natural Brands |
 
 **18 New Styles (from beautiful-html-templates):**
