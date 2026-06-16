@@ -106,6 +106,29 @@ One invocation, **8 deliverables**:
 
 **The PDF is generated automatically** using Playwright headless Chromium — colors, fonts, gradients, and layout are preserved exactly as seen in the browser. No need to open Chrome and press Ctrl+P.
 
+## How It Works
+
+```
+📍 Simple 5-Step Workflow
+
+Step 1: Provide Info          Step 2: AI Optimizes        Step 3: You Confirm
+├─ Upload / Paste / Chat      ├─ Extract & preserve       ├─ Review before/after
+├─ 5 input methods            ├─ Truthful quantification  ├─ Adjust or approve
+└─ Or use /raw for no edit    ├─ Professional rewording   └─ Choose density & style
+                              └─ Company attribution lock
+
+Step 4: Pick Style            Step 5: Get Everything
+├─ 29 premium designs         ├─ Visual resume (HTML + PDF)
+├─ AI recommends 3 best       ├─ ATS version + Markdown backup
+└─ Preview before final       ├─ Cover letter + LinkedIn content
+                              ├─ Job search kit (4 languages)
+                              └─ Interview prep guide
+```
+
+**Two Modes:**
+- **Default** — AI optimizes your content (recommended)
+- **RAW** — Zero modifications, design only (`/raw`)
+
 ## Language Support
 
 | Language | Code | Font | Status |
@@ -196,21 +219,6 @@ resume-design-pro/
 ├── LICENSE                              # MIT License
 ├── README.md                            # This file
 └── THIRD_PARTY_NOTICES.md               # Attribution
-```
-
-## PDF Export
-
-### Method 1: Browser Print (Easiest)
-1. Open HTML file in browser
-2. Press Ctrl+P → Select "Save as PDF"
-3. Paper size: A4, Margins: Default
-4. Check "Background graphics" to preserve colors
-
-### Method 2: Node.js Script
-```bash
-cd scripts
-npm install
-node export-pdf.js ../templates/template-01-minimalism.html
 ```
 
 ## Platform Compatibility
