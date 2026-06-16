@@ -36,20 +36,48 @@ async function exportPDF(inputFile, outputFile) {
   console.log(`   Output: ${outputPath}`);
 
   try {
+    // Read HTML content and inject hardcoded background color on <html> tag
+    // This is necessary because Playwright PDF export does not reliably
+    // render CSS variable-based backgrounds on the <html> element.
+    // Hardcoded inline style on <html> is the only reliable method.
+    let htmlContent = fs.readFileSync(inputPath, 'utf-8');
+
+    // Extract --color-bg value from CSS
+    const colorBgMatch = htmlContent.match(/--color-bg:\s*([^;}"'`]+)/);
+    const colorBg = colorBgMatch ? colorBgMatch[1].trim() : '#ffffff';
+
+    // Inject hardcoded background on <html> tag
+    // Remove any existing style on <html> first, then add our own
+    htmlContent = htmlContent.replace(
+      /<html([^>]*)\s*style="[^"]*"\s*>/i,
+      `<html$1 style="background-color: ${colorBg};">`
+    );
+    // If <html> has no style attribute, add one
+    if (!htmlContent.match(/<html[^>]*style=/i)) {
+      htmlContent = htmlContent.replace(
+        /<html([^>]*)>/i,
+        `<html$1 style="background-color: ${colorBg};">`
+      );
+    }
+
+    // Write modified HTML to temp file
+    const tempHtml = path.join(path.dirname(inputPath), '._temp_pdf_export.html');
+    fs.writeFileSync(tempHtml, htmlContent, 'utf-8');
+
     const browser = await chromium.launch();
     const page = await browser.newPage();
 
-    // Load HTML file (use file URL with forward slashes for cross-platform compatibility)
-    const fileUrl = 'file:///' + inputPath.replace(/\\/g, '/');
+    // Load modified HTML file
+    const fileUrl = 'file:///' + tempHtml.replace(/\\/g, '/');
     await page.goto(fileUrl, { waitUntil: 'networkidle' });
 
-    // Wait for fonts to load using a more reliable method
+    // Wait for fonts to load
     await page.waitForFunction(() => document.fonts.ready);
 
     // Set viewport to match A4 width for accurate layout rendering
     await page.setViewportSize({ width: 794, height: 1123 }); // A4 at 96dpi
 
-    // Generate PDF — margins controlled by CSS @page rule, not here
+    // Generate PDF
     await page.pdf({
       path: outputPath,
       format: 'A4',
@@ -64,6 +92,9 @@ async function exportPDF(inputFile, outputFile) {
     });
 
     await browser.close();
+
+    // Clean up temp file
+    try { fs.unlinkSync(tempHtml); } catch (e) {}
 
     // Get file size
     const stats = fs.statSync(outputPath);

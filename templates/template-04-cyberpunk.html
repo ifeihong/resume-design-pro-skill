@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<!DOCTYPE html>
+<html lang="zh-CN" style="background: var(--color-bg);">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -631,12 +631,12 @@
     }
 
     /* ========== PDF PRINT STYLES ========== */
-    @page {
-      size: A4;
-      margin: 18mm 22mm;
-    }
 
     @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
       html {
         background: var(--color-bg) !important;
       }
@@ -650,9 +650,11 @@
       }
 
       .resume-container {
+        box-decoration-break: clone !important;
+        -webkit-box-decoration-break: clone !important;
         max-width: 100% !important;
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 15mm 20mm 5mm !important;
         box-shadow: none !important;
         min-height: auto !important;
       }
