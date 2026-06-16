@@ -19,8 +19,6 @@
 
 Each style is a **complete visual system** with unique color palettes, typography, animations, and layout philosophy. From corporate minimalism to cyberpunk neon, there's a style for every industry and personality.
 
-**Original 11 Styles (from frontend-design-pro-demo):**
-
 | # | Style | Vibe | Best For |
 |---|-------|------|----------|
 | 01 | **Minimalism & Swiss** | Clean grids, massive whitespace, typography-first | Finance, Consulting, Executive |
@@ -34,11 +32,6 @@ Each style is a **complete visual system** with unique color palettes, typograph
 | 09 | **Vibrant Block / Maximalist** | Bold color blocks, high saturation, geometric shapes | Marketing Manager, Ad Creative |
 | 10 | **Dark OLED Luxury** ⬛ | Pure black, subtle grays, premium minimalism | CTO/VP, Creative Director |
 | 11 | **Organic / Biomorphic** | Earth tones, organic curves, nature-inspired | Sustainability, Natural Brands |
-
-**18 New Styles (from beautiful-html-templates):**
-
-| # | Style | Vibe | Best For |
-|---|-------|------|----------|
 | 12 | **Blue Professional** | Blue-white corporate, rounded cards | Business Analyst, Accountant |
 | 13 | **Monochrome** | Ultra-light weight, pure black ink | Editor, Writer, Academic |
 | 14 | **Soft Editorial** | Warm tones, large border-radius, dashed dividers | Magazine Editor, PR |
