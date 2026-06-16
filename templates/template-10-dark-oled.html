@@ -509,7 +509,8 @@
       body {
         margin: 0 !important;
         padding: 0 !important;
-        background: var(--color-bg) !important;
+        background: var(--color-surface) !important;
+        min-height: auto !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
@@ -518,6 +519,7 @@
         margin: 0 !important;
         padding: 0 !important;
         box-shadow: none !important;
+        min-height: auto !important;
       }
       .exp-item, .edu-item, .skill-category {
         break-inside: avoid !important;
@@ -528,7 +530,12 @@
         page-break-after: avoid !important;
       }
       * { animation: none !important; transition: none !important; }
+      * { opacity: 1 !important; }
       a { text-decoration: none !important; }
+
+      .resume-footer, .footer-text, .footer {
+        display: none !important;
+      }
     }
 
     /* ========== REDUCED MOTION ========== */

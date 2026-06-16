@@ -640,7 +640,8 @@
       body {
         margin: 0 !important;
         padding: 0 !important;
-        background: #fff !important;
+        background: var(--color-surface) !important;
+        min-height: auto !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
@@ -650,10 +651,11 @@
         margin: 0 !important;
         padding: 0 !important;
         box-shadow: none !important;
+        min-height: auto !important;
       }
 
       /* Prevent awkward page breaks */
-      .section, .exp-item, .edu-item, .project-item, .skill-category, .lang-item {
+      .exp-item, .edu-item, .project-item, .skill-category, .lang-item {
         break-inside: avoid !important;
         page-break-inside: avoid !important;
       }
@@ -668,6 +670,10 @@
       * {
         animation: none !important;
         transition: none !important;
+      }
+
+      * {
+        opacity: 1 !important;
       }
 
       /* Remove decorative background elements */
@@ -696,6 +702,10 @@
       /* Avatar grayscale for print */
       .avatar, .avatar-wrapper, .avatar-abstract {
         filter: grayscale(100%) !important;
+      }
+
+      .resume-footer, .footer-text, .footer {
+        display: none !important;
       }
     }
 

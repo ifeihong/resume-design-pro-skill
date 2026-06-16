@@ -664,8 +664,9 @@
       body {
         margin: 0 !important;
         padding: 0 !important;
-        background: #fff !important;
+        background: var(--color-surface) !important;
         color: #1a1a1a;
+        min-height: auto !important;
         perspective: none;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
@@ -677,10 +678,11 @@
         padding: 0 !important;
         box-shadow: none !important;
         transform: none !important;
+        min-height: auto !important;
       }
 
       /* Prevent awkward page breaks */
-      .section, .exp-item, .edu-item, .project-item, .skill-category, .lang-item {
+      .exp-item, .edu-item, .project-item, .skill-category, .lang-item {
         break-inside: avoid !important;
         page-break-inside: avoid !important;
       }
@@ -695,6 +697,10 @@
       * {
         animation: none !important;
         transition: none !important;
+      }
+
+      * {
+        opacity: 1 !important;
       }
 
       /* Remove decorative background elements */
@@ -787,6 +793,10 @@
       .section-icon {
         background: #d97706 !important;
         color: #fff !important;
+      }
+
+      .resume-footer, .footer-text, .footer {
+        display: none !important;
       }
     }
 
