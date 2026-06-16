@@ -578,6 +578,7 @@
         background: var(--color-bg) !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+        min-height: auto !important;
       }
 
       .container {
@@ -585,11 +586,16 @@
         margin: 0 !important;
         padding: 0 !important;
         box-shadow: none !important;
+        min-height: auto !important;
       }
 
-      .section, .exp-item, .edu-item, .project-item, .skill-category, .lang-item {
+      .exp-item, .edu-item, .project-item, .skill-category, .lang-item {
         break-inside: avoid !important;
         page-break-inside: avoid !important;
+      }
+
+      .footer-text {
+        display: none !important;
       }
 
       .section-title, .exp-role, .project-name, .edu-school {
