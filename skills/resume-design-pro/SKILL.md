@@ -7,15 +7,18 @@ description: >
   Generates ATS-compatible resumes with semantic HTML5, hidden keywords section, and standard section hierarchy — safe for applicant tracking systems.
   Generates matching cover letters with the same visual style as the selected resume template.
   Generates LinkedIn profile optimization guide with ready-to-copy-paste content for Headline, About, Experience, Education, Skills, and Featured sections.
+  Generates job search communication kit (platform messages, recruiter intros, emails) for 4 languages.
+  Generates interview preparation guide with anticipated questions.
   Supports multi-language output: English, Chinese (中文), Japanese (日本語), Korean (한국어) with proper font stacks (Noto Sans family). Roadmap: 14 additional languages including Arabic (RTL).
   Export to PDF via browser print (Ctrl+P) or Node.js Playwright scripts (single + batch export). Built-in @page rules, break-inside: avoid, and prefers-reduced-motion support.
   Avatar system: real photo upload, AI-generated professional portrait, or abstract geometric initials — with platform-specific detection (Claude Code, Trae, Codex, Cursor).
   Multiple input methods: upload existing resume (PDF/Word/image), guided 9-module conversation, direct text paste, quick mode (6 questions), or raw mode.
-  One invocation, 5 deliverables: visual HTML resume, ATS HTML resume, Markdown backup, cover letter, LinkedIn export.
+  One invocation, 8 deliverables: visual HTML resume, ATS HTML resume, Markdown backup, cover letter, LinkedIn export, job search communication kit, interview preparation guide.
+  Enhanced resume health report with 5-dimension scoring system.
   29 design aesthetics: Minimalism, Neumorphism, Glassmorphism, Cyberpunk, Brutalism, Claymorphism, Aurora, 3D Hyperrealism, Vibrant Block, Dark OLED, Organic, Blue Professional, Monochrome, Soft Editorial, Emerald Editorial, Editorial Forest, Editorial Tri-Tone, Block Frame, Cobalt Grid, Signal, Studio, Vellum, Mat, Long Table, Cartesian, Stencil Tablet, People's Platform, Grove, Broadside.
   Keywords: resume builder, CV generator, resume maker, curriculum vitae, job application, career tool, portfolio, PDF export, ATS compatible, applicant tracking system, cover letter generator, LinkedIn optimization, multi-language resume, bilingual CV, multilingual support, design template, professional resume, HTML resume, visual resume, creative resume, modern resume template, AI resume writer, resume optimizer, resume formatter, resume design, CV design, job search, career change, internship resume, executive resume, tech resume, designer resume
 license: MIT
-version: 1.2.0
+version: 1.3.0
 author: Feihong
 based_on: claudekit/frontend-design-pro-demo (MIT License), zarazhangrui/beautiful-html-templates (MIT License)
 ---
@@ -713,6 +716,20 @@ Adjust content emphasis based on target position:
 | 设计岗位 | 设计作品、用户体验、设计系统、创意能力 | 纯管理、纯开发 |
 | 高管/VP | 战略规划、团队建设、业务增长、行业洞察 | 具体执行、工具使用 |
 
+### 3.5 贡献动词门槛检查 (Contribution Verb Threshold Check)
+
+在内容优化确认环节，增加动词检查：
+
+| 动词 | 最低事实门槛 | 检查问题 |
+|------|-------------|---------|
+| 支持/协助 | 完成明确分配任务，缺少模块所有权 | 是否有独立负责的部分？ |
+| 参与 | 在项目中承担可说明的部分动作 | 具体做了什么？ |
+| 负责 | 对明确模块或交付物有所有权 | 从开始到交付的全流程？ |
+| 推动 | 主动协调关键相关方解决阻碍 | 协调了谁？解决了什么阻碍？ |
+| 主导 | 对目标、方案、关键决策和结果承担主要责任 | 是否有决策权和最终责任？ |
+
+不满足门槛时必须降级动词。团队结果不能单独证明"主导"。
+
 ## 4. Style Selection Engine
 
 After content optimization and user confirmation, recommend styles based on user's profile:
@@ -826,7 +843,7 @@ Each style has a defined color palette. Use CSS custom properties:
 
 ## 6. Output Generation
 
-### 6.1 Output Formats — One Invocation, 6 Deliverables
+### 6.1 Output Formats — One Invocation, 8 Deliverables
 
 Generate these files for the user:
 
@@ -862,6 +879,19 @@ Generate these files for the user:
 6. **LinkedIn Export** (`linkedin-export.md`) [v1.0]
    - Optimized content for LinkedIn profile sections
    - Copy-paste ready for Headline, About, Experience, etc.
+
+7. **求职沟通套件** (`job-search-kit.md`) [v1.3 NEW]
+   - 4 种场景 × 4 种语言 = 16 条沟通模板
+   - 场景：平台主动沟通、猎头合作、邮件投递、面试后感谢
+   - 语言：中文、英文、日文、韩文
+   - 每条模板根据用户简历内容定制
+   - 包含文化适配提示
+
+8. **面试准备指南** (`interview-prep.md`) [v1.3 NEW]
+   - 基于简历内容生成预期面试问题
+   - 针对数字、归因、方法、个人贡献的追问
+   - 每个问题附建议回答框架
+   - 标注高风险问题（可能被深挖的点）
 
 ### 6.2 Automatic PDF Export (自动 PDF 导出)
 
@@ -1130,6 +1160,19 @@ When user selects "No Avatar":
 | Date Format | MM/YYYY | YYYY.MM | YYYY年MM月 | YYYY.MM |
 | Phone Format | +1 (xxx) xxx-xxxx | 138-xxxx-xxxx | 090-xxxx-xxxx | 010-xxxx-xxxx |
 
+### 7.5 Job Search Communication by Culture
+
+不同语言/地区的求职沟通方式差异：
+
+| 语言 | 平台 | 沟通风格 | 特点 |
+|------|------|---------|------|
+| 中文 (zh-CN) | Boss 直聘、猎聘 | 直接、效率导向 | 简短有力，突出匹配度 |
+| 英文 (en) | LinkedIn、Indeed | 专业、价值导向 | 强调 mutual benefit |
+| 日文 (ja) | リクナビ、マイナビ | 正式、谦逊 | 敬语使用，细节丰富 |
+| 韩文 (ko) | 잡코리아、사람인 | 礼貌、层级意识 | 强调资历和稳定性 |
+
+生成沟通模板时，必须适配目标文化的沟通习惯，不能简单翻译。
+
 ## 8. User Experience & Workflow Optimization (用户体验与流程优化)
 
 ### 8.1 Onboarding Flow Redesign (入职流程重新设计)
@@ -1208,32 +1251,57 @@ When user selects "No Avatar":
 ⏳ Step 6: 生成简历
 ```
 
-### 8.3 Resume Health Report (简历健康度报告)
+### 8.3 Resume Health Report (简历健康度报告) [v1.3 Enhanced]
 
-在生成最终简历前，提供一份诊断报告：
+在生成最终简历前，提供五维诊断报告：
 
 ```
 📊 简历健康度报告
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-【内容质量】
-✅ 工作经历完整性：5/5 段经历均已收录
-⚠️  量化数据：3/8 段经历有数据支撑，建议补充更多成果数字
-✅ 时间线连续性：无空白期
+【五维评分】每项满分 100，附证据与扣分原因
 
-【匹配度分析】
-🎯 目标岗位：高级前端工程师
-✅ 技能匹配度：85%（React/Vue/Node.js 均覆盖）
-⚠️  缺失关键词：TypeScript、微前端架构（建议补充）
+① 内容完整度 (Completeness)
+   • 工作经历覆盖率：X/Y 段
+   • 技能展示完整度
+   • 项目/成果量化程度
+   得分：XX/100 | 证据：... | 扣分原因：...
 
-【优化建议】
-1. 第 2 段经历的亮点可以更量化
-2. 技能部分建议增加 "性能优化" 相关关键词
-3. 项目经验描述可以增加技术栈细节
+② 表达专业度 (Professionalism)
+   • 动词强度与事实匹配度
+   • STAR 法则应用
+   • 避免空话/套话
+   得分：XX/100 | 证据：... | 扣分原因：...
 
-💡 是否根据以上建议调整后再生成？
-   [1] 是的，帮我调整
-   [2] 直接生成当前版本
+③ ATS 兼容度 (ATS Compatibility)
+   • 标准标题使用
+   • 关键词自然覆盖
+   • 语义化结构
+   得分：XX/100 | 证据：... | 扣分原因：...
+
+④ HR 吸引力 (HR Appeal)
+   • 10 秒方向判断清晰度
+   • 前部亮点突出度
+   • 简洁度与信息密度平衡
+   得分：XX/100 | 证据：... | 扣分原因：...
+
+⑤ 可信度 (Credibility)
+   • 数据来源清楚度
+   • 个人贡献边界明确度
+   • 无夸大/编造风险
+   得分：XX/100 | 证据：... | 扣分原因：...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+综合评分：XX/500
+
+【优化建议】（按优先级排序）
+1. ...
+2. ...
+3. ...
+
+💡 请选择：
+[1] 根据建议调整后再生成
+[2] 直接生成当前版本
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -1399,6 +1467,7 @@ AI: [解析完成] 内容已提取。
 - v1.0.0 (2026-06-12): Cover Letter generation, ATS-optimized template, LinkedIn export guide, Node.js PDF export (single + batch), avatar platform detection, full print optimization
 - v1.1.0 (2026-06-15): Truthful quantification engine (no fake data), company attribution lock, experience tiering (preserve all experiences), content density selection, avatar auto-detection from PDF, resume health report, ATS compatibility preview, progress visualization, **automatic PDF export (6th deliverable)**
 - v1.2.0 (2026-06-15): **18 new design styles** (29 total) ported from beautiful-html-templates, expanded style catalog with dark theme support (4 dark themes), updated font system with per-style typography
+- v1.3.0 (2026-06-16): Enhanced resume health report with 5-dimension scoring, contribution verb threshold check, job search communication kit (4 languages × 4 scenarios), interview preparation guide, cultural adaptation for job search communication
 
 ---
 
