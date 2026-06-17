@@ -131,7 +131,6 @@ Step 4: Pick Style            Step 5: Get Everything
 | 日本語 | `ja` | Noto Sans JP | Stable |
 | 한국어 | `ko` | Noto Sans KR | Stable |
 
-**Roadmap**: 14 additional languages including Spanish, French, Arabic (RTL) — see [MULTI-LANGUAGE-EXTENSION-PLAN.md](docs/MULTI-LANGUAGE-EXTENSION-PLAN.md)
 
 ## Quick Start
 

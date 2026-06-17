@@ -3,522 +3,971 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>面试准备卡 | Resume Design Pro</title>
+<title>面试准备报告 | Resume Design Pro</title>
 <style>
   :root {
-    --primary: #2563eb;
-    --primary-light: #dbeafe;
-    --primary-dark: #1d4ed8;
-    --success: #16a34a;
-    --success-light: #dcfce7;
-    --warning: #d97706;
-    --warning-light: #fef3c7;
-    --danger: #dc2626;
-    --danger-light: #fee2e2;
-    --bg: #f8fafc;
+    --bg: #fafaf9;
     --surface: #ffffff;
-    --text: #0f172a;
-    --text-secondary: #475569;
-    --border: #e2e8f0;
-    --border-light: #f1f5f9;
-    --radius: 12px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
-    --shadow-hover: 0 4px 12px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.06);
-    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --ink: #1c1917;
+    --muted: #78716c;
+    --rule: #e7e5e4;
+    --accent: #0d9488;
+    --accent-dark: #0f766e;
+    --accent-light: #ccfbf1;
+    --accent-lighter: #f0fdfa;
+    --danger: #ef4444;
+    --danger-light: #fee2e2;
+    --warning: #f59e0b;
+    --warning-light: #fef3c7;
+    --success: #22c55e;
+    --success-light: #dcfce7;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
     font-family: var(--font);
     background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
+    color: var(--ink);
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
 
-  .container { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
-
-  header { margin-bottom: 24px; }
-  header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
-  header .subtitle { color: var(--text-secondary); font-size: 0.875rem; margin-top: 2px; }
-
-  /* 轮次标签栏 */
-  .round-tabs {
-    display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
-  .round-tab {
-    padding: 8px 18px; border-radius: 999px; border: 1px solid var(--border);
-    background: var(--surface); color: var(--text-secondary); font-size: 0.875rem; font-weight: 600;
-    cursor: pointer; transition: all 0.2s; user-select: none;
-  }
-  .round-tab:hover { border-color: var(--primary); color: var(--primary); }
-  .round-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-  /* 学习卡片 */
-  .card-list { display: flex; flex-direction: column; gap: 16px; }
-  .card {
+  /* ===== Header ===== */
+  header {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--rule);
+    padding: 40px 0 28px;
+    margin-bottom: 36px;
+  }
+
+  .header-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: var(--muted);
+    font-size: 0.8125rem;
+    margin-top: 8px;
+  }
+
+  .header-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ===== Round Section ===== */
+  .round-section {
+    margin-bottom: 36px;
+  }
+
+  .round-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .round-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .round-icon.hr { background: var(--danger-light); color: var(--danger); }
+  .round-icon.tech { background: var(--warning-light); color: var(--warning); }
+  .round-icon.exec { background: var(--success-light); color: var(--success); }
+
+  .round-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .round-desc {
+    color: var(--muted);
+    font-size: 0.8125rem;
+    margin-bottom: 16px;
+    padding-left: 52px;
+  }
+
+  .round-desc strong {
+    color: var(--ink);
+  }
+
+  /* ===== Question Card ===== */
+  .question-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.15s;
+    transition: box-shadow 0.2s;
   }
-  .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
-  .card-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 18px; border-bottom: 1px solid var(--border-light); cursor: pointer;
-  }
-  .card-header-left { display: flex; align-items: center; gap: 12px; }
-  .card-number {
-    width: 28px; height: 28px; border-radius: 8px; background: var(--primary-light); color: var(--primary-dark);
-    display: inline-flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 700; flex-shrink: 0;
-  }
-  .card-question { font-size: 1rem; font-weight: 600; }
-  .card-badge {
-    font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; margin-left: 8px; flex-shrink: 0;
-  }
-  .badge-hr { background: var(--danger-light); color: var(--danger); border: 1px solid #fecaca; }
-  .badge-tech { background: var(--warning-light); color: var(--warning); border: 1px solid #fde68a; }
-  .badge-exec { background: var(--success-light); color: var(--success); border: 1px solid #bbf7d0; }
-  .card-toggle { font-size: 1.25rem; color: var(--text-secondary); transition: transform 0.25s; line-height: 1; }
-  .card.open .card-toggle { transform: rotate(180deg); }
 
-  .card-body {
-    max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  .question-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   }
-  .card.open .card-body { max-height: 1200px; }
-  .card-inner { padding: 0 18px 18px; }
 
-  .hint-box {
-    background: var(--primary-light); border: 1px solid #bfdbfe; border-radius: 10px;
-    padding: 12px 14px; font-size: 0.875rem; color: var(--primary-dark); margin-bottom: 14px;
+  .question-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 20px;
+    cursor: pointer;
+    user-select: none;
   }
-  .hint-box strong { display: block; margin-bottom: 4px; }
 
-  .answer-area { margin-bottom: 14px; }
-  .answer-area label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
-  .answer-area textarea {
-    width: 100%; min-height: 100px; padding: 12px; border: 1px solid var(--border); border-radius: 10px;
-    font-family: inherit; font-size: 0.9375rem; line-height: 1.6; background: var(--bg); resize: vertical;
+  .question-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
   }
-  .answer-area textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
 
-  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
-  .btn {
-    padding: 8px 16px; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: all 0.15s;
+  .question-body {
+    flex: 1;
   }
-  .btn-primary { background: var(--primary); color: #fff; }
-  .btn-primary:hover { background: var(--primary-dark); }
-  .btn-secondary { background: var(--bg); color: var(--text-secondary); border-color: var(--border); }
-  .btn-secondary:hover { background: var(--border-light); }
-  .btn-success { background: var(--success); color: #fff; }
-  .btn-success:hover { background: #15803d; }
-  .btn-success.ghost { background: var(--success-light); color: var(--success); border-color: #bbf7d0; }
-  .btn-success.ghost:hover { background: var(--success); color: #fff; }
 
-  .feedback {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 10px; display: none;
+  .question-text {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.5;
   }
-  .feedback.show { display: block; animation: fadeIn 0.3s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-  .feedback-score { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .score-pill {
-    font-size: 0.875rem; font-weight: 700; padding: 4px 12px; border-radius: 999px;
-  }
-  .score-high { background: var(--success-light); color: var(--success); }
-  .score-mid { background: var(--warning-light); color: var(--warning); }
-  .score-low { background: var(--danger-light); color: var(--danger); }
-  .feedback-title { font-weight: 700; font-size: 0.9375rem; margin-bottom: 6px; }
-  .feedback-list { list-style: none; }
-  .feedback-list li { font-size: 0.875rem; color: var(--text-secondary); padding: 3px 0; padding-left: 18px; position: relative; }
-  .feedback-list li::before { content: '•'; position: absolute; left: 4px; color: var(--primary); font-weight: 700; }
 
-  .mastered-bar {
-    display: flex; align-items: center; gap: 10px; padding-top: 6px; border-top: 1px dashed var(--border-light);
+  .question-focus {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 4px;
   }
-  .mastered-text { font-size: 0.8125rem; color: var(--text-secondary); }
-  .mastered-check { display: none; }
-  .mastered-check + span {
-    width: 18px; height: 18px; border: 2px solid var(--border); border-radius: 5px; display: inline-block; cursor: pointer; transition: all 0.2s;
-  }
-  .mastered-check:checked + span { background: var(--success); border-color: var(--success); position: relative; }
-  .mastered-check:checked + span::after {
-    content: ''; position: absolute; top: 2px; left: 5px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg);
-  }
-  .mastered-label { cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--text-secondary); user-select: none; }
-  .mastered-label.done { color: var(--success); font-weight: 600; }
 
-  footer { text-align: center; color: var(--text-secondary); font-size: 0.75rem; margin-top: 28px; padding-bottom: 24px; }
+  .question-toggle {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.75rem;
+    transition: transform 0.25s;
+    margin-top: 4px;
+  }
 
+  .question-card.open .question-toggle {
+    transform: rotate(180deg);
+  }
+
+  .question-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .question-card.open .question-detail {
+    max-height: 800px;
+  }
+
+  .question-detail-inner {
+    padding: 0 20px 20px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* Answer Key Points */
+  .answer-section {
+    margin-top: 16px;
+  }
+
+  .answer-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .answer-label::before {
+    content: '';
+    width: 3px;
+    height: 14px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .answer-points {
+    list-style: none;
+    padding: 0;
+  }
+
+  .answer-points li {
+    font-size: 0.8125rem;
+    color: var(--ink);
+    padding: 6px 0 6px 20px;
+    position: relative;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .answer-points li:last-child {
+    border-bottom: none;
+  }
+
+  .answer-points li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 13px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* Scoring Criteria */
+  .scoring-section {
+    margin-top: 16px;
+  }
+
+  .scoring-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .scoring-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .scoring-item {
+    flex: 1;
+    min-width: 120px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .scoring-item.excellent {
+    background: var(--success-light);
+    border: 1px solid #bbf7d0;
+  }
+
+  .scoring-item.good {
+    background: var(--accent-lighter);
+    border: 1px solid var(--accent-light);
+  }
+
+  .scoring-item.average {
+    background: var(--warning-light);
+    border: 1px solid #fde68a;
+  }
+
+  .scoring-level {
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .scoring-item.excellent .scoring-level { color: #166534; }
+  .scoring-item.good .scoring-level { color: var(--accent-dark); }
+  .scoring-item.average .scoring-level { color: #92400e; }
+
+  .scoring-desc {
+    color: var(--muted);
+  }
+
+  /* ===== Tips Section ===== */
+  .tips-section {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    margin-bottom: 32px;
+  }
+
+  .tips-section h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tips-section h3::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .tip-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.875rem;
+  }
+
+  .tip-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .tip-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .tip-text {
+    flex: 1;
+    line-height: 1.6;
+  }
+
+  .tip-text strong {
+    color: var(--accent-dark);
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    text-align: center;
+    padding: 32px 0;
+    color: var(--muted);
+    font-size: 0.8125rem;
+    border-top: 1px solid var(--rule);
+    margin-top: 16px;
+  }
+
+  footer strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    .round-desc {
+      padding-left: 0;
+    }
+
+    .scoring-grid {
+      flex-direction: column;
+    }
+
+    .scoring-item {
+      min-width: 100%;
+    }
+
+    .question-header {
+      padding: 14px 16px;
+    }
+
+    .question-detail-inner {
+      padding: 0 16px 16px;
+    }
+  }
+
+  /* ===== Print ===== */
   @media print {
     body { background: #fff; }
-    .card { box-shadow: none; border-color: #ddd; break-inside: avoid; }
-    .card-body { max-height: none !important; overflow: visible !important; }
-    .card-toggle, .actions, .mastered-bar { display: none !important; }
-    .answer-area textarea { border-color: #ccc; background: #fff; }
-    .feedback { display: block !important; border-color: #ddd; }
+
+    .question-card, .tips-section {
+      box-shadow: none;
+      break-inside: avoid;
+    }
+
+    .question-detail {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    .question-toggle {
+      display: none !important;
+    }
+
+    .question-header {
+      cursor: default;
+    }
   }
 </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <div>
-      <h1>面试准备卡</h1>
-      <div class="subtitle">按轮次分类 · 模拟练习 · 评分反馈</div>
-    </div>
-  </header>
 
-  <div class="round-tabs">
-    <div class="round-tab active" data-filter="all" onclick="filterRound(this)">全部</div>
-    <div class="round-tab" data-filter="hr" onclick="filterRound(this)">HR 面</div>
-    <div class="round-tab" data-filter="tech" onclick="filterRound(this)">技术面</div>
-    <div class="round-tab" data-filter="exec" onclick="filterRound(this)">高管面</div>
-  </div>
-
-  <div class="card-list" id="cardList">
-    <!-- HR 面 -->
-    <div class="card" data-round="hr">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-header-left">
-          <span class="card-number">1</span>
-          <span class="card-question">请做一个简短的自我介绍</span>
-          <span class="card-badge badge-hr">HR 面</span>
-        </div>
-        <span class="card-toggle">&#9662;</span>
-      </div>
-      <div class="card-body">
-        <div class="card-inner">
-          <div class="hint-box">
-            <strong>答题要点</strong>
-            控制在 1-2 分钟；按「背景 + 核心经历 + 应聘动机」结构；突出与岗位匹配的关键词；用数据量化成果。
-          </div>
-          <div class="answer-area">
-            <label>模拟回答</label>
-            <textarea placeholder="在此输入您的模拟回答..."></textarea>
-          </div>
-          <div class="actions">
-            <button class="btn btn-primary" onclick="submitAnswer(this)">提交评分</button>
-            <button class="btn btn-secondary" onclick="showSample(this)">查看范例</button>
-          </div>
-          <div class="feedback">
-            <div class="feedback-score">
-              <span class="score-pill score-high">评分: 85/100</span>
-              <span style="font-size:0.8125rem;color:var(--text-secondary)">结构清晰，数据充分</span>
-            </div>
-            <div class="feedback-title">改进建议</div>
-            <ul class="feedback-list">
-              <li>开场可以更简洁，直接进入核心经历</li>
-              <li>建议补充一个与目标公司业务相关的案例</li>
-              <li>结尾的应聘动机可以更有针对性</li>
-            </ul>
-          </div>
-          <div class="mastered-bar">
-            <label class="mastered-label">
-              <input type="checkbox" class="mastered-check" onchange="toggleMastered(this)">
-              <span></span>
-              <span class="mastered-text">标记为已掌握</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-round="hr">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-header-left">
-          <span class="card-number">2</span>
-          <span class="card-question">你为什么想离开现在的公司？</span>
-          <span class="card-badge badge-hr">HR 面</span>
-        </div>
-        <span class="card-toggle">&#9662;</span>
-      </div>
-      <div class="card-body">
-        <div class="card-inner">
-          <div class="hint-box">
-            <strong>答题要点</strong>
-            避免负面评价前公司；聚焦「寻求成长」而非「逃避问题」；将离职原因与新岗位机会自然衔接。
-          </div>
-          <div class="answer-area">
-            <label>模拟回答</label>
-            <textarea placeholder="在此输入您的模拟回答..."></textarea>
-          </div>
-          <div class="actions">
-            <button class="btn btn-primary" onclick="submitAnswer(this)">提交评分</button>
-            <button class="btn btn-secondary" onclick="showSample(this)">查看范例</button>
-          </div>
-          <div class="feedback">
-            <div class="feedback-score">
-              <span class="score-pill score-mid">评分: 72/100</span>
-              <span style="font-size:0.8125rem;color:var(--text-secondary)">表述偏消极，需调整角度</span>
-            </div>
-            <div class="feedback-title">改进建议</div>
-            <ul class="feedback-list">
-              <li>减少描述现有环境的不满，增加对新机会的期待</li>
-              <li>强调个人职业发展规划与新岗位的契合度</li>
-              <li>可提及希望接触更大规模的产品或更复杂的业务场景</li>
-            </ul>
-          </div>
-          <div class="mastered-bar">
-            <label class="mastered-label">
-              <input type="checkbox" class="mastered-check" onchange="toggleMastered(this)">
-              <span></span>
-              <span class="mastered-text">标记为已掌握</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 技术面 -->
-    <div class="card" data-round="tech">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-header-left">
-          <span class="card-number">3</span>
-          <span class="card-question">请描述你主导过的一个复杂项目，如何拆解并推进？</span>
-          <span class="card-badge badge-tech">技术面</span>
-        </div>
-        <span class="card-toggle">&#9662;</span>
-      </div>
-      <div class="card-body">
-        <div class="card-inner">
-          <div class="hint-box">
-            <strong>答题要点</strong>
-            使用 STAR 法则（情境-任务-行动-结果）；突出技术/产品决策过程；量化最终成果；提及团队协作与冲突解决。
-          </div>
-          <div class="answer-area">
-            <label>模拟回答</label>
-            <textarea placeholder="在此输入您的模拟回答..."></textarea>
-          </div>
-          <div class="actions">
-            <button class="btn btn-primary" onclick="submitAnswer(this)">提交评分</button>
-            <button class="btn btn-secondary" onclick="showSample(this)">查看范例</button>
-          </div>
-          <div class="feedback">
-            <div class="feedback-score">
-              <span class="score-pill score-high">评分: 90/100</span>
-              <span style="font-size:0.8125rem;color:var(--text-secondary)">STAR 结构完整，数据亮眼</span>
-            </div>
-            <div class="feedback-title">改进建议</div>
-            <ul class="feedback-list">
-              <li>可在「行动」部分增加一个关键决策的备选方案对比</li>
-              <li>结果部分建议补充长期影响，而非仅短期数据</li>
-            </ul>
-          </div>
-          <div class="mastered-bar">
-            <label class="mastered-label">
-              <input type="checkbox" class="mastered-check" onchange="toggleMastered(this)">
-              <span></span>
-              <span class="mastered-text">标记为已掌握</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-round="tech">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-header-left">
-          <span class="card-number">4</span>
-          <span class="card-question">如果上线后发现核心指标下跌 20%，你会怎么做？</span>
-          <span class="card-badge badge-tech">技术面</span>
-        </div>
-        <span class="card-toggle">&#9662;</span>
-      </div>
-      <div class="card-body">
-        <div class="card-inner">
-          <div class="hint-box">
-            <strong>答题要点</strong>
-            先定位问题（数据分层、归因分析）；区分相关性 vs 因果性；给出短期止损 + 长期修复方案；体现数据敏感度。
-          </div>
-          <div class="answer-area">
-            <label>模拟回答</label>
-            <textarea placeholder="在此输入您的模拟回答..."></textarea>
-          </div>
-          <div class="actions">
-            <button class="btn btn-primary" onclick="submitAnswer(this)">提交评分</button>
-            <button class="btn btn-secondary" onclick="showSample(this)">查看范例</button>
-          </div>
-          <div class="feedback">
-            <div class="feedback-score">
-              <span class="score-pill score-low">评分: 65/100</span>
-              <span style="font-size:0.8125rem;color:var(--text-secondary)">分析框架不够系统</span>
-            </div>
-            <div class="feedback-title">改进建议</div>
-            <ul class="feedback-list">
-              <li>建议先明确指标定义和统计口径，排除数据异常</li>
-              <li>按用户维度、时间维度、功能维度做下钻分析</li>
-              <li>区分「已知变更导致」vs「外部因素导致」</li>
-              <li>给出可落地的 A/B 回滚或热修复方案</li>
-            </ul>
-          </div>
-          <div class="mastered-bar">
-            <label class="mastered-label">
-              <input type="checkbox" class="mastered-check" onchange="toggleMastered(this)">
-              <span></span>
-              <span class="mastered-text">标记为已掌握</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 高管面 -->
-    <div class="card" data-round="exec">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-header-left">
-          <span class="card-number">5</span>
-          <span class="card-question">你如何看待行业未来 3 年的发展趋势？</span>
-          <span class="card-badge badge-exec">高管面</span>
-        </div>
-        <span class="card-toggle">&#9662;</span>
-      </div>
-      <div class="card-body">
-        <div class="card-inner">
-          <div class="hint-box">
-            <strong>答题要点</strong>
-            展现宏观视野与行业洞察；结合具体数据或案例支撑观点；关联个人职业规划与公司战略；体现批判性思维。
-          </div>
-          <div class="answer-area">
-            <label>模拟回答</label>
-            <textarea placeholder="在此输入您的模拟回答..."></textarea>
-          </div>
-          <div class="actions">
-            <button class="btn btn-primary" onclick="submitAnswer(this)">提交评分</button>
-            <button class="btn btn-secondary" onclick="showSample(this)">查看范例</button>
-          </div>
-          <div class="feedback">
-            <div class="feedback-score">
-              <span class="score-pill score-mid">评分: 78/100</span>
-              <span style="font-size:0.8125rem;color:var(--text-secondary)">观点合理，但缺乏独特视角</span>
-            </div>
-            <div class="feedback-title">改进建议</div>
-            <ul class="feedback-list">
-              <li>可引用 1-2 个权威行业报告数据增强说服力</li>
-              <li>尝试提出一个反共识观点并论证，展现独立思考</li>
-              <li>将趋势判断与应聘岗位的具体职责做关联</li>
-            </ul>
-          </div>
-          <div class="mastered-bar">
-            <label class="mastered-label">
-              <input type="checkbox" class="mastered-check" onchange="toggleMastered(this)">
-              <span></span>
-              <span class="mastered-text">标记为已掌握</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-round="exec">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-header-left">
-          <span class="card-number">6</span>
-          <span class="card-question">如果你入职后，发现团队对你的期望与面试时不一致，你会怎么处理？</span>
-          <span class="card-badge badge-exec">高管面</span>
-        </div>
-        <span class="card-toggle">&#9662;</span>
-      </div>
-      <div class="card-body">
-        <div class="card-inner">
-          <div class="hint-box">
-            <strong>答题要点</strong>
-            先倾听与理解，避免急于反驳；主动沟通对齐期望；展现适应力与问题解决能力；强调长期价值而非短期情绪。
-          </div>
-          <div class="answer-area">
-            <label>模拟回答</label>
-            <textarea placeholder="在此输入您的模拟回答..."></textarea>
-          </div>
-          <div class="actions">
-            <button class="btn btn-primary" onclick="submitAnswer(this)">提交评分</button>
-            <button class="btn btn-secondary" onclick="showSample(this)">查看范例</button>
-          </div>
-          <div class="feedback">
-            <div class="feedback-score">
-              <span class="score-pill score-high">评分: 88/100</span>
-              <span style="font-size:0.8125rem;color:var(--text-secondary)">情商高，处理成熟</span>
-            </div>
-            <div class="feedback-title">改进建议</div>
-            <ul class="feedback-list">
-              <li>可增加一个具体的沟通话术示例</li>
-              <li>建议提及如何在 30/60/90 天内逐步建立信任</li>
-            </ul>
-          </div>
-          <div class="mastered-bar">
-            <label class="mastered-label">
-              <input type="checkbox" class="mastered-check" onchange="toggleMastered(this)">
-              <span></span>
-              <span class="mastered-text">标记为已掌握</span>
-            </label>
-          </div>
-        </div>
-      </div>
+<header>
+  <div class="container">
+    <div class="header-tag">AI 面试准备</div>
+    <h1>面试准备报告</h1>
+    <p style="color: var(--muted); font-size: 0.9375rem; margin-top: 4px;">
+      {{NAME}} -- 目标岗位：<strong>{{TARGET_ROLE}}</strong>
+    </p>
+    <div class="header-meta">
+      <span>生成时间：{{GENERATED_AT}}</span>
+      <span>版本：v1.0</span>
     </div>
   </div>
+</header>
 
-  <footer>由 Resume Design Pro 生成 · 评分与建议为模拟演示，实际优化请在对话中由 AI 完成</footer>
-</div>
+<main class="container">
+
+  <!-- ==================== HR 面 ==================== -->
+  <div class="round-section">
+    <div class="round-header">
+      <div class="round-icon hr">HR</div>
+      <div class="round-title">HR 面（人力资源面）</div>
+    </div>
+    <div class="round-desc">
+      <strong>考察重点：</strong>求职动机、稳定性、文化匹配、薪资期望、自我认知<br>
+      <strong>预计题量：</strong>{{HR_QUESTION_COUNT}} 题 | <strong>建议时长：</strong>{{HR_DURATION}}
+    </div>
+
+    <!-- Q1 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">1</span>
+        <div class="question-body">
+          <div class="question-text">{{HR_Q1_TEXT}}</div>
+          <div class="question-focus">考察要点：{{HR_Q1_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{HR_Q1_POINT_1}}</li>
+              <li>{{HR_Q1_POINT_2}}</li>
+              <li>{{HR_Q1_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{HR_Q1_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{HR_Q1_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{HR_Q1_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">2</span>
+        <div class="question-body">
+          <div class="question-text">{{HR_Q2_TEXT}}</div>
+          <div class="question-focus">考察要点：{{HR_Q2_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{HR_Q2_POINT_1}}</li>
+              <li>{{HR_Q2_POINT_2}}</li>
+              <li>{{HR_Q2_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{HR_Q2_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{HR_Q2_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{HR_Q2_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">3</span>
+        <div class="question-body">
+          <div class="question-text">{{HR_Q3_TEXT}}</div>
+          <div class="question-focus">考察要点：{{HR_Q3_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{HR_Q3_POINT_1}}</li>
+              <li>{{HR_Q3_POINT_2}}</li>
+              <li>{{HR_Q3_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{HR_Q3_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{HR_Q3_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{HR_Q3_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==================== 技术面 ==================== -->
+  <div class="round-section">
+    <div class="round-header">
+      <div class="round-icon tech">TECH</div>
+      <div class="round-title">技术面（专业能力面）</div>
+    </div>
+    <div class="round-desc">
+      <strong>考察重点：</strong>专业深度、项目经验、问题解决能力、技术视野<br>
+      <strong>预计题量：</strong>{{TECH_QUESTION_COUNT}} 题 | <strong>建议时长：</strong>{{TECH_DURATION}}
+    </div>
+
+    <!-- Q1 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">1</span>
+        <div class="question-body">
+          <div class="question-text">{{TECH_Q1_TEXT}}</div>
+          <div class="question-focus">考察要点：{{TECH_Q1_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{TECH_Q1_POINT_1}}</li>
+              <li>{{TECH_Q1_POINT_2}}</li>
+              <li>{{TECH_Q1_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{TECH_Q1_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{TECH_Q1_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{TECH_Q1_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">2</span>
+        <div class="question-body">
+          <div class="question-text">{{TECH_Q2_TEXT}}</div>
+          <div class="question-focus">考察要点：{{TECH_Q2_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{TECH_Q2_POINT_1}}</li>
+              <li>{{TECH_Q2_POINT_2}}</li>
+              <li>{{TECH_Q2_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{TECH_Q2_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{TECH_Q2_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{TECH_Q2_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">3</span>
+        <div class="question-body">
+          <div class="question-text">{{TECH_Q3_TEXT}}</div>
+          <div class="question-focus">考察要点：{{TECH_Q3_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{TECH_Q3_POINT_1}}</li>
+              <li>{{TECH_Q3_POINT_2}}</li>
+              <li>{{TECH_Q3_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{TECH_Q3_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{TECH_Q3_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{TECH_Q3_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">4</span>
+        <div class="question-body">
+          <div class="question-text">{{TECH_Q4_TEXT}}</div>
+          <div class="question-focus">考察要点：{{TECH_Q4_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{TECH_Q4_POINT_1}}</li>
+              <li>{{TECH_Q4_POINT_2}}</li>
+              <li>{{TECH_Q4_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{TECH_Q4_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{TECH_Q4_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{TECH_Q4_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==================== 高管面 ==================== -->
+  <div class="round-section">
+    <div class="round-header">
+      <div class="round-icon exec">EXEC</div>
+      <div class="round-title">高管面（终面 / 文化面）</div>
+    </div>
+    <div class="round-desc">
+      <strong>考察重点：</strong>战略思维、领导力、价值观匹配、长期潜力<br>
+      <strong>预计题量：</strong>{{EXEC_QUESTION_COUNT}} 题 | <strong>建议时长：</strong>{{EXEC_DURATION}}
+    </div>
+
+    <!-- Q1 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">1</span>
+        <div class="question-body">
+          <div class="question-text">{{EXEC_Q1_TEXT}}</div>
+          <div class="question-focus">考察要点：{{EXEC_Q1_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{EXEC_Q1_POINT_1}}</li>
+              <li>{{EXEC_Q1_POINT_2}}</li>
+              <li>{{EXEC_Q1_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{EXEC_Q1_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{EXEC_Q1_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{EXEC_Q1_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">2</span>
+        <div class="question-body">
+          <div class="question-text">{{EXEC_Q2_TEXT}}</div>
+          <div class="question-focus">考察要点：{{EXEC_Q2_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{EXEC_Q2_POINT_1}}</li>
+              <li>{{EXEC_Q2_POINT_2}}</li>
+              <li>{{EXEC_Q2_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{EXEC_Q2_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{EXEC_Q2_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{EXEC_Q2_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-card">
+      <div class="question-header" onclick="toggleQuestion(this)">
+        <span class="question-number">3</span>
+        <div class="question-body">
+          <div class="question-text">{{EXEC_Q3_TEXT}}</div>
+          <div class="question-focus">考察要点：{{EXEC_Q3_FOCUS}}</div>
+        </div>
+        <span class="question-toggle">&#9662;</span>
+      </div>
+      <div class="question-detail">
+        <div class="question-detail-inner">
+          <div class="answer-section">
+            <div class="answer-label">参考回答要点</div>
+            <ul class="answer-points">
+              <li>{{EXEC_Q3_POINT_1}}</li>
+              <li>{{EXEC_Q3_POINT_2}}</li>
+              <li>{{EXEC_Q3_POINT_3}}</li>
+            </ul>
+          </div>
+          <div class="scoring-section">
+            <div class="scoring-label">评分标准</div>
+            <div class="scoring-grid">
+              <div class="scoring-item excellent">
+                <div class="scoring-level">优秀</div>
+                <div class="scoring-desc">{{EXEC_Q3_SCORE_EXCELLENT}}</div>
+              </div>
+              <div class="scoring-item good">
+                <div class="scoring-level">良好</div>
+                <div class="scoring-desc">{{EXEC_Q3_SCORE_GOOD}}</div>
+              </div>
+              <div class="scoring-item average">
+                <div class="scoring-level">一般</div>
+                <div class="scoring-desc">{{EXEC_Q3_SCORE_AVERAGE}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==================== 通用面试技巧 ==================== -->
+  <div class="tips-section">
+    <h3>通用面试技巧</h3>
+
+    <div class="tip-item">
+      <span class="tip-num">1</span>
+      <div class="tip-text">
+        <strong>STAR 法则回答行为面试题</strong>：使用「情境(Situation)-任务(Task)-行动(Action)-结果(Result)」结构，确保回答有逻辑、有细节、有数据支撑。
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <span class="tip-num">2</span>
+      <div class="tip-text">
+        <strong>提前研究目标公司</strong>：了解公司近期的产品动态、行业新闻、财报亮点，在回答中自然融入，展现你的诚意和准备度。
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <span class="tip-num">3</span>
+      <div class="tip-text">
+        <strong>准备 2-3 个反问问题</strong>：面试结束时的反问环节是展示思考深度的机会，如 "这个岗位入职后 90 天最重要的目标是什么？"
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <span class="tip-num">4</span>
+      <div class="tip-text">
+        <strong>控制回答节奏</strong>：每道题控制在 1.5-3 分钟，先给出核心结论再展开细节，避免冗长跑题。面试官追问时再深入。
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <span class="tip-num">5</span>
+      <div class="tip-text">
+        <strong>保持真诚和自信</strong>：遇到不确定的问题，坦诚表达 "这个问题我需要进一步了解" 比编造答案更受欢迎。展现学习态度和成长型思维。
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>Resume Design Pro</strong> -- 面试准备报告 | 由 AI 生成，仅供参考</p>
+  </div>
+</footer>
 
 <script>
-(function() {
-  window.toggleCard = function(header) {
-    var card = header.closest('.card');
-    card.classList.toggle('open');
-  };
-
-  window.filterRound = function(tab) {
-    document.querySelectorAll('.round-tab').forEach(function(t) { t.classList.remove('active'); });
-    tab.classList.add('active');
-    var filter = tab.getAttribute('data-filter');
-    document.querySelectorAll('.card').forEach(function(card) {
-      if (filter === 'all' || card.getAttribute('data-round') === filter) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  };
-
-  window.submitAnswer = function(btn) {
-    var card = btn.closest('.card');
-    var feedback = card.querySelector('.feedback');
-    feedback.classList.add('show');
-    // 滚动到反馈区域
-    setTimeout(function() {
-      feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 100);
-  };
-
-  window.showSample = function(btn) {
-    var card = btn.closest('.card');
-    var textarea = card.querySelector('textarea');
-    var samples = {
-      '1': '您好，我是张伟，5 年 B 端产品经验。过去三年在 XX 科技主导 SaaS 平台从 0 到 1 落地，服务 2000+ 企业客户，ARR 增长 120%。我擅长通过数据驱动产品决策，曾将用户留存率提升 35%。了解到贵司正在拓展企业服务端，我的增长方法论与产品经验与该方向高度契合，希望能加入团队共创价值。',
-      '2': '我在现公司已经获得了扎实的成长，完成了从执行者到团队负责人的转变。但随着职业规划的调整，我希望能在更大规模的产品上验证自己的方法论，并接触更复杂的业务场景。贵司在 B 端 SaaS 领域的领先地位和清晰的产品战略非常吸引我，我相信这里能让我实现下一阶段的目标。',
-      '3': '在 XX 科技期间，我负责企业服务平台重构（Situation）。目标是解决客户反馈的操作繁琐问题，将核心流程耗时降低 50%（Task）。我带领 5 人小组用两周完成用户调研，识别出 12 个关键痛点，重新设计信息架构并推动开发落地（Action）。上线后客户 NPS 从 32 提升至 58，月度活跃客户增长 40%（Result）。',
-      '4': '第一步，我会确认指标口径和统计周期，排除数据异常。第二步，按用户分层（新/老用户）、功能模块、渠道来源做下钻分析，定位下跌最集中的维度。第三步，排查近期产品变更、运营活动、外部事件（如竞品动作）。如果确认是某次上线导致，立即评估回滚成本并启动灰度回滚；如果是外部因素，制定针对性运营策略对冲。整个过程中保持与业务、技术、运营的实时同步。',
-      '5': '我认为未来三年 B 端 SaaS 将经历从「工具化」到「智能化」的跃迁。根据 Gartner 预测，到 2027 年 50% 的企业软件将嵌入 AI 能力。这意味着产品经理的核心竞争力将从功能设计转向「人机协作流程设计」。我观察到贵司已经在智能客服领域布局，这正是我过去两年深耕的方向，我希望能在这一浪潮中贡献自己的经验。',
-      '6': '首先，我会在入职首月安排与直属上级和关键 stakeholders 的一对一沟通，明确期望差异的具体内容。其次，我会主动输出一份 30-60-90 天计划，展示我如何逐步弥合差距并交付价值。如果期望确实超出当前能力，我会坦诚沟通并制定学习路径，争取在试用期内达到标准。我相信通过透明沟通和快速迭代，能够建立信任并找到最佳的合作方式。'
-    };
-    var num = card.querySelector('.card-number').textContent.trim();
-    if (samples[num]) {
-      textarea.value = samples[num];
-    }
-  };
-
-  window.toggleMastered = function(checkbox) {
-    var label = checkbox.closest('.mastered-label');
-    var text = label.querySelector('.mastered-text');
-    if (checkbox.checked) {
-      label.classList.add('done');
-      text.textContent = '已掌握';
-    } else {
-      label.classList.remove('done');
-      text.textContent = '标记为已掌握';
-    }
-  };
-})();
+function toggleQuestion(header) {
+  var card = header.closest('.question-card');
+  card.classList.toggle('open');
+}
 </script>
+
 </body>
 </html>
