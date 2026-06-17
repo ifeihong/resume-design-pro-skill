@@ -196,14 +196,14 @@ resume-design-pro/
 |   |-- ... (共 29 套)
 |   |-- ats-template.html                # ATS 优化版本
 |   |-- cover-letter-template.html       # 求职信模板
-|   |-- linkedin-export.html             # LinkedIn 优化指南
 |   |-- _shared/
 |   |   |-- demo-content-zh.md           # 标准化演示内容
 |-- deliverables/                        # 报告模板（AI 生成时填充占位符的静态报告）
 |   |-- resume-diagnosis.html            # 简历诊断报告（JD 匹配分析）
 |   |-- interview-prep.html              # 面试准备报告
 |   |-- job-search-kit.html              # 求职策略报告
-|-- demos/                               # 示例简历
+|   |-- linkedin-export.html             # LinkedIn 优化指南
+|-- output/                              # 默认输出目录，存放生成的简历文件
 |-- scripts/                             # 导出与持久化工具
 |   |-- export-pdf.js                    # 单文件 PDF 导出（Playwright）
 |   |-- export-pdf-batch.js              # 批量导出
@@ -213,6 +213,7 @@ resume-design-pro/
 |   |-- README.md
 |-- docs/                                # 文档
 |   |-- USER-GUIDE.md                    # 用户指南
+|-- tests/                               # 测试计划
 |-- LICENSE                              # MIT 许可证
 |-- README.md                            # 英文版说明
 |-- THIRD_PARTY_NOTICES.md               # 第三方声明

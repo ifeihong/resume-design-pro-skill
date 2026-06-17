@@ -196,14 +196,14 @@ resume-design-pro/
 |   |-- ... (29가지)
 |   |-- ats-template.html                # ATS 최적화 버전
 |   |-- cover-letter-template.html       # 자기소개서 템플릿
-|   |-- linkedin-export.html             # LinkedIn 최적화 가이드
 |   |-- _shared/
 |   |   |-- demo-content-zh.md           # 표준화된 데모 콘텐츠
 |-- deliverables/                        # 생성된 산출물 및 보고서 템플릿（이력서 진단, 면접 준비, 구직 전략 보고서 등）
 |   |-- resume-diagnosis.html            # 이력서 진단 보고서（JD 매칭 분석）
 |   |-- interview-prep.html              # 면접 준비 보고서
 |   |-- job-search-kit.html              # 구직 전략 보고서
-|-- demos/                               # 샘플 이력서
+|   |-- linkedin-export.html             # LinkedIn 최적화 가이드
+|-- output/                              # 생성된 이력서의 기본 출력 디렉토리
 |-- scripts/                             # 내보내기 및 지속성 도구
 |   |-- export-pdf.js                    # 단일 파일 PDF 내보내기（Playwright）
 |   |-- export-pdf-batch.js              # 일괄 내보내기
@@ -213,6 +213,7 @@ resume-design-pro/
 |   |-- README.md
 |-- docs/                                # 문서
 |   |-- USER-GUIDE.md                    # 사용자 가이드
+|-- tests/                               # 테스트 계획
 |-- LICENSE                              # MIT 라이선스
 |-- README.md                            # 영문판
 |-- THIRD_PARTY_NOTICES.md               # 서드파티 고지

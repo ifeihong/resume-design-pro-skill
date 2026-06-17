@@ -199,14 +199,14 @@ resume-design-pro/
 |   |-- ... (29 total)
 |   |-- ats-template.html                # ATS-optimized version
 |   |-- cover-letter-template.html       # Cover letter template
-|   |-- linkedin-export.html             # LinkedIn optimization guide
 |   |-- _shared/
 |   |   |-- demo-content-zh.md           # Standardized demo content
-|-- deliverables/                        # Generated report templates
+|-- deliverables/                        # Generated report templates (AI fills placeholders)
 |   |-- resume-diagnosis.html            # JD matching diagnosis report
 |   |-- interview-prep.html              # Interview preparation report
 |   |-- job-search-kit.html              # Job search strategy report
-|-- demos/                               # Example resumes
+|   |-- linkedin-export.html             # LinkedIn optimization guide
+|-- output/                              # Default output directory for generated resumes
 |-- scripts/                             # Export & persistence tools
 |   |-- export-pdf.js                    # Single file PDF export (Playwright)
 |   |-- export-pdf-batch.js              # Batch export
@@ -216,6 +216,7 @@ resume-design-pro/
 |   |-- README.md
 |-- docs/                                # Documentation
 |   |-- USER-GUIDE.md                    # User guide
+|-- tests/                               # Test plans
 |-- LICENSE                              # MIT License
 |-- README.md                            # This file
 |-- THIRD_PARTY_NOTICES.md               # Attribution

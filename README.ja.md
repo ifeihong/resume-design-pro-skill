@@ -196,14 +196,14 @@ resume-design-pro/
 |   |-- ... (29 種類)
 |   |-- ats-template.html                # ATS 最適化バージョン
 |   |-- cover-letter-template.html       # カバーレターテンプレート
-|   |-- linkedin-export.html             # LinkedIn 最適化ガイド
 |   |-- _shared/
 |   |   |-- demo-content-zh.md           # 標準化されたデモコンテンツ
 |-- deliverables/                        # 生成されるレポートと診断成果物のテンプレート
 |   |-- resume-diagnosis.html            # 履歴書診断レポート（JD マッチング分析）
 |   |-- interview-prep.html              # 面接準備レポート
 |   |-- job-search-kit.html              # 求職戦略レポート
-|-- demos/                               # サンプル履歴書
+|   |-- linkedin-export.html             # LinkedIn 最適化ガイド
+|-- output/                              # 生成された履歴書のデフォルト出力ディレクトリ
 |-- scripts/                             # エクスポート＆永続化ツール
 |   |-- export-pdf.js                    # 単一ファイル PDF エクスポート（Playwright）
 |   |-- export-pdf-batch.js              # バッチエクスポート
@@ -213,6 +213,7 @@ resume-design-pro/
 |   |-- README.md
 |-- docs/                                # ドキュメント
 |   |-- USER-GUIDE.md                    # ユーザーガイド
+|-- tests/                               # テスト計画
 |-- LICENSE                              # MIT ライセンス
 |-- README.md                            # 英語版
 |-- THIRD_PARTY_NOTICES.md               # サードパーティ声明
