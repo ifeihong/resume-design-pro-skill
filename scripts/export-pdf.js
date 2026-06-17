@@ -44,7 +44,7 @@ async function exportPDF(inputFile, outputFile) {
 
     // Extract --color-surface value from CSS (not --color-bg)
     // Using --color-surface ensures the entire page matches the container background
-    const colorSurfaceMatch = htmlContent.match(/--color-surface:\s*([^;}"'`]+)/);
+    const colorSurfaceMatch = htmlContent.match(/--color-surface:\s*([^;}+]+)/);
     const colorSurface = colorSurfaceMatch ? colorSurfaceMatch[1].trim() : '#ffffff';
 
     // Inject hardcoded background on <html> tag
@@ -61,6 +61,27 @@ async function exportPDF(inputFile, outputFile) {
       );
     }
 
+    // For dark-themed templates, we need to extract the actual body background color
+    // and force it to be used in PDF export (bypassing @media print light-theme override)
+    const bodyBgMatch = htmlContent.match(/body\s*\{[^}]*background:\s*([^;}+]+)/);
+    const bodyBg = bodyBgMatch ? bodyBgMatch[1].trim() : colorSurface;
+
+    // Inject a style tag that forces dark theme colors and disables @media print overrides
+    // This ensures PDF matches the browser view exactly
+    const forceDarkStyle = `
+    <style id="pdf-force-dark">
+      @media print {
+        html { background: ${bodyBg} !important; }
+        body { background: ${bodyBg} !important; color: inherit !important; }
+        .aurora-bg, .mesh-gradient { display: block !important; }
+        * { color: inherit !important; }
+        .resume-header, .section { background: var(--bg-card, rgba(20,20,40,0.5)) !important; border-color: var(--glass-border, rgba(255,255,255,0.08)) !important; }
+      }
+    </style>`;
+
+    // Insert before </head>
+    htmlContent = htmlContent.replace('</head>', forceDarkStyle + '\n</head>');
+
     // Write modified HTML to temp file
     const tempHtml = path.join(path.dirname(inputPath), '._temp_pdf_export.html');
     fs.writeFileSync(tempHtml, htmlContent, 'utf-8');
@@ -76,7 +97,7 @@ async function exportPDF(inputFile, outputFile) {
     await page.waitForFunction(() => document.fonts.ready);
 
     // Set viewport to match A4 width for accurate layout rendering
-    await page.setViewportSize({ width: 794, height: 1123 }); // A4 at 96dpi
+    await page.setViewportSize({ width: 794, height: 1123 });
 
     // Generate PDF
     // Note: margin is controlled by CSS @page rule, not here

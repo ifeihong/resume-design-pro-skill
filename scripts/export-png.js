@@ -44,6 +44,23 @@ async function exportPNG(inputFile, outputFile) {
     // Wait for fonts to load
     await page.waitForFunction(() => document.fonts.ready);
 
+    // Ensure background extends to full page height for screenshot
+    await page.evaluate(() => {
+      const auroraBg = document.querySelector('.aurora-bg');
+      if (auroraBg) {
+        auroraBg.style.position = 'absolute';
+        auroraBg.style.height = document.documentElement.scrollHeight + 'px';
+      }
+      const meshGradient = document.querySelector('.mesh-gradient');
+      if (meshGradient) {
+        meshGradient.style.position = 'absolute';
+        meshGradient.style.height = document.documentElement.scrollHeight + 'px';
+      }
+      // Ensure html/body have minimum height
+      document.documentElement.style.minHeight = document.documentElement.scrollHeight + 'px';
+      document.body.style.minHeight = document.documentElement.scrollHeight + 'px';
+    });
+
     // Set viewport to A4 size at 2x resolution for high quality
     await page.setViewportSize({ width: 794 * 2, height: 1123 * 2 });
 
