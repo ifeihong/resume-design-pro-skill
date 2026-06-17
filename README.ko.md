@@ -189,7 +189,7 @@ node export-png.js ../templates/template-01-minimalism.html
 
 ```
 resume-design-pro/
-|-- skills/resume-design-pro/SKILL.md    # 핵심 Skill 정의
+|-- SKILL.md                             # 핵심 Skill 정의
 |-- templates/                           # 29가지 스타일 템플릿 + 추가 템플릿
 |   |-- template-01-minimalism.html
 |   |-- template-02-neumorphism.html

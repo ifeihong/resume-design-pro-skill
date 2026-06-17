@@ -189,7 +189,7 @@ node export-png.js ../templates/template-01-minimalism.html
 
 ```
 resume-design-pro/
-|-- skills/resume-design-pro/SKILL.md    # コア Skill 定義
+|-- SKILL.md                             # コア Skill 定義
 |-- templates/                           # 29 種類のスタイルテンプレート + 追加テンプレート
 |   |-- template-01-minimalism.html
 |   |-- template-02-neumorphism.html

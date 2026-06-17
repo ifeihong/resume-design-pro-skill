@@ -189,7 +189,7 @@ node export-png.js ../templates/template-01-minimalism.html
 
 ```
 resume-design-pro/
-|-- skills/resume-design-pro/SKILL.md    # 核心 Skill 定义
+|-- SKILL.md                             # 核心 Skill 定义
 |-- templates/                           # 29 套风格模板 + 附加模板
 |   |-- template-01-minimalism.html
 |   |-- template-02-neumorphism.html

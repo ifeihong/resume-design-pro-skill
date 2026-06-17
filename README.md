@@ -192,7 +192,7 @@ node export-png.js ../templates/template-01-minimalism.html
 
 ```
 resume-design-pro/
-|-- skills/resume-design-pro/SKILL.md    # Core skill definition
+|-- SKILL.md                             # Core skill definition
 |-- templates/                           # 29 style templates + extras
 |   |-- template-01-minimalism.html
 |   |-- template-02-neumorphism.html
