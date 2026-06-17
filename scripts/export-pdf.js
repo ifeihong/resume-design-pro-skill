@@ -78,16 +78,12 @@ async function exportPDF(inputFile, outputFile) {
     await page.setViewportSize({ width: 794, height: 1123 }); // A4 at 96dpi
 
     // Generate PDF
+    // Note: margin is controlled by CSS @page rule, not here
+    // @page { margin: 18mm 22mm; background: var(--color-bg); }
     await page.pdf({
       path: outputPath,
       format: 'A4',
       printBackground: true,
-      margin: {
-        top: '0',
-        right: '0',
-        bottom: '0',
-        left: '0'
-      },
       displayHeaderFooter: false
     });
 
