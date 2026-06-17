@@ -761,17 +761,15 @@ Which style would you prefer? (You can also request to see all 29 styles)
 | 18 | **Block Frame** | Graphic Designer, Streetwear Brand, Creative | neobrutalism, 4px black border, 8px shadow, bold |
 | 19 | **Cobalt Grid** | Data Scientist, Engineer, Architect | grid paper, cobalt ink, ruled lines, technical, precise |
 | 20 | **Signal** | Product Manager, Strategist, Consultant | warm cream, antique gold accent, serif + sans, refined |
-| 21 | **Studio** ⬛ | Creative Director, DJ, Music Producer | dark mode, acid yellow text, uppercase, industrial |
-| 22 | **Vellum** ⬛ | Fine Artist, Photographer, Curator | dark purple-blue, warm yellow text, manuscript, moody |
-| 23 | **Mat** ⬛ | Filmmaker, Game Developer, 3D Artist | dark forest green, warm orange accent, bold display |
+| 21 | **Studio** | Creative Director, DJ, Music Producer | dark mode, acid yellow text, uppercase, industrial |
+| 22 | **Vellum** | Fine Artist, Photographer, Curator | dark purple-blue, warm yellow text, manuscript, moody |
+| 23 | **Mat** | Filmmaker, Game Developer, 3D Artist | dark forest green, warm orange accent, bold display |
 | 24 | **Long Table** | Historian, Archivist, Academic Researcher | terracotta ink, pill tags, long-form, scholarly |
 | 25 | **Cartesian** | Mathematician, Physicist, Engineer | geometric ring ornaments, serif + sans, scientific |
 | 26 | **Stencil Tablet** | Industrial Designer, Architect, Urban Planner | stencil typography, multi-color accent, structural, bold |
 | 27 | **People's Platform** | Community Organizer, Nonprofit, Activist | thick border, stamp effect, slab serif, grassroots |
 | 28 | **Grove** | Botanist, Landscape Architect, Wellness | forest green, coral accent, nature-inspired, organic |
-| 29 | **Broadside** ⬛ | Print Designer, Typographer, Publisher | near-black, orange accent, bold uppercase, poster-style |
-
-> ⬛ = Dark theme (preserves dark background when printing to PDF)
+| 29 | **Broadside** | Print Designer, Typographer, Publisher | near-black, orange accent, bold uppercase, poster-style |
 
 ## 5. Design System Rules
 
@@ -836,7 +834,7 @@ Each style has a defined color palette. Use CSS custom properties:
 
 ## 6. Output Generation
 
-### 6.1 Output Formats — One Invocation, 8 Deliverables
+### 6.1 Output Formats — One Invocation, 10 Deliverables
 
 Generate these files for the user:
 
@@ -845,23 +843,28 @@ Generate these files for the user:
    - Open in browser to view
    - Source file for PDF generation
 
-2. **Visual Resume PDF** (`resume-{name}-{style}.pdf`) ⭐ NEW in v1.1
+2. **Visual Resume PDF** (`resume-{name}-{style}.pdf`) ⭐ Auto-exported
    - **Automatically exported from HTML using Playwright**
    - Pixel-perfect reproduction of the visual design
    - A4 format, print-ready, with page numbers
    - **No manual action required** — generated automatically
    - Preserves colors, fonts, gradients, and layout exactly as seen in browser
 
-3. **ATS-Optimized HTML** (`resume-{name}-ats.html`)
+3. **Visual Resume PNG** (`resume-{name}-{style}.png`) ⭐ NEW in v1.4
+   - High-resolution PNG screenshot (2x A4 resolution)
+   - Perfect for sharing on LinkedIn, WeChat, or any social platform
+   - Also serves as fallback when Playwright is unavailable
+
+4. **ATS-Optimized HTML** (`resume-{name}-ats.html`)
    - Clean, minimal formatting
    - Maximum ATS readability
    - No decorative elements
 
-4. **Markdown Backup** (`resume-{name}.md`)
+5. **Markdown Backup** (`resume-{name}.md`)
    - Structured text backup
    - Easy to edit and reuse
 
-5. **Cover Letter HTML** (`cover-letter-{name}-{company}.html`) [v1.1]
+6. **Cover Letter HTML** (`cover-letter-{name}-{company}.html`)
    - Clean, professional letter format
    - Name → Date → Recipient → Subject → Body → Signature
    - No avatar or full contact header (kept minimal, contact info is in resume)
@@ -869,22 +872,30 @@ Generate these files for the user:
    - Customized per job application
    - Print to PDF for submission
 
-6. **LinkedIn Export** (`linkedin-export.md`) [v1.0]
+7. **LinkedIn Export** (`linkedin-export.html`) [v1.4]
    - Optimized content for LinkedIn profile sections
    - Copy-paste ready for Headline, About, Experience, etc.
 
-7. **求职沟通套件** (`job-search-kit.md`) [v1.3 NEW]
-   - 4 种场景 × 4 种语言 = 16 条沟通模板
-   - 场景：平台主动沟通、猎头合作、邮件投递、面试后感谢
-   - 语言：中文、英文、日文、韩文
-   - 每条模板根据用户简历内容定制
-   - 包含文化适配提示
+8. **Job Search Strategy Report** (`job-search-kit.html`) [v1.4 NEW]
+   - Target company recommendations with match scores
+   - Job search timeline with weekly tasks
+   - Market salary reference (P25/P50/P75)
+   - Communication templates (recruiter outreach, follow-up emails)
+   - Static HTML report with expandable sections
 
-8. **面试准备指南** (`interview-prep.md`) [v1.3 NEW]
-   - 基于简历内容生成预期面试问题
-   - 针对数字、归因、方法、个人贡献的追问
-   - 每个问题附建议回答框架
-   - 标注高风险问题（可能被深挖的点）
+9. **Interview Preparation Report** (`interview-prep.html`) [v1.4 NEW]
+   - Anticipated questions by round (HR / Technical / Executive)
+   - Answer frameworks with key talking points
+   - Company intel and culture insights
+   - Scoring criteria for self-assessment
+   - Static HTML report with collapsible question cards
+
+10. **Resume Diagnosis Report** (`resume-diagnosis.html`) [v1.4 NEW]
+    - Upload target JD for 6-dimension matching analysis
+    - Overall match score (0-100) with grade rating (A/B/C)
+    - Keyword coverage analysis (matched vs. missing)
+    - AI optimization suggestions (Critical / Important / Tip)
+    - Static HTML report with animated score ring and progress bars
 
 ### 6.2 Automatic PDF Export (自动 PDF 导出)
 
@@ -931,14 +942,18 @@ PDF delivered alongside HTML
 📦 Your Resume Package is Ready!
 
 ✅ resume-zhangsan-glassmorphism.html  (Visual — open in browser)
-✅ resume-zhangsan-glassmorphism.pdf   (PDF — ready to send/print) ⭐
-✅ resume-zhangsan-ats.html            (ATS — for job portals)
-✅ resume-zhangsan.md                  (Backup — edit anytime)
-✅ cover-letter-zhangsan-tencent.html  (Cover Letter — matching style)
-✅ linkedin-export.md                  (LinkedIn — copy-paste ready)
-
-💡 The PDF is generated automatically — no need to open browser or press Ctrl+P!
-💡 Need adjustments? Just tell me and I'll regenerate.
+     ✅ resume-zhangsan-glassmorphism.pdf   (PDF — ready to send/print) ⭐
+     ✅ resume-zhangsan-glassmorphism.png   (PNG — high-res for social sharing) ⭐
+     ✅ resume-zhangsan-ats.html            (ATS — for job portals)
+     ✅ resume-zhangsan.md                  (Backup — edit anytime)
+     ✅ cover-letter-zhangsan-tencent.html  (Cover Letter — matching style)
+     ✅ linkedin-export.html                (LinkedIn — copy-paste ready)
+     ✅ job-search-kit.html                 (Job Search Strategy Report)
+     ✅ interview-prep.html                 (Interview Preparation Report)
+     ✅ resume-diagnosis.html               (Resume Diagnosis — JD matching)
+     
+     💡 The PDF and PNG are generated automatically — no need to open browser or press Ctrl+P!
+     💡 Need adjustments? Just tell me and I'll regenerate.
 ```
 
 ### 6.3 Manual PDF Export Guide (Optional)
@@ -1178,10 +1193,11 @@ When user selects "No Avatar":
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 【核心价值】
-✨ 11 套高端设计风格的视觉简历
-🤖 AI 智能优化（绝不编造数据）
-📄 同时生成 ATS 兼容版本
+✨ 29 套高端设计风格的视觉简历
+🤖 AI 智能优化（10 步流程，绝不编造数据）
+📄 同时生成 ATS 兼容版本 + 自动 PDF 导出 + 高清 PNG
 🌍 支持中/英/日/韩多语言
+📊 JD 匹配诊断 + 面试准备 + 求职策略报告
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 【5 种输入方式，总有一种适合你】
@@ -1400,12 +1416,16 @@ AI: [Generates resume + Auto-export PDF]
      
      ✅ resume-zhangsan-glassmorphism.html  (Visual — open in browser)
      ✅ resume-zhangsan-glassmorphism.pdf   (PDF — ready to send/print) ⭐
+     ✅ resume-zhangsan-glassmorphism.png   (PNG — high-res for social sharing) ⭐
      ✅ resume-zhangsan-ats.html            (ATS — for job portals)
      ✅ resume-zhangsan.md                  (Backup — edit anytime)
      ✅ cover-letter-zhangsan-tencent.html  (Cover Letter — matching style)
-     ✅ linkedin-export.md                  (LinkedIn — copy-paste ready)
+     ✅ linkedin-export.html                (LinkedIn — copy-paste ready)
+     ✅ job-search-kit.html                 (Job Search Strategy Report)
+     ✅ interview-prep.html                 (Interview Preparation Report)
+     ✅ resume-diagnosis.html               (Resume Diagnosis — JD matching)
      
-     💡 The PDF is generated automatically — no need to open browser or press Ctrl+P!
+     💡 The PDF and PNG are generated automatically — no need to open browser or press Ctrl+P!
      💡 Need adjustments? Just tell me and I'll regenerate.
 ```
 
@@ -1461,6 +1481,7 @@ AI: [解析完成] 内容已提取。
 - v1.1.0 (2026-06-15): Truthful quantification engine (no fake data), company attribution lock, experience tiering (preserve all experiences), content density selection, avatar auto-detection from PDF, resume health report, ATS compatibility preview, progress visualization, **automatic PDF export (6th deliverable)**
 - v1.2.0 (2026-06-15): **18 new design styles** (29 total) ported from beautiful-html-templates, expanded style catalog with dark theme support (4 dark themes), updated font system with per-style typography
 - v1.3.0 (2026-06-16): Enhanced resume health report with 5-dimension scoring, contribution verb threshold check, job search communication kit (4 languages × 4 scenarios), interview preparation guide, cultural adaptation for job search communication
+- v1.4.0 (2026-06-17): **Regenerated 3 deliverables as static HTML reports** (job-search-kit.html, interview-prep.html, resume-diagnosis.html with JD matching), **PNG export as standalone 10th deliverable** (2x A4, social sharing), **10-step optimization process** (added JD Match step), **JSON data persistence** for cross-session reuse, SEO/GEO optimization across all READMEs, removed roadmap references
 
 ---
 
