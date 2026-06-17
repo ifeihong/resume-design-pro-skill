@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>求职工具箱 | Resume Design Pro</title>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --primary-dark: #1d4ed8;
+    --success: #16a34a;
+    --success-light: #dcfce7;
+    --warning: #d97706;
+    --warning-light: #fef3c7;
+    --danger: #dc2626;
+    --danger-light: #fee2e2;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --text-secondary: #475569;
+    --border: #e2e8f0;
+    --border-light: #f1f5f9;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+    --shadow-hover: 0 4px 12px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.06);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+
+  header { margin-bottom: 24px; }
+  header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+  header .subtitle { color: var(--text-secondary); font-size: 0.875rem; margin-top: 2px; }
+
+  /* 顶部策略总览 */
+  .strategy-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .strategy-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .strategy-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+  .strategy-label { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+  .strategy-value { font-size: 1.125rem; font-weight: 700; }
+  .strategy-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .strategy-tag {
+    font-size: 0.75rem; font-weight: 500; padding: 3px 10px; border-radius: 999px; background: var(--primary-light); color: var(--primary-dark); border: 1px solid #bfdbfe;
+  }
+  .strategy-tag.priority-high { background: var(--danger-light); color: var(--danger); border-color: #fecaca; }
+  .strategy-tag.priority-med { background: var(--warning-light); color: var(--warning); border-color: #fde68a; }
+  .strategy-tag.priority-low { background: var(--success-light); color: var(--success); border-color: #bbf7d0; }
+
+  /* 看板 */
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 900px) { .board { grid-template-columns: 1fr; } }
+
+  .column {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+  }
+  .column-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px; border-bottom: 1px solid var(--border-light);
+  }
+  .column-title { font-size: 0.9375rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .column-title .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .dot-today { background: var(--danger); }
+  .dot-week { background: var(--warning); }
+  .dot-long { background: var(--success); }
+  .column-count { font-size: 0.75rem; color: var(--text-secondary); background: var(--bg); padding: 2px 8px; border-radius: 999px; }
+
+  .task-list { padding: 10px 12px; flex: 1; }
+  .task-item {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px;
+    transition: box-shadow 0.15s, transform 0.1s; cursor: default;
+  }
+  .task-item:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+  .task-item.done { opacity: 0.55; }
+  .task-item.done .task-text { text-decoration: line-through; color: var(--text-secondary); }
+  .task-check {
+    width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 6px;
+    flex-shrink: 0; margin-top: 2px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .task-check:hover { border-color: var(--primary); }
+  .task-check.checked { background: var(--success); border-color: var(--success); }
+  .task-check.checked::after {
+    content: ''; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); margin-bottom: 2px;
+  }
+  .task-body { flex: 1; }
+  .task-text { font-size: 0.875rem; line-height: 1.5; }
+  .task-meta { font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px; }
+  .task-delete {
+    background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1rem; line-height: 1; padding: 2px 4px; border-radius: 4px; transition: color 0.15s, background 0.15s;
+  }
+  .task-delete:hover { color: var(--danger); background: var(--danger-light); }
+
+  .add-btn {
+    margin: 0 12px 12px; padding: 10px; border: 2px dashed var(--border); border-radius: 10px;
+    background: transparent; color: var(--text-secondary); font-size: 0.875rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .add-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+
+  /* 底部进度 */
+  .progress-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .progress-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
+  .progress-title { font-size: 1rem; font-weight: 700; }
+  .progress-percent { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+  .progress-bar-wrap { background: var(--bg); border-radius: 999px; height: 14px; overflow: hidden; border: 1px solid var(--border); }
+  .progress-bar { height: 100%; background: linear-gradient(90deg, var(--primary), #60a5fa); border-radius: 999px; width: 0%; transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+  .progress-stats { display: flex; gap: 20px; margin-top: 12px; flex-wrap: wrap; }
+  .progress-stat { font-size: 0.8125rem; color: var(--text-secondary); }
+  .progress-stat b { color: var(--text); }
+
+  /* 添加任务弹窗 */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.45); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 16px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    width: 100%; max-width: 440px; box-shadow: var(--shadow-hover); padding: 20px;
+  }
+  .modal-header { font-size: 1.0625rem; font-weight: 700; margin-bottom: 14px; }
+  .modal-field { margin-bottom: 12px; }
+  .modal-field label { display: block; font-size: 0.8125rem; font-weight: 600; margin-bottom: 6px; color: var(--text-secondary); }
+  .modal-field input, .modal-field select, .modal-field textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.875rem; background: var(--bg);
+  }
+  .modal-field input:focus, .modal-field select:focus, .modal-field textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+  .modal-field textarea { resize: vertical; min-height: 72px; }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
+  .btn {
+    padding: 8px 16px; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: all 0.15s;
+  }
+  .btn-secondary { background: var(--bg); color: var(--text-secondary); border-color: var(--border); }
+  .btn-secondary:hover { background: var(--border-light); }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-dark); }
+
+  footer { text-align: center; color: var(--text-secondary); font-size: 0.75rem; margin-top: 28px; padding-bottom: 24px; }
+
+  @media print {
+    body { background: #fff; }
+    .strategy-bar, .board, .progress-section { box-shadow: none; border-color: #ddd; }
+    .add-btn, .task-delete, .modal-overlay { display: none !important; }
+    .task-check { border-color: #999; }
+    .task-item.done { opacity: 0.7; }
+    .column { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <h1>求职工具箱</h1>
+      <div class="subtitle">目标导向 · 任务驱动 · 进度可视</div>
+    </div>
+  </header>
+
+  <!-- 顶部策略总览 -->
+  <div class="strategy-bar">
+    <div class="strategy-card">
+      <div class="strategy-label">目标公司</div>
+      <div class="strategy-value">字节跳动、阿里巴巴、腾讯</div>
+      <div class="strategy-tags">
+        <span class="strategy-tag priority-high">第一梯队</span>
+        <span class="strategy-tag priority-med">互联网大厂</span>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-label">核心关键词</div>
+      <div class="strategy-value">产品经理 / SaaS / 增长</div>
+      <div class="strategy-tags">
+        <span class="strategy-tag">B端产品</span>
+        <span class="strategy-tag">数据驱动</span>
+        <span class="strategy-tag">用户增长</span>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-label">优先级策略</div>
+      <div class="strategy-value">内推优先 > 官网投递 > 猎头</div>
+      <div class="strategy-tags">
+        <span class="strategy-tag priority-high">高意向</span>
+        <span class="strategy-tag priority-med">储备</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 看板 -->
+  <div class="board">
+    <div class="column" data-column="today">
+      <div class="column-header">
+        <div class="column-title"><span class="dot dot-today"></span> 今日任务</div>
+        <span class="column-count" id="count-today">0</span>
+      </div>
+      <div class="task-list" id="list-today">
+        <div class="task-item" data-id="t1">
+          <div class="task-check" onclick="toggleTask(this)"></div>
+          <div class="task-body">
+            <div class="task-text">更新 LinkedIn 个人资料 headline</div>
+            <div class="task-meta">高优先级 · 预计 30 分钟</div>
+          </div>
+          <button class="task-delete" onclick="deleteTask(this)" title="删除">&times;</button>
+        </div>
+        <div class="task-item" data-id="t2">
+          <div class="task-check" onclick="toggleTask(this)"></div>
+          <div class="task-body">
+            <div class="task-text">投递 3 家目标公司岗位</div>
+            <div class="task-meta">高优先级 · 预计 60 分钟</div>
+          </div>
+          <button class="task-delete" onclick="deleteTask(this)" title="删除">&times;</button>
+        </div>
+      </div>
+      <button class="add-btn" onclick="openModal('today')">+ 添加任务</button>
+    </div>
+
+    <div class="column" data-column="week">
+      <div class="column-header">
+        <div class="column-title"><span class="dot dot-week"></span> 本周任务</div>
+        <span class="column-count" id="count-week">0</span>
+      </div>
+      <div class="task-list" id="list-week">
+        <div class="task-item" data-id="w1">
+          <div class="task-check" onclick="toggleTask(this)"></div>
+          <div class="task-body">
+            <div class="task-text">完成 2 场模拟面试并复盘</div>
+            <div class="task-meta">中优先级 · 预计 120 分钟</div>
+          </div>
+          <button class="task-delete" onclick="deleteTask(this)" title="删除">&times;</button>
+        </div>
+        <div class="task-item" data-id="w2">
+          <div class="task-check" onclick="toggleTask(this)"></div>
+          <div class="task-body">
+            <div class="task-text">联系 5 位行业前辈寻求内推</div>
+            <div class="task-meta">中优先级 · 预计 90 分钟</div>
+          </div>
+          <button class="task-delete" onclick="deleteTask(this)" title="删除">&times;</button>
+        </div>
+      </div>
+      <button class="add-btn" onclick="openModal('week')">+ 添加任务</button>
+    </div>
+
+    <div class="column" data-column="long">
+      <div class="column-header">
+        <div class="column-title"><span class="dot dot-long"></span> 长期任务</div>
+        <span class="column-count" id="count-long">0</span>
+      </div>
+      <div class="task-list" id="list-long">
+        <div class="task-item" data-id="l1">
+          <div class="task-check" onclick="toggleTask(this)"></div>
+          <div class="task-body">
+            <div class="task-text">系统学习 SQL 与数据分析</div>
+            <div class="task-meta">低优先级 · 持续 4 周</div>
+          </div>
+          <button class="task-delete" onclick="deleteTask(this)" title="删除">&times;</button>
+        </div>
+        <div class="task-item" data-id="l2">
+          <div class="task-check" onclick="toggleTask(this)"></div>
+          <div class="task-body">
+            <div class="task-text">搭建个人作品集网站</div>
+            <div class="task-meta">低优先级 · 持续 2 周</div>
+          </div>
+          <button class="task-delete" onclick="deleteTask(this)" title="删除">&times;</button>
+        </div>
+      </div>
+      <button class="add-btn" onclick="openModal('long')">+ 添加任务</button>
+    </div>
+  </div>
+
+  <!-- 底部进度 -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <div class="progress-title">求职进度总览</div>
+      <div class="progress-percent" id="progressPercent">0%</div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-stats">
+      <div class="progress-stat">已完成任务 <b id="statDone">0</b></div>
+      <div class="progress-stat">待办任务 <b id="statTodo">0</b></div>
+      <div class="progress-stat">总任务数 <b id="statTotal">0</b></div>
+    </div>
+  </div>
+
+  <footer>由 Resume Design Pro 生成 · 数据仅保存在当前页面</footer>
+</div>
+
+<!-- 添加任务弹窗 -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">添加新任务</div>
+    <div class="modal-field">
+      <label>任务内容</label>
+      <textarea id="modalText" placeholder="请输入任务描述..."></textarea>
+    </div>
+    <div class="modal-field">
+      <label>所属分类</label>
+      <select id="modalColumn">
+        <option value="today">今日任务</option>
+        <option value="week">本周任务</option>
+        <option value="long">长期任务</option>
+      </select>
+    </div>
+    <div class="modal-field">
+      <label>优先级 / 备注</label>
+      <input type="text" id="modalMeta" placeholder="例如：高优先级 · 预计 30 分钟">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">取消</button>
+      <button class="btn btn-primary" onclick="submitTask()">添加</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var currentColumn = 'today';
+
+  function updateCounts() {
+    ['today','week','long'].forEach(function(col) {
+      var list = document.getElementById('list-' + col);
+      var count = list.querySelectorAll('.task-item').length;
+      document.getElementById('count-' + col).textContent = count;
+    });
+    updateProgress();
+  }
+
+  function updateProgress() {
+    var items = document.querySelectorAll('.task-item');
+    var total = items.length;
+    var done = document.querySelectorAll('.task-item.done').length;
+    var percent = total === 0 ? 0 : Math.round((done / total) * 100);
+    document.getElementById('progressPercent').textContent = percent + '%';
+    document.getElementById('progressBar').style.width = percent + '%';
+    document.getElementById('statDone').textContent = done;
+    document.getElementById('statTodo').textContent = total - done;
+    document.getElementById('statTotal').textContent = total;
+  }
+
+  window.toggleTask = function(el) {
+    var item = el.closest('.task-item');
+    item.classList.toggle('done');
+    el.classList.toggle('checked');
+    updateProgress();
+  };
+
+  window.deleteTask = function(el) {
+    var item = el.closest('.task-item');
+    item.style.transition = 'opacity 0.2s, transform 0.2s';
+    item.style.opacity = '0';
+    item.style.transform = 'translateX(12px)';
+    setTimeout(function() {
+      item.remove();
+      updateCounts();
+    }, 200);
+  };
+
+  window.openModal = function(col) {
+    currentColumn = col;
+    document.getElementById('modalColumn').value = col;
+    document.getElementById('modalText').value = '';
+    document.getElementById('modalMeta').value = '';
+    document.getElementById('modalOverlay').classList.add('active');
+    setTimeout(function() { document.getElementById('modalText').focus(); }, 50);
+  };
+
+  window.closeModal = function() {
+    document.getElementById('modalOverlay').classList.remove('active');
+  };
+
+  window.submitTask = function() {
+    var text = document.getElementById('modalText').value.trim();
+    var col = document.getElementById('modalColumn').value;
+    var meta = document.getElementById('modalMeta').value.trim();
+    if (!text) { document.getElementById('modalText').focus(); return; }
+
+    var id = 'task-' + Date.now();
+    var item = document.createElement('div');
+    item.className = 'task-item';
+    item.setAttribute('data-id', id);
+    item.innerHTML =
+      '<div class="task-check" onclick="toggleTask(this)"></div>' +
+      '<div class="task-body">' +
+        '<div class="task-text">' + escapeHtml(text) + '</div>' +
+        (meta ? '<div class="task-meta">' + escapeHtml(meta) + '</div>' : '') +
+      '</div>' +
+      '<button class="task-delete" onclick="deleteTask(this)" title="删除">&times;</button>';
+
+    document.getElementById('list-' + col).appendChild(item);
+    updateCounts();
+    closeModal();
+  };
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // 点击遮罩关闭弹窗
+  document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  // 回车提交
+  document.getElementById('modalText').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitTask(); }
+  });
+
+  updateCounts();
+})();
+</script>
+</body>
+</html>
