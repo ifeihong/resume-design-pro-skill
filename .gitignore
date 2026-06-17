@@ -6,6 +6,9 @@ cover-letter-*.html
 linkedin-export.md
 audit-report.md
 
+# Output directory (test outputs, not for production)
+output/
+
 # Demo resumes (contain real user data, do not commit)
 demos/*.html
 demos/*.pdf
