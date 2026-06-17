@@ -182,11 +182,6 @@
     border: 1px solid var(--accent-light);
     background: var(--accent-lighter);
     color: var(--accent-dark);
-    transition: transform 0.15s;
-  }
-
-  .keyword-tag:hover {
-    transform: scale(1.05);
   }
 
   .keyword-tag.large {
@@ -288,21 +283,6 @@
     background: var(--accent);
   }
 
-  /* ===== Application Tables ===== */
-  .status-tag {
-    display: inline-block;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 4px;
-  }
-
-  .status-interview { background: var(--accent-light); color: var(--accent-dark); }
-  .status-submitted { background: var(--warning-light); color: #92400e; }
-  .status-pending { background: var(--rule); color: var(--muted); }
-  .status-rejected { background: var(--danger-light); color: var(--danger); }
-  .status-offer { background: var(--success-light); color: #166534; }
-
   /* ===== Communication Kit ===== */
   .template-card {
     background: var(--surface);
@@ -380,6 +360,64 @@
     font-weight: 500;
   }
 
+  /* ===== Salary Reference ===== */
+  .salary-section {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    margin-bottom: 32px;
+  }
+
+  .salary-section h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .salary-section h3::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .salary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .salary-item {
+    text-align: center;
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+  }
+
+  .salary-item .label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .salary-item .value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+  }
+
+  .salary-item .note {
+    font-size: 0.6875rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
   /* ===== Footer ===== */
   footer {
     text-align: center;
@@ -409,8 +447,8 @@
       gap: 6px;
     }
 
-    .scoring-grid {
-      flex-direction: column;
+    .salary-grid {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -428,7 +466,7 @@
   @media print {
     body { background: #fff; }
 
-    .table-card, .keyword-cloud, .timeline-content, .template-card {
+    .table-card, .keyword-cloud, .timeline-content, .template-card, .salary-section {
       box-shadow: none;
       break-inside: avoid;
     }
@@ -445,10 +483,6 @@
     .template-header {
       cursor: default;
     }
-
-    .keyword-tag:hover {
-      transform: none;
-    }
   }
 </style>
 </head>
@@ -464,6 +498,7 @@
     <div class="header-meta">
       <span>生成时间：{{GENERATED_AT}}</span>
       <span>版本：v1.0</span>
+      <span>AI 模型：{{AI_MODEL}}</span>
     </div>
   </div>
 </header>
@@ -486,37 +521,7 @@
           </tr>
         </thead>
         <tbody>
-          <!-- AI 生成时替换为实际数据 -->
-          <tr>
-            <td><strong>{{COMPANY_1_NAME}}</strong></td>
-            <td><span class="match-score">{{COMPANY_1_MATCH}}%</span></td>
-            <td><span class="priority-tag priority-high">P0 最高</span></td>
-            <td>{{COMPANY_1_NOTE}}</td>
-          </tr>
-          <tr>
-            <td><strong>{{COMPANY_2_NAME}}</strong></td>
-            <td><span class="match-score">{{COMPANY_2_MATCH}}%</span></td>
-            <td><span class="priority-tag priority-high">P0 最高</span></td>
-            <td>{{COMPANY_2_NOTE}}</td>
-          </tr>
-          <tr>
-            <td><strong>{{COMPANY_3_NAME}}</strong></td>
-            <td><span class="match-score">{{COMPANY_3_MATCH}}%</span></td>
-            <td><span class="priority-tag priority-mid">P1 重点</span></td>
-            <td>{{COMPANY_3_NOTE}}</td>
-          </tr>
-          <tr>
-            <td><strong>{{COMPANY_4_NAME}}</strong></td>
-            <td><span class="match-score">{{COMPANY_4_MATCH}}%</span></td>
-            <td><span class="priority-tag priority-mid">P1 重点</span></td>
-            <td>{{COMPANY_4_NOTE}}</td>
-          </tr>
-          <tr>
-            <td><strong>{{COMPANY_5_NAME}}</strong></td>
-            <td><span class="match-score">{{COMPANY_5_MATCH}}%</span></td>
-            <td><span class="priority-tag priority-low">P2 备选</span></td>
-            <td>{{COMPANY_5_NOTE}}</td>
-          </tr>
+          {{TARGET_COMPANIES}}
         </tbody>
       </table>
     </div>
@@ -524,161 +529,41 @@
     <!-- 核心搜索关键词 -->
     <div class="section-title" style="margin-top: 24px;">核心搜索关键词</div>
     <div class="keyword-cloud">
-      <!-- AI 生成时替换为实际关键词 -->
-      <span class="keyword-tag large">{{KEYWORD_1}}</span>
-      <span class="keyword-tag large">{{KEYWORD_2}}</span>
-      <span class="keyword-tag medium">{{KEYWORD_3}}</span>
-      <span class="keyword-tag medium">{{KEYWORD_4}}</span>
-      <span class="keyword-tag">{{KEYWORD_5}}</span>
-      <span class="keyword-tag">{{KEYWORD_6}}</span>
-      <span class="keyword-tag">{{KEYWORD_7}}</span>
-      <span class="keyword-tag">{{KEYWORD_8}}</span>
-      <span class="keyword-tag">{{KEYWORD_9}}</span>
-      <span class="keyword-tag">{{KEYWORD_10}}</span>
+      {{KEYWORD_CLOUD}}
     </div>
 
     <!-- 求职时间线 -->
     <div class="section-title" style="margin-top: 24px;">求职时间线</div>
     <div class="timeline">
-      <!-- AI 生成时替换为实际计划 -->
-      <div class="timeline-item">
-        <div class="timeline-dot active"></div>
-        <div class="timeline-week">第 1 周 -- 准备阶段</div>
-        <div class="timeline-content">
-          <ul class="timeline-tasks">
-            <li>{{WEEK1_TASK_1}}</li>
-            <li>{{WEEK1_TASK_2}}</li>
-            <li>{{WEEK1_TASK_3}}</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-week">第 2 周 -- 集中投递</div>
-        <div class="timeline-content">
-          <ul class="timeline-tasks">
-            <li>{{WEEK2_TASK_1}}</li>
-            <li>{{WEEK2_TASK_2}}</li>
-            <li>{{WEEK2_TASK_3}}</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-week">第 3 周 -- 面试冲刺</div>
-        <div class="timeline-content">
-          <ul class="timeline-tasks">
-            <li>{{WEEK3_TASK_1}}</li>
-            <li>{{WEEK3_TASK_2}}</li>
-            <li>{{WEEK3_TASK_3}}</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-week">第 4 周 -- 收尾跟进</div>
-        <div class="timeline-content">
-          <ul class="timeline-tasks">
-            <li>{{WEEK4_TASK_1}}</li>
-            <li>{{WEEK4_TASK_2}}</li>
-            <li>{{WEEK4_TASK_3}}</li>
-          </ul>
-        </div>
-      </div>
+      {{TIMELINE_ITEMS}}
     </div>
   </div>
 
-  <!-- ==================== 申请跟进清单 ==================== -->
+  <!-- ==================== 薪资参考 ==================== -->
   <div class="section-block">
-    <div class="section-title">申请跟进清单</div>
+    <div class="section-title">市场薪资参考</div>
 
-    <!-- 已申请 -->
-    <div class="table-card" style="margin-bottom: 16px;">
-      <div style="padding: 12px 16px; background: var(--accent-lighter); border-bottom: 1px solid var(--rule);">
-        <span style="font-size: 0.8125rem; font-weight: 700; color: var(--accent-dark);">已申请</span>
+    <div class="salary-section">
+      <div class="salary-grid">
+        <div class="salary-item">
+          <div class="label">P25 低位</div>
+          <div class="value">{{SALARY_P25}}</div>
+          <div class="note">初级 / 1-3 年经验</div>
+        </div>
+        <div class="salary-item">
+          <div class="label">P50 中位</div>
+          <div class="value">{{SALARY_P50}}</div>
+          <div class="note">中级 / 3-5 年经验</div>
+        </div>
+        <div class="salary-item">
+          <div class="label">P75 高位</div>
+          <div class="value">{{SALARY_P75}}</div>
+          <div class="note">高级 / 5 年以上</div>
+        </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>公司</th>
-            <th>岗位</th>
-            <th>申请日期</th>
-            <th>状态</th>
-            <th>下一步</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- AI 生成时替换 -->
-          <tr>
-            <td><strong>{{APPLIED_1_COMPANY}}</strong></td>
-            <td>{{APPLIED_1_ROLE}}</td>
-            <td>{{APPLIED_1_DATE}}</td>
-            <td><span class="status-tag status-interview">面试中</span></td>
-            <td>{{APPLIED_1_NEXT}}</td>
-          </tr>
-          <tr>
-            <td><strong>{{APPLIED_2_COMPANY}}</strong></td>
-            <td>{{APPLIED_2_ROLE}}</td>
-            <td>{{APPLIED_2_DATE}}</td>
-            <td><span class="status-tag status-submitted">已投递</span></td>
-            <td>{{APPLIED_2_NEXT}}</td>
-          </tr>
-          <tr>
-            <td><strong>{{APPLIED_3_COMPANY}}</strong></td>
-            <td>{{APPLIED_3_ROLE}}</td>
-            <td>{{APPLIED_3_DATE}}</td>
-            <td><span class="status-tag status-pending">待回复</span></td>
-            <td>{{APPLIED_3_NEXT}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 待申请 -->
-    <div class="table-card">
-      <div style="padding: 12px 16px; background: var(--warning-light); border-bottom: 1px solid var(--rule);">
-        <span style="font-size: 0.8125rem; font-weight: 700; color: #92400e;">待申请</span>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>公司</th>
-            <th>岗位</th>
-            <th>优先级</th>
-            <th>截止日期</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- AI 生成时替换 -->
-          <tr>
-            <td><strong>{{PENDING_1_COMPANY}}</strong></td>
-            <td>{{PENDING_1_ROLE}}</td>
-            <td><span class="priority-tag priority-high">P0</span></td>
-            <td>{{PENDING_1_DEADLINE}}</td>
-          </tr>
-          <tr>
-            <td><strong>{{PENDING_2_COMPANY}}</strong></td>
-            <td>{{PENDING_2_ROLE}}</td>
-            <td><span class="priority-tag priority-high">P0</span></td>
-            <td>{{PENDING_2_DEADLINE}}</td>
-          </tr>
-          <tr>
-            <td><strong>{{PENDING_3_COMPANY}}</strong></td>
-            <td>{{PENDING_3_ROLE}}</td>
-            <td><span class="priority-tag priority-mid">P1</span></td>
-            <td>{{PENDING_3_DEADLINE}}</td>
-          </tr>
-          <tr>
-            <td><strong>{{PENDING_4_COMPANY}}</strong></td>
-            <td>{{PENDING_4_ROLE}}</td>
-            <td><span class="priority-tag priority-low">P2</span></td>
-            <td>{{PENDING_4_DEADLINE}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <p style="font-size: 0.75rem; color: var(--muted); margin-top: 12px; text-align: center;">
+        数据来源：{{SALARY_SOURCE}} | 仅供参考，实际薪资因地区、公司规模、个人能力而异
+      </p>
     </div>
   </div>
 
@@ -686,75 +571,7 @@
   <div class="section-block">
     <div class="section-title">求职沟通套件</div>
 
-    <!-- 模板 1：招聘软件打招呼 -->
-    <div class="template-card">
-      <div class="template-header" onclick="toggleTemplate(this)">
-        <div class="template-title">
-          招聘软件打招呼 -- 直奔主题型
-          <span class="template-type">BOSS 直聘 / 脉脉</span>
-        </div>
-        <span class="template-toggle">&#9662;</span>
-      </div>
-      <div class="template-body">
-        <div class="template-content">{{CHAT_TEMPLATE_1}}</div>
-      </div>
-    </div>
-
-    <!-- 模板 2：招聘软件打招呼 -->
-    <div class="template-card">
-      <div class="template-header" onclick="toggleTemplate(this)">
-        <div class="template-title">
-          招聘软件打招呼 -- 经验亮点型
-          <span class="template-type">BOSS 直聘 / 脉脉</span>
-        </div>
-        <span class="template-toggle">&#9662;</span>
-      </div>
-      <div class="template-body">
-        <div class="template-content">{{CHAT_TEMPLATE_2}}</div>
-      </div>
-    </div>
-
-    <!-- 模板 3：招聘软件打招呼 -->
-    <div class="template-card">
-      <div class="template-header" onclick="toggleTemplate(this)">
-        <div class="template-title">
-          招聘软件打招呼 -- 内推请求型
-          <span class="template-type">BOSS 直聘 / 脉脉</span>
-        </div>
-        <span class="template-toggle">&#9662;</span>
-      </div>
-      <div class="template-body">
-        <div class="template-content">{{CHAT_TEMPLATE_3}}</div>
-      </div>
-    </div>
-
-    <!-- 模板 4：猎头介绍 -->
-    <div class="template-card">
-      <div class="template-header" onclick="toggleTemplate(this)">
-        <div class="template-title">
-          猎头自我介绍模板
-          <span class="template-type">猎头沟通</span>
-        </div>
-        <span class="template-toggle">&#9662;</span>
-      </div>
-      <div class="template-body">
-        <div class="template-content">{{HEADHUNTER_TEMPLATE}}</div>
-      </div>
-    </div>
-
-    <!-- 模板 5：邮件求职信 -->
-    <div class="template-card">
-      <div class="template-header" onclick="toggleTemplate(this)">
-        <div class="template-title">
-          邮件求职信模板
-          <span class="template-type">邮件投递</span>
-        </div>
-        <span class="template-toggle">&#9662;</span>
-      </div>
-      <div class="template-body">
-        <div class="template-content">{{EMAIL_COVER_LETTER}}</div>
-      </div>
-    </div>
+    {{COMMUNICATION_TEMPLATES}}
 
   </div>
 
@@ -762,7 +579,7 @@
 
 <footer>
   <div class="container">
-    <p><strong>Resume Design Pro</strong> -- 求职策略报告 | 由 AI 生成，仅供参考</p>
+    <p><strong>Resume Design Pro</strong> -- 求职策略报告 | 由 AI 根据您的简历与目标岗位生成，仅供参考</p>
   </div>
 </footer>
 

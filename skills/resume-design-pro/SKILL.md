@@ -3,22 +3,15 @@ name: resume-design-pro
 description: >
   AI-powered resume builder and CV generator with 29 premium design styles.
   Creates production-ready HTML resumes with stunning visual aesthetics — each style is a complete visual system with unique color palettes, typography, animations, and layout philosophy.
-  AI content optimization engine: quantifies achievements, applies STAR methodology, rewrites with professional action verbs. 6-step process: Extract → Filter → Quantify → Reword → Restructure → Confirm. RAW mode available for zero-modification output.
+  AI content optimization engine: 10-step process (Extract → Preserve → Tier → Quantify → Lock → Reword → Restructure → HR Check → Confirm → JD Match). Truth-first: never fabricates data, preserves all experiences, locks company attribution. RAW mode available for zero-modification output.
   Generates ATS-compatible resumes with semantic HTML5, hidden keywords section, and standard section hierarchy — safe for applicant tracking systems.
-  Generates matching cover letters with the same visual style as the selected resume template.
-  Generates LinkedIn profile optimization guide with ready-to-copy-paste content for Headline, About, Experience, Education, Skills, and Featured sections.
-  Generates job search communication kit (platform messages, recruiter intros, emails) for 4 languages.
-  Generates interview preparation guide with anticipated questions.
-  Supports multi-language output: English, Chinese (中文), Japanese (日本語), Korean (한국어) with proper font stacks (Noto Sans family). Roadmap: 14 additional languages including Arabic (RTL).
-  Export to PDF via browser print (Ctrl+P) or Node.js Playwright scripts (single + batch export). Built-in @page rules, break-inside: avoid, and prefers-reduced-motion support.
-  Avatar system: real photo upload, AI-generated professional portrait, or abstract geometric initials — with platform-specific detection (Claude Code, Trae, Codex, Cursor).
-  Multiple input methods: upload existing resume (PDF/Word/image), guided 9-module conversation, direct text paste, quick mode (6 questions), or raw mode.
-  One invocation, 8 deliverables: visual HTML resume, ATS HTML resume, Markdown backup, cover letter, LinkedIn export, job search communication kit, interview preparation guide.
-  Enhanced resume health report with 5-dimension scoring system.
+  Resume diagnosis: upload target JD for 6-dimension matching analysis (Hard Skills, Experience, Soft Skills, Education, Keyword Coverage, Resume Quality) with AI optimization suggestions.
+  One invocation, 10 deliverables: visual HTML resume, auto-exported PDF (Playwright), high-resolution PNG export (2x A4), ATS HTML resume, Markdown backup, cover letter, LinkedIn export, job search strategy report (HTML), interview preparation report (HTML), resume diagnosis report (HTML). PNG also serves as fallback when Playwright unavailable. JSON data persistence for cross-session reuse.
+  Supports multi-language output: English, Chinese (中文), Japanese (日本語), Korean (한국어) with proper font stacks (Noto Sans family).
   29 design aesthetics: Minimalism, Neumorphism, Glassmorphism, Cyberpunk, Brutalism, Claymorphism, Aurora, 3D Hyperrealism, Vibrant Block, Dark OLED, Organic, Blue Professional, Monochrome, Soft Editorial, Emerald Editorial, Editorial Forest, Editorial Tri-Tone, Block Frame, Cobalt Grid, Signal, Studio, Vellum, Mat, Long Table, Cartesian, Stencil Tablet, People's Platform, Grove, Broadside.
-  Keywords: resume builder, CV generator, resume maker, curriculum vitae, job application, career tool, portfolio, PDF export, ATS compatible, applicant tracking system, cover letter generator, LinkedIn optimization, multi-language resume, bilingual CV, multilingual support, design template, professional resume, HTML resume, visual resume, creative resume, modern resume template, AI resume writer, resume optimizer, resume formatter, resume design, CV design, job search, career change, internship resume, executive resume, tech resume, designer resume
+  Keywords: resume builder, CV generator, resume maker, curriculum vitae, job application, career tool, portfolio, PDF export, ATS compatible, applicant tracking system, cover letter generator, LinkedIn optimization, multi-language resume, bilingual CV, multilingual support, design template, professional resume, HTML resume, visual resume, creative resume, modern resume template, AI resume writer, resume optimizer, resume formatter, resume design, CV design, job search, career change, internship resume, executive resume, tech resume, designer resume, resume diagnosis, JD matching, interview preparation, job search strategy, PNG export, JSON persistence
 license: MIT
-version: 1.3.0
+version: 1.4.0
 author: Feihong
 based_on: claudekit/frontend-design-pro-demo (MIT License), zarazhangrui/beautiful-html-templates (MIT License)
 ---
