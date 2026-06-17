@@ -42,21 +42,22 @@ async function exportPDF(inputFile, outputFile) {
     // Hardcoded inline style on <html> is the only reliable method.
     let htmlContent = fs.readFileSync(inputPath, 'utf-8');
 
-    // Extract --color-bg value from CSS
-    const colorBgMatch = htmlContent.match(/--color-bg:\s*([^;}"'`]+)/);
-    const colorBg = colorBgMatch ? colorBgMatch[1].trim() : '#ffffff';
+    // Extract --color-surface value from CSS (not --color-bg)
+    // Using --color-surface ensures the entire page matches the container background
+    const colorSurfaceMatch = htmlContent.match(/--color-surface:\s*([^;}"'`]+)/);
+    const colorSurface = colorSurfaceMatch ? colorSurfaceMatch[1].trim() : '#ffffff';
 
     // Inject hardcoded background on <html> tag
     // Remove any existing style on <html> first, then add our own
     htmlContent = htmlContent.replace(
       /<html([^>]*)\s*style="[^"]*"\s*>/i,
-      `<html$1 style="background-color: ${colorBg};">`
+      `<html$1 style="background-color: ${colorSurface};">`
     );
     // If <html> has no style attribute, add one
     if (!htmlContent.match(/<html[^>]*style=/i)) {
       htmlContent = htmlContent.replace(
         /<html([^>]*)>/i,
-        `<html$1 style="background-color: ${colorBg};">`
+        `<html$1 style="background-color: ${colorSurface};">`
       );
     }
 
