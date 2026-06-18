@@ -690,7 +690,7 @@ When user explicitly requests RAW mode:
 
 我将使用你的原始内容直接生成简历：
 • 保留原始文字，一字不改
-• 仅应用你选择的 11 种设计风格之一
+• 仅应用你选择的 29 种设计风格之一
 • 生成 HTML + ATS 版本
 
 正在生成...请稍候
@@ -1028,7 +1028,7 @@ node export-pdf-batch.js *.html --no-background
 
 **Note:** The templates are designed to look professional whether printed in color or black-and-white.
 
-### 6.2 Avatar Implementation Guide
+### 6.4 Avatar Implementation Guide
 
 **Template Placeholder System:**
 
@@ -1349,7 +1349,7 @@ When user selects "No Avatar":
 - ALWAYS ensure WCAG AA contrast ratios
 - NEVER include decorative elements in ATS version
 
-## 9. Example Workflow
+## 10. Example Workflow
 
 ### Example 1: Default Mode (with Content Optimization)
 
@@ -1497,7 +1497,7 @@ AI: ✅ 已选择【抽象头像】，将根据姓名自动生成
     确认无误后，请选择设计风格...
 ```
 
-## 10. Version History
+## 11. Version History
 
 - v0.1.0 (2026-06-12): MVP with 3 styles (Minimalism, Neumorphism, Glassmorphism), EN/ZH support, Content Optimization Engine, RAW mode
 - v0.5.0 (2026-06-12): Full 11 styles completed, unified demo content, avatar system, multi-language font support (EN/ZH/JA/KR)
