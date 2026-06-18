@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="{{LANG_CODE}}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>招聘平台资料优化导出</title>
+<title>{{PAGE_TITLE}}</title>
 <style>
 /* ========== CSS Reset & Base ========== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,14 +21,8 @@
   --border: #e0e0e0;
   --card-bg: #ffffff;
   --page-bg: #f3f2ef;
-  --boss-color: #00beab;
-  --fiveonej-color: #e4393c;
-  --linkedin-color: #0a66c2;
-  --indeed-color: #2164f3;
-  --rikunabi-color: #00a0e9;
-  --mynavi-color: #ff6600;
-  --jobkorea-color: #3b6cb5;
-  --saramin-color: #3e8f3e;
+  --platform-color: #0a66c2;
+  --platform-color-2: #2164f3;
   --radius: 8px;
   --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
   --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
@@ -67,47 +61,11 @@ body {
   padding: 20px 16px 40px;
 }
 
-/* ========== Region Tabs ========== */
-.region-tabs {
-  display: flex;
-  gap: 4px;
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 4px;
-  box-shadow: var(--shadow);
-  margin-bottom: 20px;
-  overflow-x: auto;
-}
-.region-tab {
-  flex: 1;
-  min-width: 0;
-  padding: 10px 12px;
-  border: none;
-  background: transparent;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: all 0.2s;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-.region-tab:hover { background: var(--primary-bg); color: var(--primary); }
-.region-tab.active {
-  background: var(--primary);
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(10,102,194,0.3);
-}
-
 /* ========== Platform Tabs ========== */
 .platform-tabs {
   display: flex;
   gap: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   overflow-x: auto;
   padding-bottom: 2px;
 }
@@ -144,10 +102,6 @@ body {
   font-weight: 700;
   color: #fff;
 }
-
-/* ========== Region Panel ========== */
-.region-panel { display: none; }
-.region-panel.active { display: block; }
 
 /* ========== Platform Panel ========== */
 .platform-panel { display: none; }
@@ -326,8 +280,6 @@ body {
   .page-header { padding: 20px 16px 16px; }
   .page-header h1 { font-size: 20px; }
   .container { padding: 12px 10px 30px; }
-  .region-tabs { flex-wrap: nowrap; }
-  .region-tab { font-size: 12px; padding: 8px 8px; }
   .platform-tab { font-size: 12px; padding: 6px 12px; }
   .block-header { flex-direction: column; align-items: flex-start; }
   .block-header .block-actions { width: 100%; justify-content: space-between; }
@@ -340,8 +292,8 @@ body {
   .page-header { background: #fff !important; color: var(--text) !important; border-bottom: 2px solid var(--primary); padding: 16px; }
   .page-header h1 { font-size: 18px; }
   .container { max-width: 100%; padding: 0; }
-  .region-tabs, .platform-tabs, .copy-btn, .char-bar, .opt-tip, .usage-card { display: none !important; }
-  .region-panel, .platform-panel { display: block !important; page-break-inside: avoid; }
+  .platform-tabs, .copy-btn, .char-bar, .opt-tip, .usage-card { display: none !important; }
+  .platform-panel { display: block !important; page-break-inside: avoid; }
   .content-block { box-shadow: none; border: 1px solid #ddd; margin-bottom: 12px; }
   .block-header { background: #f5f5f5; padding: 8px 12px; }
   .block-body textarea {
@@ -365,723 +317,23 @@ body {
 
 <!-- ==================== HEADER ==================== -->
 <header class="page-header">
-  <h1>招聘平台资料优化导出</h1>
-  <p class="subtitle">Multi-Platform Profile Export | 多言語対応 | 다국어 지원</p>
+  <h1>{{PAGE_HEADING}}</h1>
+  <p class="subtitle">{{PAGE_SUBTITLE}}</p>
 </header>
 
 <div class="container">
 
-  <!-- ==================== REGION TABS ==================== -->
-  <nav class="region-tabs" role="tablist">
-    <button class="region-tab active" data-region="cn" role="tab" aria-selected="true">
-      <span>&#127464;&#127475;</span> 中国
-    </button>
-    <button class="region-tab" data-region="en" role="tab" aria-selected="false">
-      <span>&#127760;</span> English
-    </button>
-    <button class="region-tab" data-region="jp" role="tab" aria-selected="false">
-      <span>&#127471;&#127477;</span> 日本
-    </button>
-    <button class="region-tab" data-region="kr" role="tab" aria-selected="false">
-      <span>&#127472;&#127479;</span> 한국
-    </button>
+  <!-- ==================== PLATFORM TABS ==================== -->
+  <nav class="platform-tabs" role="tablist">
+    {{PLATFORM_TABS}}
   </nav>
 
-  <!-- ================================================================ -->
-  <!-- ==================== CHINA (CN) ==================== -->
-  <!-- ================================================================ -->
-  <div class="region-panel active" id="region-cn">
-
-    <!-- Platform Tabs -->
-    <div class="platform-tabs">
-      <button class="platform-tab active" data-platform="boss" data-region-parent="cn">
-        <span class="platform-icon" style="background:var(--boss-color)">B</span> Boss直聘
-      </button>
-      <button class="platform-tab" data-platform="51job" data-region-parent="cn">
-        <span class="platform-icon" style="background:var(--fiveonej-color)">5</span> 51job
-      </button>
-    </div>
-
-    <!-- ===== Boss直聘 ===== -->
-    <div class="platform-panel active" id="platform-cn-boss">
-      <div class="platform-badge" style="background:var(--boss-color)">Boss直聘</div>
-
-      <div class="usage-card">
-        <h4>&#128221; 使用步骤</h4>
-        <ol>
-          <li>打开 Boss直聘 App 或 <a href="https://www.zhipin.com" target="_blank" rel="noopener">zhipin.com</a></li>
-          <li>进入「我的」>「编辑资料」</li>
-          <li>将下方文案复制到对应字段中</li>
-          <li>根据字符计数调整内容，确保不超限</li>
-        </ol>
-      </div>
-
-      <!-- 个人优势 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            个人优势
-            <span class="field-label">建议 80-120 字 / 最多 300 字</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="300"></div></div>
-            <span class="char-counter" data-max="300">0 / 300</span>
-            <button class="copy-btn" data-target="boss-advantage">&#128203; 复制</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="boss-advantage" placeholder="{{BOSS_ADVANTAGE}}" data-max="300">{{BOSS_ADVANTAGE}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>优化建议：突出核心技能和关键成果，使用量化数据。避免空泛描述，建议用「3年经验」「主导XX项目」「提升XX%」等具体表述。</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 工作经历 1 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            工作经历 1
-            <span class="field-label">建议 3-5 个要点</span>
-          </div>
-          <div class="block-actions">
-            <span class="char-counter">无限制</span>
-            <button class="copy-btn" data-target="boss-exp-1">&#128203; 复制</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="boss-exp-1" placeholder="{{BOSS_EXP_1}}">{{BOSS_EXP_1}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>优化建议：每段经历写 3-5 个 bullet point，以动词开头，包含量化成果。格式参考：「负责XX，实现XX，提升XX%」</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 工作经历 2 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            工作经历 2
-            <span class="field-label">建议 3-5 个要点</span>
-          </div>
-          <div class="block-actions">
-            <span class="char-counter">无限制</span>
-            <button class="copy-btn" data-target="boss-exp-2">&#128203; 复制</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="boss-exp-2" placeholder="{{BOSS_EXP_2}}">{{BOSS_EXP_2}}</textarea>
-        </div>
-      </div>
-
-      <!-- 工作经历 3 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            工作经历 3
-            <span class="field-label">建议 3-5 个要点</span>
-          </div>
-          <div class="block-actions">
-            <span class="char-counter">无限制</span>
-            <button class="copy-btn" data-target="boss-exp-3">&#128203; 复制</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="boss-exp-3" placeholder="{{BOSS_EXP_3}}">{{BOSS_EXP_3}}</textarea>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== 51job ===== -->
-    <div class="platform-panel" id="platform-cn-51job">
-      <div class="platform-badge" style="background:var(--fiveonej-color)">51job 前程无忧</div>
-
-      <div class="usage-card">
-        <h4>&#128221; 使用步骤</h4>
-        <ol>
-          <li>打开 <a href="https://www.51job.com" target="_blank" rel="noopener">51job.com</a> 并登录</li>
-          <li>进入「我的简历」>「编辑简历」</li>
-          <li>将下方文案复制到对应字段中</li>
-          <li>根据字符计数调整内容，确保不超限</li>
-        </ol>
-      </div>
-
-      <!-- 自我评价 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            自我评价
-            <span class="field-label">最多 500 字</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="500"></div></div>
-            <span class="char-counter" data-max="500">0 / 500</span>
-            <button class="copy-btn" data-target="51job-self-intro">&#128203; 复制</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="51job-self-intro" placeholder="{{FIVEONEJ_SELF_INTRO}}" data-max="500">{{FIVEONEJ_SELF_INTRO}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>优化建议：51job 自我评价建议分 2-3 段，第一段概括核心优势，第二段突出关键项目成果，第三段说明求职意向。避免过于口语化。</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 工作经历 1 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">工作经历 1</div>
-          <div class="block-actions">
-            <span class="char-counter">无限制</span>
-            <button class="copy-btn" data-target="51job-exp-1">&#128203; 复制</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="51job-exp-1" placeholder="{{FIVEONEJ_EXP_1}}">{{FIVEONEJ_EXP_1}}</textarea>
-        </div>
-      </div>
-
-      <!-- 工作经历 2 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">工作经历 2</div>
-          <div class="block-actions">
-            <span class="char-counter">无限制</span>
-            <button class="copy-btn" data-target="51job-exp-2">&#128203; 复制</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="51job-exp-2" placeholder="{{FIVEONEJ_EXP_2}}">{{FIVEONEJ_EXP_2}}</textarea>
-        </div>
-      </div>
-
-      <!-- 工作经历 3 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">工作经历 3</div>
-          <div class="block-actions">
-            <span class="char-counter">无限制</span>
-            <button class="copy-btn" data-target="51job-exp-3">&#128203; 复制</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="51job-exp-3" placeholder="{{FIVEONEJ_EXP_3}}">{{FIVEONEJ_EXP_3}}</textarea>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================================================================ -->
-  <!-- ==================== ENGLISH (EN) ==================== -->
-  <!-- ================================================================ -->
-  <div class="region-panel" id="region-en">
-
-    <div class="platform-tabs">
-      <button class="platform-tab active" data-platform="linkedin" data-region-parent="en">
-        <span class="platform-icon" style="background:var(--linkedin-color)">in</span> LinkedIn
-      </button>
-      <button class="platform-tab" data-platform="indeed" data-region-parent="en">
-        <span class="platform-icon" style="background:var(--indeed-color)">i</span> Indeed
-      </button>
-    </div>
-
-    <!-- ===== LinkedIn ===== -->
-    <div class="platform-panel active" id="platform-en-linkedin">
-      <div class="platform-badge" style="background:var(--linkedin-color)">LinkedIn</div>
-
-      <div class="usage-card">
-        <h4>&#128221; How to Use</h4>
-        <ol>
-          <li>Go to <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener">LinkedIn Profile</a> and click "Edit public profile &amp; URL"</li>
-          <li>Click the pencil icon to edit each section</li>
-          <li>Copy the optimized text below into the corresponding fields</li>
-          <li>Monitor character counts to stay within limits</li>
-        </ol>
-      </div>
-
-      <!-- Headline -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            Headline
-            <span class="field-label">Max 220 characters</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="220"></div></div>
-            <span class="char-counter" data-max="220">0 / 220</span>
-            <button class="copy-btn" data-target="linkedin-headline">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="linkedin-headline" placeholder="{{LINKEDIN_HEADLINE}}" data-max="220">{{LINKEDIN_HEADLINE}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>Tip: Use keywords from your target job titles. Format: "Role | Specialty | Key Achievement". Avoid generic terms like "Passionate professional".</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- About -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            About
-            <span class="field-label">Max 2,600 characters</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="2600"></div></div>
-            <span class="char-counter" data-max="2600">0 / 2,600</span>
-            <button class="copy-btn" data-target="linkedin-about">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="linkedin-about" placeholder="{{LINKEDIN_ABOUT}}" data-max="2600" style="min-height:160px">{{LINKEDIN_ABOUT}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>Tip: First 3 lines are visible before "See more". Hook the reader immediately. Use short paragraphs, bullet points, and include a call-to-action at the end.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Experience 1 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">Experience 1</div>
-          <div class="block-actions">
-            <span class="char-counter">No limit</span>
-            <button class="copy-btn" data-target="linkedin-exp-1">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="linkedin-exp-1" placeholder="{{LINKEDIN_EXP_1}}">{{LINKEDIN_EXP_1}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>Tip: Start each bullet with a strong action verb (Led, Built, Increased, Spearheaded). Quantify results whenever possible.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Experience 2 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">Experience 2</div>
-          <div class="block-actions">
-            <span class="char-counter">No limit</span>
-            <button class="copy-btn" data-target="linkedin-exp-2">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="linkedin-exp-2" placeholder="{{LINKEDIN_EXP_2}}">{{LINKEDIN_EXP_2}}</textarea>
-        </div>
-      </div>
-
-      <!-- Experience 3 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">Experience 3</div>
-          <div class="block-actions">
-            <span class="char-counter">No limit</span>
-            <button class="copy-btn" data-target="linkedin-exp-3">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="linkedin-exp-3" placeholder="{{LINKEDIN_EXP_3}}">{{LINKEDIN_EXP_3}}</textarea>
-        </div>
-      </div>
-
-      <!-- Skills -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            Skills
-            <span class="field-label">Top 50 skills max</span>
-          </div>
-          <div class="block-actions">
-            <span class="char-counter">No limit</span>
-            <button class="copy-btn" data-target="linkedin-skills">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="linkedin-skills" placeholder="{{LINKEDIN_SKILLS}}" style="min-height:80px">{{LINKEDIN_SKILLS}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>Tip: List skills separated by commas or new lines. Prioritize skills that match your target job descriptions. LinkedIn allows up to 50 skills.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== Indeed ===== -->
-    <div class="platform-panel" id="platform-en-indeed">
-      <div class="platform-badge" style="background:var(--indeed-color)">Indeed</div>
-
-      <div class="usage-card">
-        <h4>&#128221; How to Use</h4>
-        <ol>
-          <li>Go to <a href="https://www.indeed.com/resume" target="_blank" rel="noopener">Indeed Resume</a></li>
-          <li>Click "Edit" on each section</li>
-          <li>Copy the optimized text below into the corresponding fields</li>
-          <li>Monitor character counts to stay within limits</li>
-        </ol>
-      </div>
-
-      <!-- Resume Summary -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            Resume Summary
-            <span class="field-label">Max 5,000 characters</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="5000"></div></div>
-            <span class="char-counter" data-max="5000">0 / 5,000</span>
-            <button class="copy-btn" data-target="indeed-summary">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="indeed-summary" placeholder="{{INDEED_SUMMARY}}" data-max="5000" style="min-height:160px">{{INDEED_SUMMARY}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>Tip: Keep your summary to 3-5 sentences. Focus on your value proposition: what you bring, what you've achieved, and what you're looking for. Tailor it for each job application.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Work Experience 1 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">Work Experience 1</div>
-          <div class="block-actions">
-            <span class="char-counter">No limit</span>
-            <button class="copy-btn" data-target="indeed-exp-1">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="indeed-exp-1" placeholder="{{INDEED_EXP_1}}">{{INDEED_EXP_1}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>Tip: Indeed values clear, concise descriptions. Use bullet points and include metrics. Match the language from job postings you're targeting.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Work Experience 2 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">Work Experience 2</div>
-          <div class="block-actions">
-            <span class="char-counter">No limit</span>
-            <button class="copy-btn" data-target="indeed-exp-2">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="indeed-exp-2" placeholder="{{INDEED_EXP_2}}">{{INDEED_EXP_2}}</textarea>
-        </div>
-      </div>
-
-      <!-- Work Experience 3 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">Work Experience 3</div>
-          <div class="block-actions">
-            <span class="char-counter">No limit</span>
-            <button class="copy-btn" data-target="indeed-exp-3">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="indeed-exp-3" placeholder="{{INDEED_EXP_3}}">{{INDEED_EXP_3}}</textarea>
-        </div>
-      </div>
-
-      <!-- Skills -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">Skills</div>
-          <div class="block-actions">
-            <span class="char-counter">No limit</span>
-            <button class="copy-btn" data-target="indeed-skills">&#128203; Copy</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="indeed-skills" placeholder="{{INDEED_SKILLS}}" style="min-height:80px">{{INDEED_SKILLS}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>Tip: List skills separated by commas. Include both technical and soft skills. Indeed uses skills for matching you with relevant job postings.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================================================================ -->
-  <!-- ==================== JAPAN (JP) ==================== -->
-  <!-- ================================================================ -->
-  <div class="region-panel" id="region-jp">
-
-    <div class="platform-tabs">
-      <button class="platform-tab active" data-platform="rikunabi" data-region-parent="jp">
-        <span class="platform-icon" style="background:var(--rikunabi-color)">R</span> リクナビ
-      </button>
-      <button class="platform-tab" data-platform="mynavi" data-region-parent="jp">
-        <span class="platform-icon" style="background:var(--mynavi-color)">M</span> マイナビ
-      </button>
-    </div>
-
-    <!-- ===== リクナビ ===== -->
-    <div class="platform-panel active" id="platform-jp-rikunabi">
-      <div class="platform-badge" style="background:var(--rikunabi-color)">リクナビNEXT</div>
-
-      <div class="usage-card">
-        <h4>&#128221; 使い方</h4>
-        <ol>
-          <li><a href="https://next.rikunabi.com" target="_blank" rel="noopener">リクナビNEXT</a> にログイン</li>
-          <li>「職務経歴書」または「自己PR」の編集画面を開く</li>
-          <li>下の最適化されたテキストを各フィールドにコピー</li>
-          <li>文字数を確認し、制限内に収まるよう調整</li>
-        </ol>
-      </div>
-
-      <!-- 自己PR -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            自己PR
-            <span class="field-label">目安 400 字程度</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="400"></div></div>
-            <span class="char-counter" data-max="400">0 / 400</span>
-            <button class="copy-btn" data-target="rikunabi-selfpr">&#128203; コピー</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="rikunabi-selfpr" placeholder="{{RIKUNABI_SELFPR}}" data-max="400" style="min-height:140px">{{RIKUNABI_SELFPR}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>最適化のヒント：結論→理由→具体例（エピソード）→仕事への活かし方、の構成がおすすめ。具体的な数字や成果を含めると説得力が増します。</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 職務経歴書 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            職務経歴書
-            <span class="field-label">制限なし</span>
-          </div>
-          <div class="block-actions">
-            <span class="char-counter">制限なし</span>
-            <button class="copy-btn" data-target="rikunabi-career">&#128203; コピー</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="rikunabi-career" placeholder="{{RIKUNABI_CAREER}}" style="min-height:180px">{{RIKUNABI_CAREER}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>最適化のヒント：プロジェクト名・期間・役割・使用技術・成果を箇条書きで記載。定量的な成果（売上XX%増、処理速度XX倍など）を含めましょう。</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== マイナビ ===== -->
-    <div class="platform-panel" id="platform-jp-mynavi">
-      <div class="platform-badge" style="background:var(--mynavi-color)">マイナビ</div>
-
-      <div class="usage-card">
-        <h4>&#128221; 使い方</h4>
-        <ol>
-          <li><a href="https://mynavi.jp" target="_blank" rel="noopener">マイナビ</a> にログイン</li>
-          <li>エントリー画面の「自己PR」「志望動機」欄を開く</li>
-          <li>下の最適化されたテキストを各フィールドにコピー</li>
-          <li>文字数を確認し、制限内に収まるよう調整</li>
-        </ol>
-      </div>
-
-      <!-- 自己PR -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            自己PR
-            <span class="field-label">目安 400 字程度</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="400"></div></div>
-            <span class="char-counter" data-max="400">0 / 400</span>
-            <button class="copy-btn" data-target="mynavi-selfpr">&#128203; コピー</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="mynavi-selfpr" placeholder="{{MYNAVI_SELFPR}}" data-max="400" style="min-height:140px">{{MYNAVI_SELFPR}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>最適化のヒント：企業が求める人物像とマッチする強みを中心に書きましょう。学生・新卒の場合は学歴やゼミでの経験も有効です。</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 志望動機 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            志望動機
-            <span class="field-label">目安 200 字程度</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="200"></div></div>
-            <span class="char-counter" data-max="200">0 / 200</span>
-            <button class="copy-btn" data-target="mynavi-motivation">&#128203; コピー</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="mynavi-motivation" placeholder="{{MYNAVI_MOTIVATION}}" data-max="200">{{MYNAVI_MOTIVATION}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>最適化のヒント：「なぜこの企業なのか」を具体的に。「業界への関心」「企業の強みへの共感」「自分の経験との接点」の3点を含めると説得力があります。</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================================================================ -->
-  <!-- ==================== KOREA (KR) ==================== -->
-  <!-- ================================================================ -->
-  <div class="region-panel" id="region-kr">
-
-    <div class="platform-tabs">
-      <button class="platform-tab active" data-platform="jobkorea" data-region-parent="kr">
-        <span class="platform-icon" style="background:var(--jobkorea-color)">J</span> 잡코리아
-      </button>
-      <button class="platform-tab" data-platform="saramin" data-region-parent="kr">
-        <span class="platform-icon" style="background:var(--saramin-color)">S</span> 사람인
-      </button>
-    </div>
-
-    <!-- ===== 잡코리아 ===== -->
-    <div class="platform-panel active" id="platform-kr-jobkorea">
-      <div class="platform-badge" style="background:var(--jobkorea-color)">잡코리아</div>
-
-      <div class="usage-card">
-        <h4>&#128221; 사용 방법</h4>
-        <ol>
-          <li><a href="https://www.jobkorea.co.kr" target="_blank" rel="noopener">잡코리아</a>에 로그인</li>
-          <li>「이력서 관리」>「자기소개」편집 화면 열기</li>
-          <li>아래 최적화된 텍스트를 각 항목에 복사</li>
-          <li>글자 수를 확인하고 제한 내로 조정</li>
-        </ol>
-      </div>
-
-      <!-- 자기소개 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            자기소개
-            <span class="field-label">최대 1,500자</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="1500"></div></div>
-            <span class="char-counter" data-max="1500">0 / 1,500</span>
-            <button class="copy-btn" data-target="jobkorea-selfintro">&#128203; 복사</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="jobkorea-selfintro" placeholder="{{JOBKOREA_SELFINTRO}}" data-max="1500" style="min-height:160px">{{JOBKOREA_SELFINTRO}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>최적화 팁: 성장 과정, 성격의 장단점, 직무 경험, 지원 동기를 구조화하여 작성하세요. 구체적인 성과와 수치를 포함하면 신뢰도가 높아집니다.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 경력기술서 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            경력기술서
-            <span class="field-label">제한 없음</span>
-          </div>
-          <div class="block-actions">
-            <span class="char-counter">제한 없음</span>
-            <button class="copy-btn" data-target="jobkorea-career">&#128203; 복사</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="jobkorea-career" placeholder="{{JOBKOREA_CAREER}}" style="min-height:180px">{{JOBKOREA_CAREER}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>최적화 팁: 프로젝트별로 참여 기간, 역할, 사용 기술, 성과를 정리하세요. 정량적 성과(매출 OO% 증가, 처리 속도 OO배 개선 등)를 반드시 포함하세요.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== 사람인 ===== -->
-    <div class="platform-panel" id="platform-kr-saramin">
-      <div class="platform-badge" style="background:var(--saramin-color)">사람인</div>
-
-      <div class="usage-card">
-        <h4>&#128221; 사용 방법</h4>
-        <ol>
-          <li><a href="https://www.saramin.co.kr" target="_blank" rel="noopener">사람인</a>에 로그인</li>
-          <li>「이력서»>「자기소개서」편집 화면 열기</li>
-          <li>아래 최적화된 텍스트를 각 항목에 복사</li>
-          <li>글자 수를 확인하고 제한 내로 조정</li>
-        </ol>
-      </div>
-
-      <!-- 자기소개서 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            자기소개서
-            <span class="field-label">최대 1,000자</span>
-          </div>
-          <div class="block-actions">
-            <div class="char-bar"><div class="char-bar-fill" data-max="1000"></div></div>
-            <span class="char-counter" data-max="1000">0 / 1,000</span>
-            <button class="copy-btn" data-target="saramin-selfintro">&#128203; 복사</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="saramin-selfintro" placeholder="{{SARAMIN_SELFINTRO}}" data-max="1000" style="min-height:160px">{{SARAMIN_SELFINTRO}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>최적화 팁: 사람인은 자기소개서를 항목별(성장과정, 성격, 직무경험 등)로 나누어 작성하는 것이 좋습니다. 각 항목 300~400자 정도가 적당합니다.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 경력기술서 -->
-      <div class="content-block">
-        <div class="block-header">
-          <div class="block-title">
-            경력기술서
-            <span class="field-label">제한 없음</span>
-          </div>
-          <div class="block-actions">
-            <span class="char-counter">제한 없음</span>
-            <button class="copy-btn" data-target="saramin-career">&#128203; 복사</button>
-          </div>
-        </div>
-        <div class="block-body">
-          <textarea id="saramin-career" placeholder="{{SARAMIN_CAREER}}" style="min-height:180px">{{SARAMIN_CAREER}}</textarea>
-          <div class="opt-tip">
-            <span class="tip-icon">&#9888;&#65039;</span>
-            <span>최적화 팁: 경력기술서는 기술 스택과 프로젝트 경험을 체계적으로 정리하세요. STAR 기법(상황-과제-행동-결과)을 활용하면 효과적입니다.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- ==================== ALL PLATFORM PANELS ==================== -->
+  {{PLATFORM_PANELS}}
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="page-footer">
-    <p>Generated by Resume Design Pro &mdash; Profile Export Template</p>
+    <p>{{FOOTER_TEXT}}</p>
     <p class="timestamp">{{TIMESTAMP}}</p>
   </footer>
 
@@ -1092,53 +344,19 @@ body {
 (function() {
   'use strict';
 
-  // ===== Region Tab Switching =====
-  const regionTabs = document.querySelectorAll('.region-tab');
-  const regionPanels = document.querySelectorAll('.region-panel');
-
-  regionTabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      const region = this.dataset.region;
-
-      regionTabs.forEach(function(t) {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      this.classList.add('active');
-      this.setAttribute('aria-selected', 'true');
-
-      regionPanels.forEach(function(panel) {
-        panel.classList.remove('active');
-      });
-      document.getElementById('region-' + region).classList.add('active');
-
-      // Activate the first platform tab in the selected region
-      var firstPlatformTab = document.querySelector('.platform-tab[data-region-parent="' + region + '"]');
-      if (firstPlatformTab) {
-        firstPlatformTab.click();
-      }
-    });
-  });
-
   // ===== Platform Tab Switching =====
-  const platformTabs = document.querySelectorAll('.platform-tab');
+  var platformTabs = document.querySelectorAll('.platform-tab');
 
   platformTabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
       var platform = this.dataset.platform;
-      var regionParent = this.dataset.regionParent;
 
-      // Deactivate sibling platform tabs
-      var siblings = document.querySelectorAll('.platform-tab[data-region-parent="' + regionParent + '"]');
-      siblings.forEach(function(s) { s.classList.remove('active'); });
+      platformTabs.forEach(function(t) { t.classList.remove('active'); });
       this.classList.add('active');
 
-      // Show the corresponding platform panel
-      var panelId = 'platform-' + regionParent + '-' + platform;
-      var parentRegion = document.getElementById('region-' + regionParent);
-      var panels = parentRegion.querySelectorAll('.platform-panel');
+      var panels = document.querySelectorAll('.platform-panel');
       panels.forEach(function(p) { p.classList.remove('active'); });
-      document.getElementById(panelId).classList.add('active');
+      document.getElementById('platform-' + platform).classList.add('active');
     });
   });
 
@@ -1157,34 +375,23 @@ body {
     if (counter) {
       var formattedMax = max.toLocaleString();
       counter.textContent = len + ' / ' + formattedMax;
-
       counter.classList.remove('warning', 'danger');
-      if (len > max) {
-        counter.classList.add('danger');
-      } else if (len > max * 0.9) {
-        counter.classList.add('warning');
-      }
+      if (len > max) counter.classList.add('danger');
+      else if (len > max * 0.9) counter.classList.add('warning');
     }
 
     if (barFill) {
       var pct = Math.min((len / max) * 100, 100);
       barFill.style.width = pct + '%';
-
       barFill.classList.remove('warning', 'danger');
-      if (len > max) {
-        barFill.classList.add('danger');
-      } else if (len > max * 0.9) {
-        barFill.classList.add('warning');
-      }
+      if (len > max) barFill.classList.add('danger');
+      else if (len > max * 0.9) barFill.classList.add('warning');
     }
   }
 
-  // Initialize all textareas with max
   document.querySelectorAll('textarea[data-max]').forEach(function(ta) {
     updateCharCount(ta);
-    ta.addEventListener('input', function() {
-      updateCharCount(this);
-    });
+    ta.addEventListener('input', function() { updateCharCount(this); });
   });
 
   // ===== Copy to Clipboard =====
@@ -1193,10 +400,8 @@ body {
       var targetId = this.dataset.target;
       var textarea = document.getElementById(targetId);
       if (!textarea) return;
-
       var text = textarea.value;
 
-      // navigator.clipboard API
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(function() {
           showCopied(btn);
@@ -1213,18 +418,13 @@ body {
     textarea.select();
     textarea.setSelectionRange(0, textarea.value.length);
     try {
-      var ok = document.execCommand('copy');
-      if (ok) {
-        showCopied(btn);
-      }
-    } catch (e) {
-      // silently fail
-    }
+      if (document.execCommand('copy')) showCopied(btn);
+    } catch (e) {}
   }
 
   function showCopied(btn) {
     var originalText = btn.innerHTML;
-    btn.innerHTML = '&#9989; Copied!';
+    btn.innerHTML = '&#9989; {{COPIED_TEXT}}';
     btn.classList.add('copied');
     setTimeout(function() {
       btn.innerHTML = originalText;
@@ -1233,12 +433,9 @@ body {
   }
 
   // ===== Keyboard Accessibility =====
-  document.querySelectorAll('.region-tab, .platform-tab').forEach(function(tab) {
+  document.querySelectorAll('.platform-tab').forEach(function(tab) {
     tab.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        this.click();
-      }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
     });
   });
 
