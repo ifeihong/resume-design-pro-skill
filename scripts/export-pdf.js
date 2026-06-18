@@ -42,45 +42,36 @@ async function exportPDF(inputFile, outputFile) {
     // Hardcoded inline style on <html> is the only reliable method.
     let htmlContent = fs.readFileSync(inputPath, 'utf-8');
 
-    // Extract --color-surface value from CSS (not --color-bg)
-    // Using --color-surface ensures the entire page matches the container background
-    const colorSurfaceMatch = htmlContent.match(/--color-surface:\s*([^;}+]+)/);
-    const colorSurface = colorSurfaceMatch ? colorSurfaceMatch[1].trim() : '#ffffff';
+    // Extract background color from CSS variables (try multiple variable names)
+    // This ensures compatibility with templates that use different naming conventions
+    let bgColor = '#ffffff';
+    const colorVars = ['--color-surface', '--color-bg', '--bg-dark', '--background'];
+    for (const varName of colorVars) {
+      const match = htmlContent.match(new RegExp(varName + ':\\s*([^;}+]+)'));
+      if (match) {
+        bgColor = match[1].trim();
+        break;
+      }
+    }
 
-    // Inject hardcoded background on <html> tag
+    // Inject hardcoded background on <html> tag only
+    // This is necessary because Playwright PDF export does not reliably
+    // render CSS variable-based backgrounds on the <html> element.
     // Remove any existing style on <html> first, then add our own
     htmlContent = htmlContent.replace(
       /<html([^>]*)\s*style="[^"]*"\s*>/i,
-      `<html$1 style="background-color: ${colorSurface};">`
+      `<html$1 style="background-color: ${bgColor};">`
     );
     // If <html> has no style attribute, add one
     if (!htmlContent.match(/<html[^>]*style=/i)) {
       htmlContent = htmlContent.replace(
         /<html([^>]*)>/i,
-        `<html$1 style="background-color: ${colorSurface};">`
+        `<html$1 style="background-color: ${bgColor};">`
       );
     }
 
-    // For dark-themed templates, we need to extract the actual body background color
-    // and force it to be used in PDF export (bypassing @media print light-theme override)
-    const bodyBgMatch = htmlContent.match(/body\s*\{[^}]*background:\s*([^;}+]+)/);
-    const bodyBg = bodyBgMatch ? bodyBgMatch[1].trim() : colorSurface;
-
-    // Inject a style tag that forces dark theme colors and disables @media print overrides
-    // This ensures PDF matches the browser view exactly
-    const forceDarkStyle = `
-    <style id="pdf-force-dark">
-      @media print {
-        html { background: ${bodyBg} !important; }
-        body { background: ${bodyBg} !important; color: inherit !important; }
-        .aurora-bg, .mesh-gradient { display: block !important; }
-        * { color: inherit !important; }
-        .resume-header, .section { background: var(--bg-card, rgba(20,20,40,0.5)) !important; border-color: var(--glass-border, rgba(255,255,255,0.08)) !important; }
-      }
-    </style>`;
-
-    // Insert before </head>
-    htmlContent = htmlContent.replace('</head>', forceDarkStyle + '\n</head>');
+    // DO NOT inject any @media print overrides - let the template handle it
+    // The template's own @media print rules correctly handle background colors
 
     // Write modified HTML to temp file
     const tempHtml = path.join(path.dirname(inputPath), '._temp_pdf_export.html');

@@ -61,14 +61,25 @@ async function exportPNG(inputFile, outputFile) {
       document.body.style.minHeight = document.documentElement.scrollHeight + 'px';
     });
 
-    // Set viewport to A4 size at 2x resolution for high quality
-    await page.setViewportSize({ width: 794 * 2, height: 1123 * 2 });
+    // Set viewport to A4 width (not 2x) for content-focused screenshot
+    // This minimizes side margins since container max-width is ~900px
+    await page.setViewportSize({ width: 794, height: 1123 });
 
-    // Take full page screenshot
+    // Wait for layout to settle after viewport change
+    await page.waitForTimeout(500);
+
+    // Take full page screenshot - with A4 width viewport, side margins are minimal
+    const scrollHeight = await page.evaluate(() => document.documentElement.scrollHeight);
     await page.screenshot({
       path: outputPath,
       fullPage: true,
-      type: 'png'
+      type: 'png',
+      clip: {
+        x: 0,
+        y: 0,
+        width: 794,
+        height: scrollHeight
+      }
     });
 
     await browser.close();
@@ -79,7 +90,7 @@ async function exportPNG(inputFile, outputFile) {
 
     console.log(`✅ PNG exported successfully!`);
     console.log(`   Size: ${sizeKB} KB`);
-    console.log(`   Resolution: 1588×2246 (2x A4)`);
+    console.log(`   Resolution: 794px wide (A4 width, content-focused)`);
     console.log(`   Location: ${outputPath}`);
     console.log(`\n💡 Note: PNG is a screenshot, not a document. Text is not selectable.`);
     console.log(`   For searchable PDF, install Playwright: pip install playwright && playwright install chromium`);
