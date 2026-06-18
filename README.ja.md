@@ -202,7 +202,7 @@ resume-design-pro/
 |   |-- resume-diagnosis.html            # 履歴書診断レポート（JD マッチング分析）
 |   |-- interview-prep.html              # 面接準備レポート
 |   |-- job-search-kit.html              # 求職戦略レポート
-|   |-- linkedin-export.html             # LinkedIn 最適化ガイド
+|   |-- profile-export.html                # マルチプラットフォーム求職プロフィール最適化
 |-- output/                              # 生成された履歴書のデフォルト出力ディレクトリ
 |-- scripts/                             # エクスポート＆永続化ツール
 |   |-- export-pdf.js                    # 単一ファイル PDF エクスポート（Playwright）

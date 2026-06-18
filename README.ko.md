@@ -95,7 +95,7 @@
 | `resume-{이름}-ats.html` | 일반 텍스트 ATS 버전 -- 지원자 추적 시스템에 안전 |
 | `resume-{이름}.md` | Markdown 백업 -- 언제든지 편집 및 재사용 |
 | `cover-letter-{이름}.html` | 매칭되는 자기소개서 -- 동일한 비주얼 스타일 |
-| `linkedin-export.html` | LinkedIn 최적화 콘텐츠 -- 복사하여 바로 사용 |
+| `profile-export.html` | 멀티 플랫폼 채용 프로필 최적화（Boss直聘, 51job, LinkedIn, Indeed, 리쿠나비, 마이나비, 잡코리아, 사람인） |
 | `job-search-kit.html` | **구직 전략 보고서** -- 목표 기업, 타임라인, 급여 참고, 연락 템플릿 |
 | `interview-prep.html` | **면접 준비 보고서** -- 예상 질문과 답변 프레임워크, 기업 정보 |
 | `resume-diagnosis.html` | **이력서 진단 보고서** -- JD 매칭 분석과 6차원 스코어링 |
@@ -202,7 +202,7 @@ resume-design-pro/
 |   |-- resume-diagnosis.html            # 이력서 진단 보고서（JD 매칭 분석）
 |   |-- interview-prep.html              # 면접 준비 보고서
 |   |-- job-search-kit.html              # 구직 전략 보고서
-|   |-- linkedin-export.html             # LinkedIn 최적화 가이드
+|   |-- profile-export.html                # 멀티 플랫폼 채용 프로필 최적화
 |-- output/                              # 생성된 이력서의 기본 출력 디렉토리
 |-- scripts/                             # 내보내기 및 지속성 도구
 |   |-- export-pdf.js                    # 단일 파일 PDF 내보내기（Playwright）

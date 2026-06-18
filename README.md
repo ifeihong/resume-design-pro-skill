@@ -205,7 +205,7 @@ resume-design-pro/
 |   |-- resume-diagnosis.html            # JD matching diagnosis report
 |   |-- interview-prep.html              # Interview preparation report
 |   |-- job-search-kit.html              # Job search strategy report
-|   |-- linkedin-export.html             # LinkedIn optimization guide
+|   |-- profile-export.html                # Multi-platform profile optimization
 |-- output/                              # Default output directory for generated resumes
 |-- scripts/                             # Export & persistence tools
 |   |-- export-pdf.js                    # Single file PDF export (Playwright)

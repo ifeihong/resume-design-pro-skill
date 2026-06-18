@@ -872,9 +872,11 @@ Generate these files for the user:
    - Customized per job application
    - Print to PDF for submission
 
-7. **LinkedIn Export** (`linkedin-export.html`) [v1.4]
-   - Optimized content for LinkedIn profile sections
-   - Copy-paste ready for Headline, About, Experience, etc.
+7. **Profile Export** (`profile-export.html`) [v1.4]
+   - Multi-platform recruitment profile optimization with copy-paste ready content
+   - Auto-adapts to user's language: Chinese (Boss直聘, 51job), English (LinkedIn, Indeed), Japanese (リクナビ, マイナビ), Korean (잡코리아, 사람인)
+   - Each platform has character limits, copy buttons, and optimization tips
+   - Tab-based UI for easy platform switching
 
 8. **Job Search Strategy Report** (`job-search-kit.html`) [v1.4 NEW]
    - Target company recommendations with match scores
@@ -947,7 +949,7 @@ PDF delivered alongside HTML
      ✅ resume-zhangsan-ats.html            (ATS — for job portals)
      ✅ resume-zhangsan.md                  (Backup — edit anytime)
      ✅ cover-letter-zhangsan-tencent.html  (Cover Letter — matching style)
-     ✅ linkedin-export.html                (LinkedIn — copy-paste ready)
+     ✅ profile-export.html                 (Multi-platform profiles — Boss直聘, 51job, LinkedIn, Indeed, リクナビ, マイナビ, 잡코리아, 사람인)
      ✅ job-search-kit.html                 (Job Search Strategy Report)
      ✅ interview-prep.html                 (Interview Preparation Report)
      ✅ resume-diagnosis.html               (Resume Diagnosis — JD matching)
@@ -1432,7 +1434,7 @@ AI: [Generates resume + Auto-export PDF]
      ✅ resume-zhangsan-ats.html            (ATS — for job portals)
      ✅ resume-zhangsan.md                  (Backup — edit anytime)
      ✅ cover-letter-zhangsan-tencent.html  (Cover Letter — matching style)
-     ✅ linkedin-export.html                (LinkedIn — copy-paste ready)
+     ✅ profile-export.html                 (Multi-platform profiles — copy-paste ready)
      ✅ job-search-kit.html                 (Job Search Strategy Report)
      ✅ interview-prep.html                 (Interview Preparation Report)
      ✅ resume-diagnosis.html               (Resume Diagnosis — JD matching)

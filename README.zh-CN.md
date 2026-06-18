@@ -202,7 +202,7 @@ resume-design-pro/
 |   |-- resume-diagnosis.html            # 简历诊断报告（JD 匹配分析）
 |   |-- interview-prep.html              # 面试准备报告
 |   |-- job-search-kit.html              # 求职策略报告
-|   |-- linkedin-export.html             # LinkedIn 优化指南
+|   |-- profile-export.html                # 多平台招聘资料优化
 |-- output/                              # 默认输出目录，存放生成的简历文件
 |-- scripts/                             # 导出与持久化工具
 |   |-- export-pdf.js                    # 单文件 PDF 导出（Playwright）
