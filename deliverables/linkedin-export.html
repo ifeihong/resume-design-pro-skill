@@ -3,24 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LinkedIn 优化导出 | Resume Design Pro</title>
+<title>LinkedIn 资料优化导出 | {{NAME}}</title>
 <style>
   :root {
-    --primary: #2563eb;
-    --primary-light: #dbeafe;
-    --primary-dark: #1d4ed8;
-    --success: #16a34a;
-    --success-light: #dcfce7;
-    --bg: #f8fafc;
+    --primary: #0a66c2;
+    --primary-light: #e2f0fe;
+    --success: #057642;
+    --success-light: #d1f2e5;
+    --bg: #f3f2ef;
     --surface: #ffffff;
-    --text: #0f172a;
-    --text-secondary: #475569;
-    --border: #e2e8f0;
-    --border-light: #f1f5f9;
-    --radius: 12px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
-    --shadow-hover: 0 4px 12px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.06);
-    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --text: #191919;
+    --text-secondary: #666666;
+    --border: #e0e0e0;
+    --radius: 8px;
+    --shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,368 +25,337 @@
     font-family: var(--font);
     background: var(--bg);
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
 
-  .container { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
 
+  /* Header */
   header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
-  header .subtitle { color: var(--text-secondary); font-size: 0.875rem; margin-top: 2px; }
-
-  .toggle-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 6px 14px;
-    font-size: 0.875rem;
-    cursor: pointer;
-    user-select: none;
-    transition: box-shadow 0.2s;
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
   }
-  .toggle-wrap:hover { box-shadow: var(--shadow); }
-  .toggle-wrap input { display: none; }
-  .toggle-switch {
-    width: 40px; height: 22px; background: var(--border); border-radius: 999px; position: relative; transition: background 0.25s;
-  }
-  .toggle-switch::after {
-    content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: #fff; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.15); transition: transform 0.25s;
-  }
-  .toggle-wrap input:checked + .toggle-switch { background: var(--primary); }
-  .toggle-wrap input:checked + .toggle-switch::after { transform: translateX(18px); }
+  header h1 { font-size: 1.25rem; font-weight: 600; margin-bottom: 4px; }
+  header p { color: var(--text-secondary); font-size: 0.875rem; }
 
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
-
-  .card {
+  /* Section */
+  .section {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 20px;
-    box-shadow: var(--shadow);
-    transition: box-shadow 0.2s, transform 0.15s;
-  }
-  .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
-  .card-header {
-    display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;
-  }
-  .card-title { font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-  .card-title .icon { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; background: var(--primary-light); color: var(--primary); border-radius: 8px; font-size: 0.875rem; }
-
-  .field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
     margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px dashed var(--border-light);
+    box-shadow: var(--shadow);
   }
-  .field-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  @media (max-width: 900px) { .field-row { grid-template-columns: 1fr; } }
-
-  .field-label { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
-  .field-box {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; position: relative; min-height: 80px;
+  .section-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .field-box.original { background: #fff; }
-  .field-box.optimized { background: var(--success-light); border-color: #bbf7d0; }
-  .field-text { font-size: 0.9375rem; line-height: 1.7; white-space: pre-wrap; }
+  .section-title .icon {
+    width: 24px; height: 24px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--primary-light); color: var(--primary);
+    border-radius: 4px; font-size: 0.75rem;
+  }
 
+  /* Content box */
+  .content-box {
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .content-box:last-child { margin-bottom: 0; }
+  .content-text {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: var(--text);
+  }
+
+  /* Copy button */
   .copy-btn {
-    position: absolute; top: 8px; right: 8px;
-    background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
-    padding: 4px 10px; font-size: 0.75rem; color: var(--text-secondary); cursor: pointer;
-    display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s;
+    position: absolute; top: 12px; right: 12px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 6px 14px;
+    font-size: 0.8125rem; font-weight: 500;
+    color: var(--primary); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all 0.2s;
   }
-  .copy-btn:hover { border-color: var(--primary); color: var(--primary); }
+  .copy-btn:hover { background: var(--primary-light); border-color: var(--primary); }
   .copy-btn.copied { background: var(--success-light); color: var(--success); border-color: var(--success); }
 
-  .avatar-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-  .avatar {
-    width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), #60a5fa);
-    display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;
+  /* Character count */
+  .char-count {
+    text-align: right; font-size: 0.75rem;
+    color: var(--text-secondary); margin-top: 6px;
   }
-  .avatar-info .name { font-weight: 700; font-size: 1.125rem; }
-  .avatar-info .role { color: var(--text-secondary); font-size: 0.875rem; }
+  .char-count.warning { color: #c37d0e; }
+  .char-count.over { color: #d11124; }
 
-  .preview-mode .field-row { grid-template-columns: 1fr; }
-  .preview-mode .field-row .original { display: none; }
-  .preview-mode .field-row .optimized { display: block; }
-  .preview-badge {
-    display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;
+  /* LinkedIn preview simulation */
+  .linkedin-preview {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 16px;
   }
-  .preview-badge.before { background: #fee2e2; color: #991b1b; }
-  .preview-badge.after { background: var(--success-light); color: var(--success); }
-
-  .section-title { font-size: 0.875rem; font-weight: 700; color: var(--text-secondary); margin: 24px 0 12px; letter-spacing: 0.02em; }
-
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-tag {
-    background: var(--primary-light); color: var(--primary-dark); font-size: 0.8125rem; font-weight: 500;
-    padding: 4px 12px; border-radius: 999px; border: 1px solid #bfdbfe;
+  .preview-header {
+    height: 120px;
+    background: linear-gradient(135deg, #0a66c2, #0073b1);
+    position: relative;
   }
-  .skill-tag.optimized { background: var(--success-light); color: var(--success); border-color: #bbf7d0; }
+  .preview-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 4px solid var(--surface);
+    position: absolute;
+    bottom: -40px; left: 24px;
+    background: linear-gradient(135deg, var(--primary), #60a5fa);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1.5rem; font-weight: 700;
+    overflow: hidden;
+  }
+  .preview-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .preview-body {
+    padding: 52px 24px 24px;
+  }
+  .preview-name { font-size: 1.25rem; font-weight: 600; margin-bottom: 2px; }
+  .preview-headline { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 8px; }
+  .preview-location { font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 16px; }
+  .preview-about { font-size: 0.875rem; line-height: 1.6; color: var(--text); }
+
+  /* Instructions */
+  .instructions {
+    background: var(--primary-light);
+    border: 1px solid #b3d9f7;
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .instructions-title { font-weight: 600; font-size: 0.875rem; margin-bottom: 8px; color: var(--primary); }
+  .instructions ol { padding-left: 20px; font-size: 0.8125rem; line-height: 1.8; color: var(--text-secondary); }
+  .instructions li { margin-bottom: 4px; }
+  .instructions a { color: var(--primary); text-decoration: none; }
+  .instructions a:hover { text-decoration: underline; }
+
+  /* Tips */
+  .tips {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-top: 12px;
+  }
+  .tips-title { font-weight: 600; font-size: 0.8125rem; color: #c37d0e; margin-bottom: 6px; }
+  .tips ul { padding-left: 18px; font-size: 0.75rem; line-height: 1.7; color: #8c6b1f; }
 
   footer {
-    text-align: center; color: var(--text-secondary); font-size: 0.75rem; margin-top: 32px; padding-bottom: 24px;
+    text-align: center; color: var(--text-secondary);
+    font-size: 0.75rem; margin-top: 24px; padding-bottom: 24px;
   }
 
   @media print {
     body { background: #fff; }
-    .card { box-shadow: none; border-color: #ddd; break-inside: avoid; }
-    .toggle-wrap, .copy-btn { display: none !important; }
-    .field-box { background: #fff !important; border-color: #ccc !important; }
-    .grid { grid-template-columns: 1fr; gap: 12px; }
-    .field-row { grid-template-columns: 1fr; }
-    .field-row .original { display: none; }
+    .section, header { box-shadow: none; break-inside: avoid; }
+    .copy-btn, .instructions { display: none !important; }
   }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <div>
-      <h1>LinkedIn 个人资料优化</h1>
-      <div class="subtitle">AI 生成的专业文案，一键复制到 LinkedIn</div>
-    </div>
-    <label class="toggle-wrap" id="previewToggleLabel">
-      <input type="checkbox" id="previewToggle">
-      <span class="toggle-switch"></span>
-      <span>预览效果</span>
-    </label>
+    <h1>LinkedIn 个人资料优化导出</h1>
+    <p>为 {{NAME}} 生成的 LinkedIn 优化文案，点击"复制"即可粘贴到 LinkedIn 对应位置</p>
   </header>
 
-  <div class="grid" id="mainGrid">
-    <!-- 左侧：原始资料 -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title"><span class="icon">&#128100;</span> 当前资料</div>
-      </div>
+  <!-- 使用说明 -->
+  <div class="instructions">
+    <div class="instructions-title">使用步骤</div>
+    <ol>
+      <li>访问 <a href="https://www.linkedin.com/in/me/edit/" target="_blank">LinkedIn 个人资料编辑页</a></li>
+      <li>点击下方各区块的"复制"按钮，将优化后的文案复制到剪贴板</li>
+      <li>在 LinkedIn 对应位置粘贴并保存</li>
+      <li>建议保留原始内容备份，以便随时恢复</li>
+    </ol>
+  </div>
 
-      <div class="avatar-row">
-        <div class="avatar">张</div>
-        <div class="avatar-info">
-          <div class="name">张伟</div>
-          <div class="role">高级产品经理 | 互联网科技</div>
-        </div>
-      </div>
-
-      <div class="field-row">
-        <div>
-          <div class="field-label">个人简介</div>
-          <div class="field-box original">
-            <button class="copy-btn" data-target="bio-orig">复制</button>
-            <div class="field-text" id="bio-orig">5年产品经理经验，负责过多个项目，擅长需求分析和团队协作。</div>
-          </div>
-        </div>
-        <div class="optimized-col">
-          <div class="field-label">优化后简介</div>
-          <div class="field-box optimized">
-            <button class="copy-btn" data-target="bio-opt">复制</button>
-            <div class="field-text" id="bio-opt">5年 B 端产品经验，主导 3 个千万级用户平台从 0 到 1 落地。擅长通过数据驱动决策，将用户留存率提升 35%。精通敏捷开发流程，带领 15 人跨职能团队高效协作。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field-row">
-        <div>
-          <div class="field-label">工作经历</div>
-          <div class="field-box original">
-            <button class="copy-btn" data-target="exp-orig">复制</button>
-            <div class="field-text" id="exp-orig">XX科技公司 | 产品经理
-2020.06 - 至今
-- 负责产品规划和需求分析
-- 与技术团队沟通协作
-- 推动产品迭代上线</div>
-          </div>
-        </div>
-        <div class="optimized-col">
-          <div class="field-label">优化后经历</div>
-          <div class="field-box optimized">
-            <button class="copy-btn" data-target="exp-opt">复制</button>
-            <div class="field-text" id="exp-opt">XX科技有限公司 | 高级产品经理
-2020.06 - 至今
-- 主导 SaaS 平台产品规划，服务 2000+ 企业客户，ARR 增长 120%
-- 建立需求评审机制，将需求交付周期从 14 天缩短至 7 天
-- 设计并落地数据看板系统，帮助客户运营效率提升 40%</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field-row">
-        <div>
-          <div class="field-label">技能标签</div>
-          <div class="field-box original">
-            <div class="skill-tags">
-              <span class="skill-tag">产品经理</span>
-              <span class="skill-tag">需求分析</span>
-              <span class="skill-tag">项目管理</span>
-              <span class="skill-tag">数据分析</span>
-            </div>
-          </div>
-        </div>
-        <div class="optimized-col">
-          <div class="field-label">优化后技能</div>
-          <div class="field-box optimized">
-            <div class="skill-tags">
-              <span class="skill-tag optimized">产品战略</span>
-              <span class="skill-tag optimized">用户增长</span>
-              <span class="skill-tag optimized">数据驱动决策</span>
-              <span class="skill-tag optimized">SaaS 产品</span>
-              <span class="skill-tag optimized">跨团队领导</span>
-              <span class="skill-tag optimized">A/B 测试</span>
-            </div>
-          </div>
-        </div>
+  <!-- LinkedIn 预览 -->
+  <div class="linkedin-preview">
+    <div class="preview-header">
+      <div class="preview-avatar">
+        <img src="{{AVATAR_SRC}}" alt="{{NAME}}" onerror="this.style.display='none';this.parentElement.textContent='{{NAME_ABBR}}';">
       </div>
     </div>
-
-    <!-- 右侧：AI 优化文案 -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title"><span class="icon">&#9889;</span> AI 优化建议</div>
-      </div>
-
-      <div class="section-title">标题优化</div>
-      <div class="field-row">
-        <div>
-          <div class="field-label">原标题</div>
-          <div class="field-box original">
-            <button class="copy-btn" data-target="title-orig">复制</button>
-            <div class="field-text" id="title-orig">高级产品经理</div>
-          </div>
-        </div>
-        <div class="optimized-col">
-          <div class="field-label">优化后标题</div>
-          <div class="field-box optimized">
-            <button class="copy-btn" data-target="title-opt">复制</button>
-            <div class="field-text" id="title-opt">高级产品经理 | SaaS 增长专家 | 数据驱动产品决策</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-title">精选成就</div>
-      <div class="field-row">
-        <div>
-          <div class="field-label">原描述</div>
-          <div class="field-box original">
-            <button class="copy-btn" data-target="feat-orig">复制</button>
-            <div class="field-text" id="feat-orig">参与过多个成功项目，获得公司优秀员工奖。</div>
-          </div>
-        </div>
-        <div class="optimized-col">
-          <div class="field-label">优化后描述</div>
-          <div class="field-box optimized">
-            <button class="copy-btn" data-target="feat-opt">复制</button>
-            <div class="field-text" id="feat-opt">主导企业服务平台重构，Q3 用户活跃度提升 58%，获评年度最具影响力产品负责人。建立产品数据指标体系，覆盖 12 个核心 KPI，驱动团队决策效率提升 3 倍。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-title">教育背景润色</div>
-      <div class="field-row">
-        <div>
-          <div class="field-label">原描述</div>
-          <div class="field-box original">
-            <button class="copy-btn" data-target="edu-orig">复制</button>
-            <div class="field-text" id="edu-orig">XX大学 | 工商管理学士 | 2015 - 2019</div>
-          </div>
-        </div>
-        <div class="optimized-col">
-          <div class="field-label">优化后描述</div>
-          <div class="field-box optimized">
-            <button class="copy-btn" data-target="edu-opt">复制</button>
-            <div class="field-text" id="edu-opt">XX大学 | 工商管理学士（GPA 3.8/4.0，前 5%）
-2015 - 2019
-- 校创业大赛一等奖，带领 5 人团队完成商业计划书并获 10 万种子投资
-- 学生会外联部部长，统筹 8 场校级活动，累计触达 5000+ 师生</div>
-          </div>
-        </div>
-      </div>
+    <div class="preview-body">
+      <div class="preview-name">{{NAME}}</div>
+      <div class="preview-headline">{{LINKEDIN_HEADLINE}}</div>
+      <div class="preview-location">{{CITY}}</div>
+      <div class="preview-about">{{LINKEDIN_ABOUT}}</div>
     </div>
   </div>
 
-  <footer>由 Resume Design Pro 生成 · 请根据您的实际情况修改后使用</footer>
+  <!-- 标题 (Headline) -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#128188;</span> 职业标题 (Headline)</div>
+    <div class="content-box">
+      <button class="copy-btn" data-target="headline">复制</button>
+      <div class="content-text" id="headline">{{LINKEDIN_HEADLINE}}</div>
+    </div>
+    <div class="char-count" id="headline-count">0 / 220 字符</div>
+    <div class="tips">
+      <div class="tips-title">优化建议</div>
+      <ul>
+        <li>标题控制在 220 字符以内（LinkedIn 限制）</li>
+        <li>格式：职位 | 核心技能 | 价值主张</li>
+        <li>避免使用"寻找机会"等被动表述</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 关于 (About) -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#128172;</span> 个人简介 (About)</div>
+    <div class="content-box">
+      <button class="copy-btn" data-target="about">复制</button>
+      <div class="content-text" id="about">{{LINKEDIN_ABOUT}}</div>
+    </div>
+    <div class="char-count" id="about-count">0 / 2600 字符</div>
+    <div class="tips">
+      <div class="tips-title">优化建议</div>
+      <ul>
+        <li>About 部分最多 2600 字符，建议写满 1500+ 字符</li>
+        <li>第一段用 2-3 句话概括核心价值（Hook）</li>
+        <li>用具体数字量化成果</li>
+        <li>最后一段加上联系方式和行动号召</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 工作经历 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#128200;</span> 工作经历 (Experience)</div>
+    {{#EXPERIENCES}}
+    <div class="content-box">
+      <button class="copy-btn" data-target="exp-{{INDEX}}">复制</button>
+      <div class="content-text" id="exp-{{INDEX}}">{{LINKEDIN_EXPERIENCE}}</div>
+    </div>
+    {{/EXPERIENCES}}
+    <div class="tips">
+      <div class="tips-title">优化建议</div>
+      <ul>
+        <li>每段经历用 3-5 个 bullet points</li>
+        <li>动词开头 + 具体成果 + 数字量化</li>
+        <li>关键词自然嵌入（便于搜索被发现）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 技能 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#127919;</span> 技能标签 (Skills)</div>
+    <div class="content-box">
+      <button class="copy-btn" data-target="skills">复制</button>
+      <div class="content-text" id="skills">{{LINKEDIN_SKILLS}}</div>
+    </div>
+    <div class="char-count" id="skills-count">0 个技能</div>
+    <div class="tips">
+      <div class="tips-title">优化建议</div>
+      <ul>
+        <li>LinkedIn 最多可添加 50 个技能</li>
+        <li>优先添加与目标岗位相关的技能</li>
+        <li>请同事/朋友为您的核心技能背书（Endorsements）</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>由 Resume Design Pro 生成 · {{TIMESTAMP}} · 请根据您的实际情况修改后使用</footer>
 </div>
 
 <script>
-  (function() {
-    // 复制功能
-    document.querySelectorAll('.copy-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var targetId = this.getAttribute('data-target');
-        var el = document.getElementById(targetId);
-        if (!el) return;
-        var text = el.innerText || el.textContent;
-        navigator.clipboard.writeText(text.trim()).then(function() {
-          btn.classList.add('copied');
-          btn.textContent = '已复制';
-          setTimeout(function() {
-            btn.classList.remove('copied');
-            btn.textContent = '复制';
-          }, 1500);
-        }).catch(function() {
-          // fallback
-          var ta = document.createElement('textarea');
-          ta.value = text.trim();
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          btn.classList.add('copied');
-          btn.textContent = '已复制';
-          setTimeout(function() {
-            btn.classList.remove('copied');
-            btn.textContent = '复制';
-          }, 1500);
-        });
-      });
-    });
+(function() {
+  // 复制功能
+  document.querySelectorAll('.copy-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var targetId = this.getAttribute('data-target');
+      var el = document.getElementById(targetId);
+      if (!el) return;
+      var text = el.innerText || el.textContent;
 
-    // 预览效果切换
-    var toggle = document.getElementById('previewToggle');
-    var grid = document.getElementById('mainGrid');
-    toggle.addEventListener('change', function() {
-      if (this.checked) {
-        grid.classList.add('preview-mode');
-        // 在预览模式下，为每个优化字段添加 "优化后" 标签
-        document.querySelectorAll('.optimized-col .field-box').forEach(function(box) {
-          if (!box.querySelector('.preview-badge')) {
-            var badge = document.createElement('span');
-            badge.className = 'preview-badge after';
-            badge.textContent = '优化后';
-            box.insertBefore(badge, box.firstChild);
-          }
-        });
-        document.querySelectorAll('.field-row > div:first-child .field-box').forEach(function(box) {
-          if (!box.querySelector('.preview-badge')) {
-            var badge = document.createElement('span');
-            badge.className = 'preview-badge before';
-            badge.textContent = '优化前';
-            box.insertBefore(badge, box.firstChild);
-          }
+      function showCopied() {
+        btn.classList.add('copied');
+        btn.textContent = '\u2713 已复制';
+        setTimeout(function() {
+          btn.classList.remove('copied');
+          btn.textContent = '\u2398 复制';
+        }, 2000);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text.trim()).then(showCopied).catch(function() {
+          fallbackCopy();
         });
       } else {
-        grid.classList.remove('preview-mode');
-        document.querySelectorAll('.preview-badge').forEach(function(b) { b.remove(); });
+        fallbackCopy();
+      }
+
+      function fallbackCopy() {
+        var ta = document.createElement('textarea');
+        ta.value = text.trim();
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          showCopied();
+        } catch(e) {}
+        document.body.removeChild(ta);
       }
     });
-  })();
+  });
+
+  // 字符计数
+  function updateCount(id, max, suffix) {
+    var el = document.getElementById(id);
+    var countEl = document.getElementById(id + '-count');
+    if (!el || !countEl) return;
+    var len = (el.innerText || el.textContent).length;
+    countEl.textContent = len + ' / ' + max + ' ' + (suffix || '字符');
+    countEl.className = 'char-count' + (len > max ? ' over' : len > max * 0.9 ? ' warning' : '');
+  }
+
+  updateCount('headline', 220);
+  updateCount('about', 2600);
+
+  // 技能计数
+  var skillsEl = document.getElementById('skills');
+  var skillsCountEl = document.getElementById('skills-count');
+  if (skillsEl && skillsCountEl) {
+    var skills = (skillsEl.innerText || skillsEl.textContent).split(/[,\n]/).filter(function(s) { return s.trim(); });
+    skillsCountEl.textContent = skills.length + ' 个技能';
+  }
+})();
 </script>
 </body>
 </html>
