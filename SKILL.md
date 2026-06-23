@@ -6,12 +6,12 @@ description: >
   AI content optimization engine: 10-step process (Extract → Preserve → Tier → Quantify → Lock → Reword → Restructure → HR Check → Confirm → JD Match). Truth-first: never fabricates data, preserves all experiences, locks company attribution. RAW mode available for zero-modification output.
   Generates ATS-compatible resumes with semantic HTML5, hidden keywords section, and standard section hierarchy — safe for applicant tracking systems.
   Resume diagnosis: upload target JD for 6-dimension matching analysis (Hard Skills, Experience, Soft Skills, Education, Keyword Coverage, Resume Quality) with AI optimization suggestions.
-  One invocation, 10 deliverables: visual HTML resume, auto-exported PDF (Playwright), high-resolution PNG export (2x A4), ATS HTML resume, Markdown backup, cover letter, LinkedIn export, job search strategy report (HTML), interview preparation report (HTML), resume diagnosis report (HTML). PNG also serves as fallback when Playwright unavailable. JSON data persistence for cross-session reuse.
+  One invocation, 10 deliverables: visual HTML resume, auto-exported PDF (Playwright), high-resolution PNG export (2x A4), ATS HTML resume, Markdown backup, cover letter, profile export (language-targeted recruitment platforms), job search strategy report (HTML), interview preparation report (HTML), resume diagnosis report (HTML). PNG also serves as fallback when Playwright unavailable. JSON data persistence for cross-session reuse.
   Supports multi-language output: English, Chinese (中文), Japanese (日本語), Korean (한국어) with proper font stacks (Noto Sans family).
   29 design aesthetics: Minimalism, Neumorphism, Glassmorphism, Cyberpunk, Brutalism, Claymorphism, Aurora, 3D Hyperrealism, Vibrant Block, Dark OLED, Organic, Blue Professional, Monochrome, Soft Editorial, Emerald Editorial, Editorial Forest, Editorial Tri-Tone, Block Frame, Cobalt Grid, Signal, Studio, Vellum, Mat, Long Table, Cartesian, Stencil Tablet, People's Platform, Grove, Broadside.
-  Keywords: resume builder, CV generator, resume maker, curriculum vitae, job application, career tool, portfolio, PDF export, ATS compatible, applicant tracking system, cover letter generator, LinkedIn optimization, multi-language resume, bilingual CV, multilingual support, design template, professional resume, HTML resume, visual resume, creative resume, modern resume template, AI resume writer, resume optimizer, resume formatter, resume design, CV design, job search, career change, internship resume, executive resume, tech resume, designer resume, resume diagnosis, JD matching, interview preparation, job search strategy, PNG export, JSON persistence
+  Keywords: resume builder, CV generator, resume maker, curriculum vitae, job application, career tool, portfolio, PDF export, ATS compatible, applicant tracking system, cover letter generator, profile optimization, multi-language resume, bilingual CV, multilingual support, design template, professional resume, HTML resume, visual resume, creative resume, modern resume template, AI resume writer, resume optimizer, resume formatter, resume design, CV design, job search, career change, internship resume, executive resume, tech resume, designer resume, resume diagnosis, JD matching, interview preparation, job search strategy, PNG export, JSON persistence
 license: MIT
-version: 1.4.0
+version: 1.5.0
 author: Feihong
 based_on: claudekit/frontend-design-pro-demo (MIT License), zarazhangrui/beautiful-html-templates (MIT License)
 ---
@@ -1408,7 +1408,10 @@ AI: ✅ 内容优化完成
 
     【优化对比示例】
     优化前："负责公司很多项目，提升了效率"
-    优化后："主导 15+ 项目，效率提升 40%，节省 200+ 工时/月"
+    优化后："主导多个核心项目，通过流程优化显著提升团队工作效率"
+    
+    （用户未提供具体数字，改用定性描述。若用户说"做了约15个项目，效率提升大概一半"：
+     → 优化为"主导 15+ 核心项目，效率提升约 50%"）
 
     💡 选项：
     • 回复 "确认" → 继续选择风格
@@ -1509,6 +1512,7 @@ AI: ✅ 已选择【抽象头像】，将根据姓名自动生成
 - v1.2.0 (2026-06-15): **18 new design styles** (29 total) ported from beautiful-html-templates, expanded style catalog with dark theme support (4 dark themes), updated font system with per-style typography
 - v1.3.0 (2026-06-16): Enhanced resume health report with 5-dimension scoring, contribution verb threshold check, job search communication kit (4 languages × 4 scenarios), interview preparation guide, cultural adaptation for job search communication
 - v1.4.0 (2026-06-17): **Regenerated 3 deliverables as static HTML reports** (job-search-kit.html, interview-prep.html, resume-diagnosis.html with JD matching), **PNG export as standalone 10th deliverable** (2x A4, social sharing), **10-step optimization process** (added JD Match step), **JSON data persistence** for cross-session reuse, SEO/GEO optimization across all READMEs, removed roadmap references
+- v1.5.0 (2026-06-23): **Profile Export v1.5** — redesigned from single-platform (LinkedIn) to language-targeted multi-region output (Chinese: Boss直聘/51job, English: LinkedIn/Indeed, Japanese: リクナビ/マイナビ, Korean: 잡코리아/사람인), dynamic work experience generation (no hardcoded limit), updated all READMEs and SKILL.md references
 
 ---
 

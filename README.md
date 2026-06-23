@@ -1,5 +1,5 @@
 <!-- Resume Design Pro: AI-powered resume builder with 29 premium design styles. Generate stunning HTML resumes, auto-export PDF, ATS-compatible, multi-language (English, Chinese, Japanese, Korean). Features JD matching diagnosis, interview prep, job search strategy. Free, open-source MIT license. -->
-<!-- Keywords: AI resume builder, CV generator, resume maker, resume design, professional resume template, HTML resume, PDF resume, ATS compatible resume, cover letter generator, LinkedIn optimization, job search, interview preparation, resume diagnosis, JD matching, multi-language resume, bilingual CV -->
+<!-- Keywords: AI resume builder, CV generator, resume maker, resume design, professional resume template, HTML resume, PDF resume, ATS compatible resume, cover letter generator, profile optimization, job search, interview preparation, resume diagnosis, JD matching, multi-language resume, bilingual CV -->
 <!-- Canonical: https://github.com/ifeihong/resume-design-pro-skill -->
 # Resume Design Pro -- AI Resume Builder | 29 Premium Design Styles | ATS-Compatible | Multi-Language
 
@@ -16,7 +16,7 @@
 > **29 premium design styles** + **AI content optimization** + **JD matching diagnosis** = a resume that looks like a **$500+ professional design project**.
 > Generate production-ready HTML resumes with auto PDF export, full ATS compatibility, and multi-language support (English, Chinese, Japanese, Korean). One invocation, 9 deliverables.
 
-<!-- SEO: AI resume builder, CV generator, resume maker, professional resume template, HTML resume, PDF resume export, ATS compatible resume, cover letter generator, LinkedIn optimization, job search strategy, interview preparation, resume diagnosis, JD matching, multi-language resume, bilingual CV, multilingual resume, resume design, career tool, job application, resume writer, resume optimizer -->
+<!-- SEO: AI resume builder, CV generator, resume maker, professional resume template, HTML resume, PDF resume export, ATS compatible resume, cover letter generator, profile optimization, job search strategy, interview preparation, resume diagnosis, JD matching, multi-language resume, bilingual CV, multilingual resume, resume design, career tool, job application, resume writer, resume optimizer -->
 
 ## What Makes This Different
 
@@ -98,7 +98,7 @@ One invocation, **10 deliverables**:
 | `resume-{name}-ats.html` | Plain-text ATS version -- safe for applicant tracking systems |
 | `resume-{name}.md` | Markdown backup -- easy to edit and reuse |
 | `cover-letter-{name}.html` | Matching cover letter -- same visual style |
-| `linkedin-export.html` | LinkedIn-optimized content -- copy-paste ready |
+| `profile-export.html` | Language-targeted profile optimization -- copy-paste ready for Boss直聘/51job (CN), LinkedIn/Indeed (EN), リクナビ/マイナビ (JP), 잡코리아/사람인 (KR) |
 | `job-search-kit.html` | **Job search strategy report** -- target companies, timeline, salary reference, communication templates |
 | `interview-prep.html` | **Interview preparation report** -- anticipated questions with answer frameworks, company intel |
 | `resume-diagnosis.html` | **Resume diagnosis report** -- JD matching analysis with 6-dimension scoring and AI optimization suggestions |
@@ -137,7 +137,7 @@ Step 1: Provide Info          Step 2: AI Optimizes        Step 3: You Confirm
 Step 4: Pick Style            Step 5: Get Everything
 |-- 29 premium designs        |-- Visual resume (HTML + PDF + PNG)
 |-- AI recommends 3 best      |-- ATS version + Markdown backup
-|-- Preview before final      |-- Cover letter + LinkedIn content
+|-- Preview before final      |-- Cover letter + profile export
                               |-- Job search strategy report
                               |-- Interview prep report
                               |-- Resume diagnosis report (with JD)
